@@ -61,7 +61,39 @@ informative:
 
 # Introduction
 
-TODO Introduction
+   YANG modeled "list" and "leaf-list" nodes may contain a large number
+   of entries.  For instance, there may be thousands of entries in the
+   configuration for network interfaces or access control lists.  And
+   time-driven logging mechanisms, such as an audit log or a traffic
+   log, can contain millions of entries.
+
+   Retrieval of all the entries can lead to inefficiencies in the
+   server, the client, and the network in between.  For instance,
+   consider the following:
+
+   *  A client may need to filter and/or sort list entries in order to,
+      e.g., present the view requested by a user.
+
+   *  A server may need to iterate over many more list entries than
+      needed by a client.
+
+   *  A network may need to convey more data than needed by a client.
+
+   Optimal global resource utilization is obtained when clients are able
+   to cherry-pick just that which is needed to support the application-
+   level business logic.
+
+   This document defines a generic model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF
+   {{?RFC6241}} and RESTCONF {{?RFC8040}}.  How the NETCONF and RESTCONF
+   protocols support list pagination is described in
+   {{?I-D.ietf-netconf-list-pagination-nc}} and
+   {{?I-D.ietf-netconf-list-pagination-rc}}, respectively.
+
+   The model presented in this document supports paging over optionally
+   filtered and/or sorted entries.  Server-side filtering and sorting is
+   ideal as servers can leverage indexes maintained by a backend storage
+   layer to accelerate queries.
 
 
 # Conventions and Definitions
