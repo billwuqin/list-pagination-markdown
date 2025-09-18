@@ -1,0 +1,3 @@
+# Automatically generated CODEOWNERS
+# Regenerate with `make update-codeowners`
+draft-ietf-netconf-list-pagination.md kent+ietf@watsen.net bill.wu@huawei.com per.ietf@ionio.se olof@hagsand.se flycoolman@gmail.com
