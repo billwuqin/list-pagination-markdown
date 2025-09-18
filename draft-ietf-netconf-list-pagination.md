@@ -100,7 +100,7 @@ informative:
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in BCP
-   14{{?[RFC2119}} {{?RFC8174}} when, and only when, they appear in all
+   14{{?RFC2119}} {{?RFC8174}} when, and only when, they appear in all
    capitals, as shown here.
 
    The following terms are defined in {{?RFC7950}} and are not redefined
@@ -111,14 +111,14 @@ informative:
 
    Various examples in this document use "BASE64VALUE=" as a placeholder
    value for binary data that has been base64 encoded (per Section 9.8
-   of{{?[RFC7950}}).  This placeholder value is used because real base64
+   of{{?RFC7950}}).  This placeholder value is used because real base64
    encoded structures are often many lines long and hence distracting to
    the example being presented.
 
 ## Adherence to the NMDA
 
    This document is compliant with the Network Management Datastore
-   Architecture (NMDA) {{RFC8342}}.  The "ietf-list-pagination" module
+   Architecture (NMDA) {{?RFC8342}}.  The "ietf-list-pagination" module
    only defines a YANG extension and augments a couple leafs into a
    "config false" node defined by the "ietf-system-capabilities" module.
 
