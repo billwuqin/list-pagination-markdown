@@ -1,7 +1,7 @@
 ---
 title: "List Pagination for YANG-driven Protocols"
 abbrev: "List Pagination"
-category: Standards Track
+category: std
 
 docname: draft-ietf-netconf-list-pagination-latest
 submissiontype: IETF
@@ -9,12 +9,11 @@ number:
 date:
 consensus: true
 v: 3
-area: OPS AREA
-workgroup: NETCONF WG Working Group
+area: "Operations and Management"
+workgroup: "NETCONF Working Group"
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - list pagination
+ - yang data model
 
 author:
  -
