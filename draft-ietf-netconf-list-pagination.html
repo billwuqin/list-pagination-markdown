@@ -10,9 +10,18 @@
 <meta content="Per Andersson" name="author">
 <meta content="Olof Hagsand" name="author">
 <meta content="Hongwei Li" name="author">
-<meta content="
-       TODO Abstract 
-    " name="description">
+<meta content='
+       In some circumstances, instances of YANG modeled "list" and "leaf-
+   list" nodes may contain numerous entries.  Retrieval of all the
+   entries can lead to inefficiencies in the server, the client, and the
+   network in between. 
+       This document defines a model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF and
+   RESTCONF.  The model supports paging over optionally filtered and/or
+   sorted entries.  The solution additionally enables servers to
+   constrain query expressions on some "config false" lists or leaf-
+   lists. 
+    ' name="description">
 <meta content="xml2rfc 3.30.2" name="generator">
 <meta content="list pagination" name="keyword">
 <meta content="yang data model" name="keyword">
@@ -1061,7 +1070,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">NETCONF Working Group</dd>
+<dd class="workgroup">Network Configuration</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
 <dd class="internet-draft">draft-ietf-netconf-list-pagination-latest</dd>
 <dt class="label-published">Published:</dt>
@@ -1100,7 +1109,27 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">List Pagination for YANG-driven Protocols</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">In some circumstances, instances of YANG modeled "list" and "leaf-
+   list" nodes may contain numerous entries.  Retrieval of all the
+   entries can lead to inefficiencies in the server, the client, and the
+   network in between.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This document defines a model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF and
+   RESTCONF.  The model supports paging over optionally filtered and/or
+   sorted entries.  The solution additionally enables servers to
+   constrain query expressions on some "config false" lists or leaf-
+   lists.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
+</section>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-discussion-venues">
+<a href="#name-discussion-venues" class="section-name selfRef">Discussion Venues</a>
+      </h2>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">Discussion of this document takes place on the
+    Network Configuration Working Group mailing list (netconf@ietf.org),
+    which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/netconf/">https://mailarchive.ietf.org/arch/browse/netconf/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+    <span><a href="https://github.com/billwuqin/list-pagination-markdown">https://github.com/billwuqin/list-pagination-markdown</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">

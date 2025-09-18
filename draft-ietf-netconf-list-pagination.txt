@@ -2,7 +2,7 @@
 
 
 
-NETCONF Working Group                                          K. Watsen
+Network Configuration                                          K. Watsen
 Internet-Draft                                           Watsen Networks
 Intended status: Standards Track                                   Q. Wu
 Expires: 22 March 2026                                            Huawei
@@ -20,7 +20,28 @@ Expires: 22 March 2026                                            Huawei
 
 Abstract
 
-   TODO Abstract
+   In some circumstances, instances of YANG modeled "list" and "leaf-
+   list" nodes may contain numerous entries.  Retrieval of all the
+   entries can lead to inefficiencies in the server, the client, and the
+   network in between.
+
+   This document defines a model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF and
+   RESTCONF.  The model supports paging over optionally filtered and/or
+   sorted entries.  The solution additionally enables servers to
+   constrain query expressions on some "config false" lists or leaf-
+   lists.
+
+Discussion Venues
+
+   This note is to be removed before publishing as an RFC.
+
+   Discussion of this document takes place on the Network Configuration
+   Working Group mailing list (netconf@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/netconf/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/billwuqin/list-pagination-markdown.
 
 Status of This Memo
 
