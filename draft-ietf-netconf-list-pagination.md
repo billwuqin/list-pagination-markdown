@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 area: "Operations and Management"
-workgroup: "NETCONF Working Group"
+workgroup: "Network Configuration"
 keyword:
  - list pagination
  - yang data model
