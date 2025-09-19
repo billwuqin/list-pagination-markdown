@@ -46,36 +46,38 @@ informative:
    target: http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
    date: 2000
 
+...
+
 --- abstract
 
-   In some circumstances, instances of YANG modeled "list" and "leaf-
-   list" nodes may contain numerous entries.  Retrieval of all the
-   entries can lead to inefficiencies in the server, the client, and the
-   network in between.
+TODO Abstract
 
-   This document defines a model for list pagination that can be
-   implemented by YANG-driven management protocols such as NETCONF and
-   RESTCONF.  The model supports paging over optionally filtered and/or
-   sorted entries.  The solution additionally enables servers to
-   constrain query expressions on some "config false" lists or leaf-
-   lists.
-
-...
 
 --- middle
 
+# Introduction
+
+TODO Introduction
+
+
+# Conventions and Definitions
+
+{::boilerplate bcp14-tagged}
+
+
+# Security Considerations
+
+TODO Security
+
+
+# IANA Considerations
+
+This document has no IANA actions.
 
 
 --- back
 
-# Acknowledgements
+# Acknowledgments
+{:numbered="false"}
 
-   This work has benefited from the discussions of RESTCONF resource
-   collection over the years, in particular,
-   {{?I-D.ietf-netconf-restconf-collection}} which provides enhanced
-   filtering features for the retrieval of data nodes with the GET
-   method and {{?I-D.zheng-netconf-fragmentation}} which document large
-   size data handling challenge.  The authors would like to thank the
-   following for lively discussions on list (ordered by first name):
-   Andy Bierman, Martin Björklund, Robert Varga, Rob Wills, and Rob
-   Wilton.
+TODO acknowledge.
