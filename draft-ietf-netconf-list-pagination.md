@@ -1059,9 +1059,7 @@ informative:
         prefix: lpg
         RFC: XXXX
 
-#  Security Considerations
-
-##  Considerations for the "ietf-list-pagination" YANG Module
+#  Security Considerations for the "ietf-list-pagination" YANG Module
 
    This section follows the template defined in Section 3.7.1 of
    {{!RFC8407}}.
@@ -1098,7 +1096,6 @@ informative:
 
 --- back
 
-
 # Acknowledgements
 
    This work has benefited from the discussions of RESTCONF resource
@@ -1110,5 +1107,3 @@ informative:
    following for lively discussions on list (ordered by first name):
    Andy Bierman, Martin Björklund, Robert Varga, Rob Wills, and Rob
    Wilton.
-
-----
