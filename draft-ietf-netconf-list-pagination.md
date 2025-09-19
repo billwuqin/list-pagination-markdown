@@ -128,6 +128,36 @@ informative:
    only defines a YANG extension and augments a couple leafs into a
    "config false" node defined by the "ietf-system-capabilities" module.
 
+#  Solution Overview
+
+   The solution presented in this document broadly entails a client
+   sending a query to a server targeting a specific list or leaf-list
+   including optional parameters guiding which entries should be
+   returned.
+
+   Furthermore the solution is intended to leverage underlying database
+   system capabilities, e.g. fast lookups relying on indexes, using
+   efficient built-in selection and pagination functions.  However,
+   since there are many different database systems and configurations,
+   the solution defines a common subset of functionality broadly
+   available.  It is also possible that a datastore's underlying
+   database system is federated, i.e. consists of several different
+   database systems to provide one datastore.  In order to form a
+   general solution, the possibility to configure and tune what
+   components are available is presented.
+
+   A secondary aspect of this solution entails a client sending a query
+   parameter to a server guiding how descendent lists and leaf-lists
+   should be returned.  This parameter may be used on any target node,
+   not just "list" and "leaf-list" nodes.
+
+   Clients detect a server's support for list pagination via an entry
+   for the "ietf-list-pagination" module (defined in Section 4) in the
+   server's YANG Library {{!RFC8525}} response.
+
+   Relying on client-provided query parameters ensures servers remain
+   backward compatible with legacy clients.
+
 #  Solution Details
 
    This section is composed of the following subsections:
