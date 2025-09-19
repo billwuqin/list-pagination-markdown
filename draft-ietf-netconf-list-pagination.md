@@ -549,6 +549,42 @@ informative:
    "constrained" leaf is present, then "where" and "sort-by" expressions
    are disabled for that list or leaf-list.
 
+# Example Usage
+
+## Constraining a "config false" list
+The following example illustrates the "ietf-list-pagination" module's augmentations of the "system-capabilities" data tree. This example assumes the "example-social" module defined in the Appendix A.1 is implemented.
+
+~~~~
+<system-capabilities
+  xmlns="urn:ietf:params:xml:ns:yang:ietf-system-capabilities"
+  xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores"
+  xmlns:es="https://example.com/ns/example-social"
+  xmlns:lpg="urn:ietf:params:xml:ns:yang:ietf-list-pagination">
+  <datastore-capabilities>
+    <datastore>ds:operational</datastore>
+    <per-node-capabilities>
+      <node-selector>/es:audit-logs/es:audit-log</node-selector>
+      <lpg:constrained>true</lpg:constrained>
+    </per-node-capabilities>
+    <per-node-capabilities>
+      <node-selector>/es:audit-logs/es:audit-log/es:timestamp</node-\
+selector>
+      <lpg:indexed>true</lpg:indexed>
+    </per-node-capabilities>
+    <per-node-capabilities>
+      <node-selector>/es:audit-logs/es:audit-log/es:member-id</node-\
+selector>
+      <lpg:indexed>true</lpg:indexed>
+    </per-node-capabilities>
+    <per-node-capabilities>
+      <node-selector>/es:audit-logs/es:audit-log/es:outcome</node-se\
+lector>
+      <lpg:indexed>true</lpg:indexed>
+    </per-node-capabilities>
+  </datastore-capabilities>
+</system-capabilities>
+~~~~
+
 # YANG Module
 
 ~~~~
