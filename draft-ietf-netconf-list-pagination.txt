@@ -98,11 +98,14 @@ Table of Contents
                Leaf-Lists
        3.3.2.  Indicating the Constraints for "where" Filters and
                "sort-by"
-   4.  Security Considerations for the "ietf-list-pagination" YANG
+   4.  IANA Considerations
+     4.1.  The "IETF XML" Registry
+     4.2.  The "YANG Module Names" Registry
+   5.  Security Considerations for the "ietf-list-pagination" YANG
            Module
-   5.  References
-     5.1.  Normative References
-     5.2.  Informative References
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -560,7 +563,33 @@ Table of Contents
    "constrained" leaf is present, then "where" and "sort-by" expressions
    are disabled for that list or leaf-list.
 
-4.  Security Considerations for the "ietf-list-pagination" YANG Module
+4.  IANA Considerations
+
+4.1.  The "IETF XML" Registry
+
+   This document registers one URI in the "ns" subregistry of the IETF
+   XML Registry [RFC3688] maintained at
+   https://www.iana.org/assignments/xml-registry/xml-registry.xhtml#ns.
+   Following the format in [RFC3688], the following registration is
+   requested:
+
+          URI: urn:ietf:params:xml:ns:yang:ietf-list-pagination
+          Registrant Contact: The IESG.
+          XML: N/A, the requested URI is an XML namespace.
+
+4.2.  The "YANG Module Names" Registry
+
+   This document registers one YANG module in the YANG Module Names
+   registry [RFC6020] maintained at https://www.iana.org/assignments/
+   yang-parameters/yang-parameters.xhtml.  Following the format defined
+   in [RFC6020], the below registration is requested:
+
+       name: ietf-list-pagination
+       namespace: urn:ietf:params:xml:ns:yang:ietf-list-pagination
+       prefix: lpg
+       RFC: XXXX
+
+5.  Security Considerations for the "ietf-list-pagination" YANG Module
 
    This section follows the template defined in Section 3.7.1 of
    [RFC8407].
@@ -595,18 +624,27 @@ Table of Contents
    This module does not define any RPCs or actions or notifications, and
    thus the security consideration for such is not provided here.
 
-5.  References
+6.  References
 
-5.1.  Normative References
+6.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
 
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              DOI 10.17487/RFC3688, January 2004,
+              <https://www.rfc-editor.org/rfc/rfc3688>.
+
    [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
               September 2009, <https://www.rfc-editor.org/rfc/rfc5646>.
+
+   [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
+              the Network Configuration Protocol (NETCONF)", RFC 6020,
+              DOI 10.17487/RFC6020, October 2010,
+              <https://www.rfc-editor.org/rfc/rfc6020>.
 
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
@@ -666,7 +704,7 @@ Table of Contents
               Notifications", RFC 9196, DOI 10.17487/RFC9196, February
               2022, <https://www.rfc-editor.org/rfc/rfc9196>.
 
-5.2.  Informative References
+6.2.  Informative References
 
    [I-D.ietf-netconf-list-pagination-nc]
               Watsen, K., Wu, Q., Andersson, P., Hagsand, O., and H. Li,
