@@ -1291,10 +1291,18 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-appendix-a-vector-tests" class="internal xref">Appendix A. Vector Tests</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-a1-example-yang-module" class="internal xref">A.1. Example YANG Module</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -2531,12 +2539,363 @@ module ietf-list-pagination {
 </div>
 </section>
 </div>
-<div id="acknowledgments">
+<div id="appendix-a-vector-tests">
 <section id="appendix-A">
+      <h2 id="name-appendix-a-vector-tests">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-appendix-a-vector-tests" class="section-name selfRef">Appendix A. Vector Tests</a>
+      </h2>
+<p id="appendix-A-1">This normative appendix section illustrates every notable edge condition conceived during this document's production.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Test inputs and outputs are provided in a manner that is both generic and concise.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">Management protocol specific documents need only reproduce as many of these tests as necessary to convey peculiarities presented by the protocol.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">Implementations are RECOMMENDED to implement the tests presented in this document, in addition to any tests that may be presented in protocol specific documents.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<div id="a1-example-yang-module">
+<section id="appendix-A.1">
+        <h3 id="name-a1-example-yang-module">
+<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-a1-example-yang-module" class="section-name selfRef">A.1. Example YANG Module</a>
+        </h3>
+<p id="appendix-A.1-1">The vector tests assume the "example-social" YANG module defined in this section.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-2">This module has been specially crafted to cover every notable edge condition, especially with regards to the types of the data nodes.<a href="#appendix-A.1-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-3">Following is the tree diagram [RFC8340] for the "example-social" module:<a href="#appendix-A.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.1-4">
+<pre>
+module: example-social
+  +--rw members
+  |  +--rw member* [member-id]
+  |     +--rw member-id           string
+  |     +--rw email-address       inet:email-address
+  |     +--rw password            ianach:crypt-hash
+  |     +--rw avatar?             binary
+  |     +--rw tagline?            string
+  |     +--rw privacy-settings
+  |     |  +--rw hide-network?      boolean
+  |     |  +--rw post-visibility?   enumeration
+  |     +--rw following*          -&gt; /members/member/member-id
+  |     +--rw posts
+  |     |  +--rw post* [timestamp]
+  |     |     +--rw timestamp    yang:date-and-time
+  |     |     +--rw title?       string
+  |     |     +--rw body         string
+  |     +--rw favorites
+  |     |  +--rw uint8-numbers*       uint8
+  |     |  +--rw uint64-numbers*      uint64
+  |     |  +--rw int8-numbers*        int8
+  |     |  +--rw int64-numbers*       int64
+  |     |  +--rw decimal64-numbers*   decimal64
+  |     |  +--rw bits*                bits
+  |     +--ro stats
+  |        +--ro joined              yang:date-and-time
+  |        +--ro membership-level    enumeration
+  |        +--ro last-activity?      yang:date-and-time
+  +--ro audit-logs
+     +--ro audit-log* []
+        +--ro timestamp    yang:date-and-time
+        +--ro member-id    string
+        +--ro source-ip    inet:ip-address
+        +--ro request      string
+        +--ro outcome      boolean
+</pre><a href="#appendix-A.1-4" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.1-5">Following is the YANG <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> for the "example-social" module:<a href="#appendix-A.1-5" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.1-6">
+<pre>
+module example-social {
+  yang-version 1.1;
+  namespace "https://example.com/ns/example-social";
+  prefix es;
+
+  import ietf-yang-types {
+    prefix yang;
+    reference
+      "RFC 6991: Common YANG Data Types";
+  }
+
+  import ietf-inet-types {
+    prefix inet;
+    reference
+      "RFC 6991: Common YANG Data Types";
+  }
+
+  import iana-crypt-hash {
+    prefix ianach;
+    reference
+      "RFC 7317: A YANG Data Model for System Management";
+  }
+
+  organization "Example, Inc.";
+  contact      "support@example.com";
+  description  "Example Social Data Model.";
+
+  revision YYYY-MM-DD {
+    description
+      "Initial version.";
+    reference
+      "RFC XXXX: Example social module.";
+  }
+
+  container members {
+    description
+      "Container for list of members.";
+    list member {
+      key "member-id";
+      description
+        "List of members.";
+
+      leaf member-id {
+        type string {
+          length "1..80";
+          pattern '.*[\n].*' {
+           modifier invert-match;
+          }
+        }
+        description
+          "The member's identifier.";
+      }
+
+      leaf email-address {
+        type inet:email-address;
+        mandatory true;
+        description
+          "The member's email address.";
+      }
+
+      leaf password {
+        type ianach:crypt-hash;
+        mandatory true;
+        description
+          "The member's hashed-password.";
+      }
+
+      leaf avatar {
+        type binary;
+        description
+          "An binary image file.";
+      }
+
+      leaf tagline {
+        type string {
+          length "1..80";
+          pattern '.*[\n].*' {
+            modifier invert-match;
+          }
+        }
+        description
+          "The member's tagline.";
+      }
+
+      container privacy-settings {
+        leaf hide-network {
+          type boolean;
+          description
+            "Hide who you follow and who follows you.";
+        }
+        leaf post-visibility {
+          type enumeration {
+            enum public {
+              description
+                "Posts are public.";
+            }
+            enum unlisted {
+              description
+                "Posts are unlisted, though visible to all.";
+            }
+            enum followers-only {
+              description
+                "Posts only visible to followers.";
+            }
+          }
+          default public;
+          description
+            "The post privacy setting.";
+        }
+        description
+          "Preferences for the member.";
+      }
+
+      leaf-list following {
+        type leafref {
+          path "/members/member/member-id";
+        }
+        description
+          "Other members this member is following.";
+      }
+
+      container posts {
+        description
+          "The member's posts.";
+        list post {
+          key timestamp;
+          leaf timestamp {
+            type yang:date-and-time;
+            description
+              "The timestamp for the member's post.";
+          }
+          leaf title {
+            type string {
+              length "1..80";
+              pattern '.*[\n].*' {
+                modifier invert-match;
+              }
+            }
+            description
+              "A one-line title.";
+          }
+          leaf body {
+            type string;
+            mandatory true;
+            description
+              "The body of the post.";
+          }
+          description
+            "A list of posts.";
+        }
+      }
+
+      container favorites {
+        description
+          "The member's favorites.";
+        leaf-list uint8-numbers {
+          type uint8;
+          ordered-by user;
+          description
+            "The member's favorite uint8 numbers.";
+        }
+        leaf-list uint64-numbers {
+          type uint64;
+          ordered-by user;
+          description
+            "The member's favorite uint64 numbers.";
+        }
+        leaf-list int8-numbers {
+          type int8;
+          ordered-by user;
+          description
+            "The member's favorite int8 numbers.";
+        }
+        leaf-list int64-numbers {
+          type int64;
+          ordered-by user;
+          description
+            "The member's favorite int64 numbers.";
+        }
+        leaf-list decimal64-numbers {
+          type decimal64 {
+            fraction-digits 5;
+          }
+          ordered-by user;
+          description
+            "The member's favorite decimal64 numbers.";
+        }
+        leaf-list bits {
+          type bits {
+            bit zero {
+              position 0;
+              description "zero";
+            }
+            bit one {
+              position 1;
+              description "one";
+            }
+            bit two {
+              position 2;
+              description "two";
+            }
+          }
+          ordered-by user;
+          description
+            "The member's favorite bits.";
+        }
+      }
+
+      container stats {
+        config false;
+        description
+          "Operational state members values.";
+        leaf joined {
+          type yang:date-and-time;
+          mandatory true;
+          description
+            "Timestamp when member joined.";
+        }
+        leaf membership-level {
+          type enumeration {
+            enum admin {
+              description
+                "Site administrator.";
+            }
+            enum standard {
+              description
+                "Standard membership level.";
+            }
+            enum pro {
+              description
+                "Professional membership level.";
+            }
+          }
+          mandatory true;
+          description
+            "The membership level for this member.";
+        }
+        leaf last-activity {
+          type yang:date-and-time;
+          description
+            "Timestamp of member's last activity.";
+        }
+      }
+    }
+  }
+
+  container audit-logs {
+    config false;
+    description
+      "Audit log configuration";
+    list audit-log {
+      description
+        "List of audit logs.";
+      leaf timestamp {
+        type yang:date-and-time;
+        mandatory true;
+        description
+          "The timestamp for the event.";
+      }
+      leaf member-id {
+        type string;
+        mandatory true;
+        description
+          "The 'member-id' of the member.";
+      }
+      leaf source-ip {
+        type inet:ip-address;
+        mandatory true;
+        description
+          "The apparent IP address the member used.";
+      }
+      leaf request {
+        type string;
+        mandatory true;
+        description
+          "The member's request.";
+      }
+      leaf outcome {
+        type boolean;
+        mandatory true;
+        description
+          "Indicate if request was permitted.";
+      }
+    }
+  }
+}
+</pre><a href="#appendix-A.1-6" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-B">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">This work has benefited from the discussions of RESTCONF resource
+<p id="appendix-B-1">This work has benefited from the discussions of RESTCONF resource
    collection over the years, in particular,
    <span>[<a href="#I-D.ietf-netconf-restconf-collection" class="cite xref">I-D.ietf-netconf-restconf-collection</a>]</span> which provides enhanced
    filtering features for the retrieval of data nodes with the GET
@@ -2544,11 +2903,11 @@ module ietf-list-pagination {
    size data handling challenge.  The authors would like to thank the
    following for lively discussions on list (ordered by first name):
    Andy Bierman, Martin Björklund, Robert Varga, Rob Wills, and Rob
-   Wilton.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+   Wilton.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-B">
+<section id="appendix-C">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
