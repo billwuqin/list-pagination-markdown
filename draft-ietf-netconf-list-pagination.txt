@@ -98,17 +98,19 @@ Table of Contents
                Leaf-Lists
        3.3.2.  Indicating the Constraints for "where" Filters and
                "sort-by"
-   4.  Example Usage
-     4.1.  Constraining a "config false" list
-   5.  YANG Module
-   6.  IANA Considerations
-     6.1.  The "IETF XML" Registry
-     6.2.  The "YANG Module Names" Registry
-   7.  Security Considerations for the "ietf-list-pagination" YANG
+   4.  The "ietf-list-pagination" Module
+     4.1.  Data Model Overview
+     4.2.  Example Usage
+       4.2.1.  Constraining a "config false" list
+     4.3.  YANG Module
+   5.  IANA Considerations
+     5.1.  The "IETF XML" Registry
+     5.2.  The "YANG Module Names" Registry
+   6.  Security Considerations for the "ietf-list-pagination" YANG
            Module
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -566,9 +568,39 @@ Table of Contents
    "constrained" leaf is present, then "where" and "sort-by" expressions
    are disabled for that list or leaf-list.
 
-4.  Example Usage
+4.  The "ietf-list-pagination" Module
 
-4.1.  Constraining a "config false" list
+   The "ietf-list-pagination" module is used by servers to indicate that
+   they support pagination on YANG "list" and "leaf-list" nodes, and to
+   provide an ability to indicate which "config false" list and/or
+   "leaf-list" nodes are constrained and, if so, which nodes may be used
+   in "where" and "sort-by" expressions.
+
+4.1.  Data Model Overview
+
+   The following tree diagram [RFC8340] illustrates the "ietf-list-
+   pagination" module:
+
+   module: ietf-list-pagination
+
+     augment /sysc:system-capabilities/sysc:datastore-capabilities
+               /sysc:per-node-capabilities:
+       +--ro constrained?        boolean
+       +--ro indexed?            boolean
+       +--ro cursor-supported?   boolean
+
+   Comments:
+
+   As shown, this module augments three optional leafs into the "per-
+   node-capabilities" node of the "ietf-system-capabilities" module.
+   Not shown is that the module also defines an "md:annotation"
+   statement named "remaining".  This annotation may be present in a
+   server's response to a client request containing either the "limit"
+   (Section 3.1.7) or "sublist-limit" parameters (Appendix A.3.8).
+
+4.2.  Example Usage
+
+4.2.1.  Constraining a "config false" list
 
    The following example illustrates the "ietf-list-pagination" module's
    augmentations of the "system-capabilities" data tree.  This example
@@ -604,7 +636,7 @@ Table of Contents
      </datastore-capabilities>
    </system-capabilities>
 
-5.  YANG Module
+4.3.  YANG Module
 
    module ietf-list-pagination {
      yang-version 1.1;
@@ -1013,9 +1045,9 @@ Table of Contents
      }
    }
 
-6.  IANA Considerations
+5.  IANA Considerations
 
-6.1.  The "IETF XML" Registry
+5.1.  The "IETF XML" Registry
 
    This document registers one URI in the "ns" subregistry of the IETF
    XML Registry [RFC3688] maintained at
@@ -1027,7 +1059,7 @@ Table of Contents
           Registrant Contact: The IESG.
           XML: N/A, the requested URI is an XML namespace.
 
-6.2.  The "YANG Module Names" Registry
+5.2.  The "YANG Module Names" Registry
 
    This document registers one YANG module in the YANG Module Names
    registry [RFC6020] maintained at https://www.iana.org/assignments/
@@ -1039,7 +1071,7 @@ Table of Contents
        prefix: lpg
        RFC: XXXX
 
-7.  Security Considerations for the "ietf-list-pagination" YANG Module
+6.  Security Considerations for the "ietf-list-pagination" YANG Module
 
    This section follows the template defined in Section 3.7.1 of
    [RFC8407].
@@ -1074,9 +1106,9 @@ Table of Contents
    This module does not define any RPCs or actions or notifications, and
    thus the security consideration for such is not provided here.
 
-8.  References
+7.  References
 
-8.1.  Normative References
+7.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1154,7 +1186,7 @@ Table of Contents
               Notifications", RFC 9196, DOI 10.17487/RFC9196, February
               2022, <https://www.rfc-editor.org/rfc/rfc9196>.
 
-8.2.  Informative References
+7.2.  Informative References
 
    [I-D.ietf-netconf-list-pagination-nc]
               Watsen, K., Wu, Q., Andersson, P., Hagsand, O., and H. Li,
