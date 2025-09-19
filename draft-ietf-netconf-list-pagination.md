@@ -1014,6 +1014,66 @@ RESPONSE
 }
 ~~~~
 
+#### A.3.1.3. limit=5
+
+REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     5
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [17, 13, 11, 7, 5],
+  "@example-social:uint8-numbers": [
+     {
+        "ietf-list-pagination:remaining": 1
+     }
+   ]
+}
+~~~~
+#### A.3.1.4. limit=6
+
+REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     6
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
+}
+~~~~
+#### A.3.1.5. limit=7
+
+REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     7
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
+}
+~~~~
+
 # Acknowledgments
 {:numbered="false"}
 
