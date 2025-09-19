@@ -114,6 +114,8 @@ Table of Contents
    Appendix A.  Appendix A.  Vector Tests
      A.1.  A.1.  Example YANG Module
      A.2.  A.2.  Example Data Set
+     A.3.  A.3.  Example Queries
+       A.3.1.  A.3.1.  The "limit" Parameter
    Acknowledgments
    Authors' Addresses
 
@@ -1789,6 +1791,49 @@ A.2.  A.2.  Example Data Set
        ]
      }
    }
+
+A.3.  A.3.  Example Queries
+
+   The following sections are presented in reverse query-parameters
+   processing order.  Starting with the simplest (limit) and ending with
+   the most complex (where).
+
+   All the vector tests are presented in a protocol-independent manner.
+   JSON is used only for its conciseness.
+
+   The "members" list in the example data set is "ordered-by system" and
+   the queries without explicit "sort-by" below return them in this
+   given order.  Note that the order of the result-set without explicit
+   "sort-by" is implementation specific for "ordered-by system" lists.
+
+   Note that the user "åsa" is only included in Appendix A.3.7.  This to
+   isolate the parameter in the example query and its behavior.
+
+A.3.1.  A.3.1.  The "limit" Parameter
+
+   Noting that "limit" must be a positive number, the edge condition
+   values are '1', '2', num-elements-1, num-elements, and num-
+   elements+1.
+
+   Any value greater than or equal to num-elements results the entire
+   result set, same as when "limit" is unspecified.
+
+   These vector tests assume the target "/example-
+   social:members/member=alice/favorites/uint8-numbers", which has six
+   values, thus the edge condition "limit" values are: '1', '2', '5',
+   '6', and '7'.
+
+   A.3.1.1. limit=1 REQUEST ~~~~ Target: /example-
+   social:members/member=alice/favorites/uint8-numbers Pagination
+   Parameters: Where: - Sort-by: - Direction: - Offset: - Limit: 1 ~~~~
+   RESPONSE ~~~~ { "example-social:uint8-numbers": [17], "@example-
+   social:uint8-numbers": [ { "ietf-list-pagination:remaining": 5 } ] }
+   ~~~~ A.3.1.2. limit=2 REQUEST ~~~~ Target: /example-
+   social:members/member=alice/favorites/uint8-numbers Pagination
+   Parameters: Where: - Sort-by: - Direction: - Offset: - Limit: 2 ~~~~
+   RESPONSE ~~~~ { "example-social:uint8-numbers": [17, 13], "@example-
+   social:uint8-numbers": [ { "ietf-list-pagination:remaining": 4 } ] }
+   ~~~~
 
 Acknowledgments
 
