@@ -45,7 +45,6 @@ informative:
    title: Architectural Styles and the Design of Network-based Software Architectures
    target: http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
    date: 2000
-...
 
 --- abstract
 
@@ -557,7 +556,7 @@ informative:
 
 ##  Data Model Overview
 
-   The following tree diagram [RFC8340] illustrates the "ietf-list-
+   The following tree diagram {{!RFC8340}} illustrates the "ietf-list-
    pagination" module:
 
    module: ietf-list-pagination
@@ -590,34 +589,6 @@ informative:
 
    =============== NOTE: '\' line wrapping per RFC 8792 ================
 
-   <system-capabilities
-     xmlns="urn:ietf:params:xml:ns:yang:ietf-system-capabilities"
-     xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores"
-     xmlns:es="https://example.com/ns/example-social"
-     xmlns:lpg="urn:ietf:params:xml:ns:yang:ietf-list-pagination">
-     <datastore-capabilities>
-       <datastore>ds:operational</datastore>
-       <per-node-capabilities>
-         <node-selector>/es:audit-logs/es:audit-log</node-selector>
-         <lpg:constrained>true</lpg:constrained>
-       </per-node-capabilities>
-       <per-node-capabilities>
-         <node-selector>/es:audit-logs/es:audit-log/es:timestamp</node-\
-   selector>
-         <lpg:indexed>true</lpg:indexed>
-       </per-node-capabilities>
-       <per-node-capabilities>
-         <node-selector>/es:audit-logs/es:audit-log/es:member-id</node-\
-   selector>
-         <lpg:indexed>true</lpg:indexed>
-       </per-node-capabilities>
-       <per-node-capabilities>
-         <node-selector>/es:audit-logs/es:audit-log/es:outcome</node-se\
-   lector>
-         <lpg:indexed>true</lpg:indexed>
-       </per-node-capabilities>
-     </datastore-capabilities>
-   </system-capabilities>
 
 ##  YANG Module
 
@@ -1118,7 +1089,7 @@ informative:
    This module has been specially crafted to cover every notable edge
    condition, especially with regards to the types of the data nodes.
 
-   Following is the tree diagram [RFC8340] for the "example-social"
+   Following is the tree diagram {{!RFC8340}} for the "example-social"
    module:
 
    module: example-social
@@ -1157,7 +1128,7 @@ informative:
            +--ro request      string
            +--ro outcome      boolean
 
-   Following is the YANG [RFC7950] for the "example-social" module:
+   Following is the YANG {{!RFC7950}} for the "example-social" module:
 
    module example-social {
      yang-version 1.1;
