@@ -113,6 +113,7 @@ Table of Contents
      7.2.  Informative References
    Appendix A.  Appendix A.  Vector Tests
      A.1.  A.1.  Example YANG Module
+     A.2.  A.2.  Example Data Set
    Acknowledgments
    Authors' Addresses
 
@@ -1574,6 +1575,218 @@ A.1.  A.1.  Example YANG Module
              "Indicate if request was permitted.";
          }
        }
+     }
+   }
+
+A.2.  A.2.  Example Data Set
+
+   The examples assume the server's operational state as follows.
+
+   The data is provided in JSON only for convenience and, in particular,
+   has no bearing on the "generic" nature of the tests themselves.
+
+   {
+     "example-social:members": {
+       "member": [
+         {
+           "member-id": "bob",
+           "email-address": "bob@example.com",
+           "password": "$0$1543",
+           "avatar": "BASE64VALUE=",
+           "tagline": "Here and now, like never before.",
+           "posts": {
+             "post": [
+               {
+                 "timestamp": "2020-08-14T03:32:25Z",
+                 "body": "Just got in."
+               },
+               {
+                 "timestamp": "2020-08-14T03:33:55Z",
+                 "body": "What's new?"
+               },
+               {
+                 "timestamp": "2020-08-14T03:34:30Z",
+                 "body": "I'm bored..."
+               }
+             ]
+           },
+           "favorites": {
+             "decimal64-numbers": ["3.14159", "2.71828"]
+           },
+           "stats": {
+             "joined": "2020-08-14T03:30:00Z",
+             "membership-level": "standard",
+             "last-activity": "2020-08-14T03:34:30Z"
+           }
+         },
+         {
+           "member-id": "eric",
+           "email-address": "eric@example.com",
+           "password": "$0$1543",
+           "avatar": "BASE64VALUE=",
+           "tagline": "Go to bed with dreams; wake up with a purpose.",
+           "following": ["alice"],
+           "posts": {
+             "post": [
+               {
+                 "timestamp": "2020-09-17T18:02:04Z",
+                 "title": "Son, brother, husband, father",
+                 "body": "What's your story?"
+               }
+             ]
+           },
+           "favorites": {
+             "bits": ["two", "one", "zero"]
+           },
+           "stats": {
+             "joined": "2020-09-17T19:38:32Z",
+             "membership-level": "pro",
+             "last-activity": "2020-09-17T18:02:04Z"
+           }
+         },
+         {
+           "member-id": "alice",
+           "email-address": "alice@example.com",
+           "password": "$0$1543",
+           "avatar": "BASE64VALUE=",
+           "tagline": "Every day is a new day",
+           "privacy-settings": {
+             "hide-network": false,
+             "post-visibility": "public"
+           },
+           "following": ["bob", "eric", "lin"],
+           "posts": {
+             "post": [
+               {
+                 "timestamp": "2020-07-08T13:12:45Z",
+                 "title": "My first post",
+                 "body": "Hiya all!"
+               },
+               {
+                 "timestamp": "2020-07-09T01:32:23Z",
+                 "title": "Sleepy...",
+                 "body": "Catch y'all tomorrow."
+               }
+             ]
+           },
+           "favorites": {
+             "uint8-numbers": [17, 13, 11, 7, 5, 3],
+             "int8-numbers": [-5, -3, -1, 1, 3, 5]
+           },
+           "stats": {
+             "joined": "2020-07-08T12:38:32Z",
+             "membership-level": "admin",
+             "last-activity": "2021-04-01T02:51:11Z"
+           }
+         },
+         {
+           "member-id": "lin",
+           "email-address": "lin@users.example.net",
+           "password": "$0$1543",
+           "privacy-settings": {
+             "hide-network": true,
+             "post-visibility": "followers-only"
+           },
+           "following": ["joe", "eric", "alice"],
+           "stats": {
+             "joined": "2020-07-09T12:38:32Z",
+             "membership-level": "standard",
+             "last-activity": "2021-04-01T02:51:11Z"
+           }
+         },
+         {
+           "member-id": "joe",
+           "email-address": "joe@example.com",
+           "password": "$0$1543",
+           "avatar": "BASE64VALUE=",
+           "tagline": "Greatness is measured by courage and heart.",
+           "privacy-settings": {
+             "post-visibility": "unlisted"
+           },
+           "following": ["bob"],
+           "posts": {
+             "post": [
+               {
+                 "timestamp": "2020-10-17T18:02:04Z",
+                 "body": "What's your status?"
+               }
+             ]
+           },
+           "stats": {
+             "joined": "2020-10-08T12:38:32Z",
+             "membership-level": "pro",
+             "last-activity": "2021-04-01T02:51:11Z"
+           }
+         },
+         {
+           "member-id": "åsa",
+           "email-address": "asa@users.example.net",
+           "password": "$0$1543",
+           "avatar": "BASE64VALUE=",
+           "privacy-settings": {
+             "post-visibility": "unlisted"
+           },
+           "following": ["alice", "bob"],
+           "stats": {
+             "joined": "2022-02-19T13:12:00Z",
+             "membership-level": "standard",
+             "last-activity": "2022-04-19T13:12:59Z"
+           }
+         }
+       ]
+     },
+     "example-social:audit-logs": {
+       "audit-log": [
+         {
+           "timestamp": "2020-10-11T06:47:59Z",
+           "member-id": "alice",
+           "source-ip": "192.168.0.92",
+           "request": "POST /groups/group/2043",
+           "outcome": true
+         },
+         {
+           "timestamp": "2020-11-01T15:22:01Z",
+           "member-id": "bob",
+           "source-ip": "192.168.2.16",
+           "request": "POST /groups/group/123",
+           "outcome": false
+         },
+         {
+           "timestamp": "2020-12-12T21:00:28Z",
+           "member-id": "eric",
+           "source-ip": "192.168.254.1",
+           "request": "POST /groups/group/10",
+           "outcome": true
+         },
+         {
+           "timestamp": "2021-01-03T06:47:59Z",
+           "member-id": "alice",
+           "source-ip": "192.168.0.92",
+           "request": "POST /groups/group/333",
+           "outcome": true
+         },
+         {
+           "timestamp": "2021-01-21T10:00:00Z",
+           "member-id": "bob",
+           "source-ip": "192.168.2.16",
+           "request": "POST /groups/group/42",
+           "outcome": true
+         },
+         {
+           "timestamp": "2020-02-07T09:06:21Z",
+           "member-id": "alice",
+           "source-ip": "192.168.0.92",
+           "request": "POST /groups/group/1202",
+           "outcome": true
+         },
+         {
+           "timestamp": "2020-02-28T02:48:11Z",
+           "member-id": "bob",
+           "source-ip": "192.168.2.16",
+           "request": "POST /groups/group/345",
+           "outcome": true
+         }
+       ]
      }
    }
 
