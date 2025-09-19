@@ -1486,6 +1486,125 @@ RESPONSE
 }
 ~~~~
 
+
+
+### A.3.5. The "sort-by" Parameter
+Noting that the "sort-by" parameter is a node identifier, there is not so much "edge conditions" as there are "interesting conditions". This section provides examples for some interesting conditions.
+
+#### A.3.5.1. the target node's type
+The section provides three examples, one for a "leaf-list" and two for a "list", with one using a direct descendent and the other using an indirect descendent.
+
+##### A.3.5.1.1. type is a "leaf-list"
+This example illustrates when the target node's type is a "leaf-list". Note that a single period (i.e., '.') is used to represent the nodes to be sorted.
+
+This test again uses the target "/example-social:members/member=alice/favorites/uint8-numbers", which is a leaf-list.
+
+REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   .
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
+}
+~~~~
+##### A.3.5.1.2. type is a "list" and sort-by node is a direct descendent
+This example illustrates when the target node's type is a "list" and a direct descendent is the "sort-by" node.
+
+This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "member-id", which is the "key" for the list.
+
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+To make the example more understandable, an ellipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    }
+  ]
+}
+~~~~
+
+##### A.3.5.1.3. type is a "list" and sort-by node is an indirect descendent
+This example illustrates when the target node's type is a "list" and an indirect descendent is the "sort-by" node.
+
+This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the <operational> datastore.
+
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   stats/joined
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    }
+  ]
+}
+~~~~
+
 # Acknowledgments
 {:numbered="false"}
 
