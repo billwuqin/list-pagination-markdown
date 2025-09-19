@@ -554,7 +554,7 @@ informative:
    This YANG module has normative references to {{!RFC7952}} and {{!RFC9196}}.
 
    <CODE BEGINS> file "ietf-list-pagination@2025-04-03.yang"
-
+~~~~
    module ietf-list-pagination {
      yang-version 1.1;
      namespace
@@ -956,6 +956,7 @@ informative:
        }
      }
    }
+~~~~
 <CODE ENDS>
 
 
