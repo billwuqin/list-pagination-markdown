@@ -128,6 +128,397 @@ informative:
    only defines a YANG extension and augments a couple leafs into a
    "config false" node defined by the "ietf-system-capabilities" module.
 
+#  Solution Details
+
+   This section is composed of the following subsections:
+
+   *  Section 3.1 defines five query parameters clients may use to page
+      through the entries of a single list or leaf-list in a data tree.
+
+   *  Section 3.2 defines one query parameter that clients may use to
+      affect the content returned for descendant lists and leaf-lists.
+
+   *  Section 3.3 defines per schema-node tags enabling servers to
+      indicate which "config false" lists are constrained and how they
+      may be interacted with.
+
+##  Query Parameters for a Targeted List or Leaf-List
+
+   The five query parameters presented in this section are listed in
+   processing order.  This processing order is logical, efficient, and
+   matches the processing order implemented by database systems, such as
+   SQL.
+
+   The order is as follows: a server first processes the "where"
+   parameter (see Section 3.1.1), then the "sort-by" parameter (see
+   Section 3.1.2), then a combination of the "direction" parameter (see
+   Section 3.1.4), with either the "offset" parameter (see
+   Section 3.1.5) or the "cursor" parameter (see Section 3.1.6), and
+   lastly the "limit" parameter (see Section 3.1.7).
+
+   The sorting can furthermore be configured with a locale for sorting.
+   This is done by setting the "locale" parameter (see Section 3.1.3).
+
+   The feature "sort" is used to indicate support for the query
+   parameters "locale" and "sort-by".
+
+###  The "where" Query Parameter
+
+   Description
+      The "where" query parameter specifies a filter expression that
+      result-set entries must match.
+
+   Default Value
+      If this query parameter is unspecified, then no entries are
+      filtered from the working result-set.
+
+   Allowed Values
+      The allowed values are XPath 1.0 expressions.  The XPath context
+      follows Section 6.4.1 of {{!RFC7950}} and details (such as prefix
+      bindings) are further defined at the protocol level, see
+      {{?I-D.ietf-netconf-list-pagination-nc}} and
+      {{?I-D.ietf-netconf-list-pagination-rc}}.  It is an error if the
+      XPath expression references a node identifier that does not exist
+      in the schema, is optional or conditional in the schema or, for
+      constrained "config false" lists and leaf-lists (see Section 3.3),
+      if the node identifier does not point to a node having the
+      "indexed" extension statement applied to it (see Section 3.3.2).
+
+   Conformance
+      The "where" query parameter MUST be supported for all "config
+      true" lists and leaf-lists and SHOULD be supported for "config
+      false" lists and leaf-lists.  The supplied expression is allowed
+      to be of arbitrary complexity.  Servers MAY disable the support
+      for some or all "config false" lists and leaf-lists as described
+      in Section 3.3.2.
+
+###  The "sort-by" Query Parameter
+
+   Description
+      The "sort-by" query parameter indicates the node in the working
+      result-set (i.e., after the "where" parameter has been applied)
+      that entries should be sorted by.  Sorts are in ascending order
+      (e.g., '1' before '9', 'a' before 'z', etc.).  Missing values are
+      sorted to the end (e.g., after all nodes having values).  Sub-
+      sorts are not supported.
+
+   Default Value
+      If this query parameter is unspecified, then the list or leaf-
+      list's default order is used, per the YANG "ordered-by" statement
+      (see Section 7.7.7 of {{!RFC7950}}).
+
+   Allowed Values
+      The allowed values are node identifiers.  Clients are allowed to
+      request sorting by any data node within the result-set.  It is an
+      error if the specified node identifier does not exist in the
+      schema, is optional or conditional in the schema or, for
+      constrained "config false" lists and leaf-lists (see Section 3.3),
+      if the node identifier does not point to a node having the
+      "indexed" extension statement applied to it (see Section 3.3.2).
+
+   Conformance
+      The "sort-by" query parameter MUST be supported for all "config
+      true" lists and leaf-lists and SHOULD be supported for "config
+      false" lists and leaf-lists.  Servers MAY disable the support for
+      some or all "config false" lists and leaf-lists as described in
+      Section 3.3.2.
+
+###  The "locale" Query Parameter
+
+   Description
+      The "locale" query parameter indicates what locale is used when
+      sorting the result-set.  Note that the "locale" query parameter is
+      invalid to supply without also supplying the "sort-by" query
+      parameter.  If a query supplies "locale" and not "sort-by", error-
+      type application and error-tag "invalid-value" is returned.
+
+   Default Value
+      If this query parameter is unspecified, it is up to the server to
+      select a locale for sorts.  How the server chooses the locale used
+      is out of scope for this document.  The result-set includes the
+      locale used by the server for sorts with a metadata value
+      {{!RFC7952}} called "locale".
+
+   Allowed Values
+      The format is a free form string but SHOULD follow the language
+      sub-tag format defined in {{!RFC5646}}.  An example is 'sv_SE'.  If a
+      supplied locale is unknown to the server, the "locale-unavailable"
+      SHOULD be produced in the error-app-tag in the error output.  Note
+      that all locales are assumed to be UTF-8, since character encoding
+      for YANG strings and all known YANG modelled encodings and
+      protocols are required to be UTF-8{{!RFC6241}} {{!RFC7950}} {{!RFC7951}}
+      {{!RFC8040}}.  A server MUST accept a known encoding with or without
+      trailing ".UTF-8" and MAY emit an encoding with or without
+      trailing ".UTF-8".  This means a server must handle both e.g.
+      "sv_SE" and "sv_SE.UTF-8" equally as input, and chooses how to
+      emit used locale as output.
+
+   Conformance
+      The "locale" query parameter MUST be supported for all "config
+      true" lists and leaf-lists and SHOULD be supported for "config
+      false" lists and leaf-lists.  Servers MAY disable the support for
+      some or all "config false" lists and leaf-lists as described in
+      Section 3.3.2.
+
+###  The "direction" Query Parameter
+
+   Description
+      The "direction" query parameter indicates how the entries in the
+      working result-set (i.e., after the "sort-by" parameter has been
+      applied) should be traversed.
+
+   Default Value
+      If this query parameter is unspecified, the default value is
+      "forwards".
+
+   Allowed Values
+      The allowed values are:
+
+      forwards
+         Return entries in the forwards direction.  Also known as the
+         "default" or "ascending" direction.
+
+      backwards
+         Return entries in the backwards direction.  Also known as the
+         "reverse" or "descending" direction
+
+   Conformance
+      The "direction" query parameter MUST be supported for all lists
+      and leaf-lists.
+
+###  The "offset" Query Parameter
+
+   Description
+      The "offset" query parameter indicates the number of entries in
+      the working result-set (i.e., after the "direction" parameter has
+      been applied) that should be skipped over when preparing the
+      response.
+
+   Default Value
+      If this query parameter is unspecified, then no entries in the
+      result-set are skipped, the same as when the offset value '0' is
+      specified.
+
+   Allowed Values
+      The allowed values are unsigned integers.  It is an error for the
+      offset value to exceed the number of entries in the working
+      result-set, and the "offset-out-of-range" identity SHOULD be
+      produced in the error-app-tag in the error output when this
+      occurs.
+
+   Conformance
+      The "offset" query parameter MUST be supported for all lists and
+      leaf-lists.
+
+###  The "cursor" Query Parameter
+
+   Description
+      The "cursor" query parameter indicates where to start the working
+      result-set (i.e., after the "direction" parameter has been
+      applied), the elements before the cursor are skipped over when
+      preparing the response.  Furthermore, a result set constrained
+      with the "limit" query parameter includes metadata values
+      {{!RFC7952}} called "next" and "previous", which contains cursor
+      values to the next and previous result-sets.  These next and
+      previous cursor values are opaque index values for the underlying
+      system's database, e.g. a key or other information needed to
+      efficiently access the selected result-set.  These "next" and
+      "previous" metadata values work as Hypermedia as the Engine of
+      Application State (HATEOAS) links {{REST-Dissertation}}.  This means
+      that the server does not keep any stateful information about the
+      "next" and "previous" cursor or the current page.  Due to their
+      ephemeral nature, cursor values are never cached.
+
+   Default Value
+      If this query parameter is unspecified, then no entries in the
+      result-set are skipped.
+
+   Allowed Values
+      The allowed values are opaque encoded positions interpreted by the
+      server to index an element in the list, e.g. a list key or other
+      information to efficiently access the selected result-set.  It is
+      an error to supply an unknown cursor value for the working result-
+      set, and the "cursor-not-found" identity SHOULD be produced in the
+      error-app-tag in the error output when this occurs.
+
+   Conformance
+      The "cursor" query parameter MUST be supported for all "config
+      true" lists and SHOULD be supported for all "config false" lists.
+      It is however optional to support the "cursor" query parameter for
+      "config false" lists and the support must be signaled by the
+      server per list.
+
+      Servers indicate that they support the "cursor" query parameter
+      for a "config false" list node by having the "cursor-supported"
+      extension statement applied to it in the "per-node-capabilities"
+      node in the "ietf-system-capabilities" model, and set to "true".
+
+      Since leaf-lists might not have any unique values that can be
+      indexed, the "cursor" query parameter is not relevant for leaf-
+      lists.  Consider the following leaf-list [1,1,2,3,5], which
+      contains elements without uniquely indexable values.  It would be
+      possible to use the position, but then the solution would be equal
+      to using the "offset" query parameter.
+
+###  The "limit" Query Parameter
+
+   Description
+      The "limit" query parameter limits the number of entries returned
+      from the working result-set (i.e., after the "offset" parameter
+      has been applied).  Any list or leaf-list that is limited
+      includes, somewhere in its encoding, a metadata value {{!RFC7952}}
+      called "remaining", a positive integer indicating the number of
+      elements that were not included in the result-set by the "limit"
+      operation, or the value "unknown" in case, e.g., the server
+      determines that counting would be prohibitively expensive.  If the
+      string "unbounded" is supplied, there is no limit imposed on the
+      result-set.
+
+   Default Value
+      If this query parameter is unspecified, the number of entries that
+      may be returned is unbounded.
+
+   Allowed Values
+      The allowed values are unsigned 32 bit integers greater than or
+      equal to 1, or the string "unbounded".
+
+   Conformance
+      The "limit" query parameter MUST be supported for all lists and
+      leaf-lists.
+
+##  Query Parameter for Descendant Lists and Leaf-Lists
+
+   Whilst this document primarily regards pagination for a list or leaf-
+   list, it begs the question for how descendant lists and leaf-lists
+   should be handled, which is addressed by the "sublist-limit" query
+   parameter described in this section.
+
+###  The "sublist-limit" Query Parameter
+
+   Description
+
+      The "sublist-limit" parameter limits the number of entries
+      returned for descendent lists and leaf-lists.
+
+      Any descendent list or leaf-list limited by the "sublist-limit"
+      parameter includes, somewhere in its encoding, a metadata value
+      {{!RFC7952}} called "remaining", a positive integer indicating the
+      number of elements that were not included by the "sublist-limit"
+      parameter, or the value "unknown" in case, e.g., the server
+      determines that counting would be prohibitively expensive.
+
+      When used on a list node, it only affects the list's descendant
+      nodes, not the list itself, which is only affected by the
+      parameters presented in Section 3.1.
+
+   Default Value
+      If this query parameter is unspecified, the number of entries that
+      may be returned for descendent lists and leaf-lists is unbounded.
+
+   Allowed Values
+      The allowed values are positive integers.
+
+   Conformance
+      The "sublist-limit" query parameter MUST be supported for all
+      conventional nodes, including a datastore's top-level node (i.e.,
+      '/').
+
+##  Constraints on "where" and "sort-by" for "config false" Lists
+
+   Some "config false" lists and leaf-lists may contain an enormous
+   number of entries.  For instance, a time-driven logging mechanism,
+   such as an audit log or a traffic log, can contain millions of
+   entries.
+
+   In such cases, "where" and "sort-by" expressions will not perform
+   well if the server must bring each entry into memory in order to
+   process it.
+
+   The server's best option is to leverage query-optimizing features
+   (e.g., indexes) built into the backend database holding the dataset.
+
+   However, translating arbitrary "where" expressions and "sort-by" node
+   identifiers into syntax supported by the backend database and/or
+   query-optimizers may prove challenging, if not impossible, to
+   implement.
+
+   Thusly this section introduces mechanisms whereby a server can:
+
+   1.  Identify which "config false" lists and leaf-lists are
+       constrained.
+
+   2.  Identify what node-identifiers and expressions are allowed for
+       the constrained lists and leaf-lists.
+
+      |  Note: The pagination performance for "config true" lists and
+      |  leaf-lists is not considered as servers must already be able to
+      |  process them as configuration.  Whilst some "config true' lists
+      |  and leaf-lists may contain thousands of entries, they are well
+      |  within the capability of server-side processing.
+
+###  Identifying Constrained "config false" Lists and Leaf-Lists
+
+   Identification of which lists and leaf-lists are constrained occurs
+   in the schema tree, not the data tree.  However, as server abilities
+   vary, it is not possible to define constraints in YANG modules
+   defining generic data models.
+
+   In order to enable servers to identify which lists and leaf-lists are
+   constrained, the solution presented in this document augments the
+   data model defined by the "ietf-system-capabilities" module presented
+   in {{!RFC9196}}.
+
+   Specifically, the "ietf-list-pagination" module (see Section 4)
+   augments a boolean leaf node called "constrained" into the "per-node-
+   capabilities" node defined in the "ietf-system-capabilities" module.
+
+   The "constrained" leaf MAY be specified for any "config false" list
+   or leaf-list.
+
+   When a list or leaf-list is constrained:
+
+   *  All parts of XPath 1.0 expressions are disabled unless explicitly
+      enabled by Section 3.3.2.
+
+   *  Node-identifiers used in "where" expressions and "sort-by" filters
+      MUST have the "indexed" leaf applied to it (see Section 3.3.2).
+
+   *  For lists only, node-identifiers used in "where" expressions and
+      "sort-by" filters MUST NOT descend past any descendent lists.
+      This ensures that only indexes relative to the targeted list are
+      used.  Further constraints on node identifiers MAY be applied in
+      Section 3.3.2.
+
+###  Indicating the Constraints for "where" Filters and "sort-by"
+        Expressions
+
+   This section identifies how constraints for "where" filters and
+   "sort-by" expressions are specified.  These constraints are valid
+   only if the "constrained" leaf described in the previous section
+   Section 3.3.1 has been set on the immediate ancestor "list" node or,
+   for "leaf-list" nodes, on itself.
+
+####  Indicating Filterable/Sortable Nodes
+
+   For "where" filters, an unconstrained XPath expressions may use any
+   node in comparisons.  However, efficient mappings to backend
+   databases may support only a subset of the nodes.
+
+   Similarly, for "sort-by" expressions, efficient sorts may only
+   support a subset of the nodes.
+
+   In order to enable servers to identify which nodes may be used in
+   comparisons (for both "where" and "sort-by" expressions), the "ietf-
+   list-pagination" module (see Section 4) augments a boolean leaf node
+   called "indexed" into the "per-node-capabilities" node defined in the
+   "ietf-system-capabilities" module (see {{!RFC9196}}).
+
+   When a "list" or "leaf-list" node has the "constrained" leaf, only
+   nodes having the "indexed" node may be used in "where" and/or "sort-
+   by" expressions.  If no nodes have the "indexed" leaf, when the
+   "constrained" leaf is present, then "where" and "sort-by" expressions
+   are disabled for that list or leaf-list.
+
 #  Security Considerations for the "ietf-list-pagination" YANG Module
 
    This section follows the template defined in Section 3.7.1 of
