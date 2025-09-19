@@ -1305,6 +1305,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3.2.1">
                     <p id="section-toc.1-1.8.2.3.2.1.1"><a href="#appendix-A.3.1" class="auto internal xref">A.3.1</a>.  <a href="#name-a31-the-limit-parameter" class="internal xref">A.3.1. The "limit" Parameter</a></p>
 </li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3.2.2">
+                    <p id="section-toc.1-1.8.2.3.2.2.1"><a href="#appendix-A.3.2" class="auto internal xref">A.3.2</a>.  <a href="#name-a32-the-offset-parameter" class="internal xref">A.3.2. The "offset" Parameter</a></p>
+</li>
                 </ul>
 </li>
             </ul>
@@ -3237,6 +3240,135 @@ RESPONSE
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
 }
 ~~~~<a href="#appendix-A.3.1.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="a32-the-offset-parameter">
+<section id="appendix-A.3.2">
+          <h4 id="name-a32-the-offset-parameter">
+<a href="#appendix-A.3.2" class="section-number selfRef">A.3.2. </a><a href="#name-a32-the-offset-parameter" class="section-name selfRef">A.3.2. The "offset" Parameter</a>
+          </h4>
+<p id="appendix-A.3.2-1">Noting that "offset" must be an unsigned number less than or equal to the num-elements, the edge condition values are '0', '1', '2', num-elements-1, num-elements, and num-elements+1.<a href="#appendix-A.3.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.2-2">These vector tests again assume the target "/example-social:members/member=alice/favorites/uint8-numbers", which has six values, thus the edge condition "limit" values are: '0', '1', '2', '5', '6', and '7'.<a href="#appendix-A.3.2-2" class="pilcrow">¶</a></p>
+<div id="a321-offset0">
+<section id="appendix-A.3.2.1">
+            <h5 id="name-a321-offset0">
+<a href="#appendix-A.3.2.1" class="section-number selfRef">A.3.2.1. </a><a href="#name-a321-offset0" class="section-name selfRef">A.3.2.1. offset=0</a>
+            </h5>
+<p id="appendix-A.3.2.1-1">REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    0
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
+}
+~~~~
+#### A.3.2.2. offset=1<a href="#appendix-A.3.2.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.2.1-2">REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    1
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [13, 11, 7, 5, 3]
+}
+~~~~<a href="#appendix-A.3.2.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="a323-offset2">
+<section id="appendix-A.3.2.2">
+            <h5 id="name-a323-offset2">
+<a href="#appendix-A.3.2.2" class="section-number selfRef">A.3.2.2. </a><a href="#name-a323-offset2" class="section-name selfRef">A.3.2.3. offset=2</a>
+            </h5>
+<p id="appendix-A.3.2.2-1">REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    2
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [11, 7, 5, 3]
+}
+~~~~
+#### A.3.2.4. offset=5<a href="#appendix-A.3.2.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.2.2-2">REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    5
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [3]
+}
+~~~~<a href="#appendix-A.3.2.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="a325-offset6">
+<section id="appendix-A.3.2.3">
+            <h5 id="name-a325-offset6">
+<a href="#appendix-A.3.2.3" class="section-number selfRef">A.3.2.3. </a><a href="#name-a325-offset6" class="section-name selfRef">A.3.2.5. offset=6</a>
+            </h5>
+<p id="appendix-A.3.2.3-1">REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    6
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": []
+}
+~~~~
+#### A.3.2.6. offset=7<a href="#appendix-A.3.2.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.2.3-2">REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    7
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+error-app-tag: ietf-list-pagination:offset-out-of-range
+~~~~<a href="#appendix-A.3.2.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

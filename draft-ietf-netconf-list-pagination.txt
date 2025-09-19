@@ -116,6 +116,7 @@ Table of Contents
      A.2.  A.2.  Example Data Set
      A.3.  A.3.  Example Queries
        A.3.1.  A.3.1.  The "limit" Parameter
+       A.3.2.  A.3.2.  The "offset" Parameter
    Acknowledgments
    Authors' Addresses
 
@@ -1854,6 +1855,55 @@ A.3.1.1.  A.3.1.3. limit=5
    uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
    Offset: - Limit: 7 ~~~~ RESPONSE ~~~~ { "example-
    social:uint8-numbers": [17, 13, 11, 7, 5, 3] } ~~~~
+
+A.3.2.  A.3.2.  The "offset" Parameter
+
+   Noting that "offset" must be an unsigned number less than or equal to
+   the num-elements, the edge condition values are '0', '1', '2', num-
+   elements-1, num-elements, and num-elements+1.
+
+   These vector tests again assume the target "/example-
+   social:members/member=alice/favorites/uint8-numbers", which has six
+   values, thus the edge condition "limit" values are: '0', '1', '2',
+   '5', '6', and '7'.
+
+A.3.2.1.  A.3.2.1. offset=0
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
+   Offset: 0 Limit: - ~~~~ RESPONSE ~~~~ { "example-
+   social:uint8-numbers": [17, 13, 11, 7, 5, 3] } ~~~~ #### A.3.2.2.
+   offset=1
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
+   Offset: 1 Limit: - ~~~~ RESPONSE ~~~~ { "example-
+   social:uint8-numbers": [13, 11, 7, 5, 3] } ~~~~
+
+A.3.2.2.  A.3.2.3. offset=2
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
+   Offset: 2 Limit: - ~~~~ RESPONSE ~~~~ { "example-
+   social:uint8-numbers": [11, 7, 5, 3] } ~~~~ #### A.3.2.4. offset=5
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
+   Offset: 5 Limit: - ~~~~ RESPONSE ~~~~ { "example-
+   social:uint8-numbers": [3] } ~~~~
+
+A.3.2.3.  A.3.2.5. offset=6
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
+   Offset: 6 Limit: - ~~~~ RESPONSE ~~~~ { "example-
+   social:uint8-numbers": [] } ~~~~ #### A.3.2.6. offset=7
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
+   Offset: 7 Limit: - ~~~~ RESPONSE ~~~~ error-type: application error-
+   tag: invalid-value error-app-tag: ietf-list-pagination:offset-out-of-
+   range ~~~~
 
 Acknowledgments
 
