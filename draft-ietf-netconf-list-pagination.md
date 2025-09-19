@@ -519,8 +519,7 @@ informative:
       used.  Further constraints on node identifiers MAY be applied in
       Section 3.3.2.
 
-###  Indicating the Constraints for "where" Filters and "sort-by"
-        Expressions
+###  Indicating the Constraints for "where" Filters and "sort-by" Expressions
 
    This section identifies how constraints for "where" filters and
    "sort-by" expressions are specified.  These constraints are valid
