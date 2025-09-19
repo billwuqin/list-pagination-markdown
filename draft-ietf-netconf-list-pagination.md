@@ -558,7 +558,8 @@ informative:
 
    The following tree diagram {{!RFC8340}} illustrates the "ietf-list-
    pagination" module:
-
+   
+~~~~
    module: ietf-list-pagination
 
      augment /sysc:system-capabilities/sysc:datastore-capabilities
@@ -566,6 +567,7 @@ informative:
        +--ro constrained?        boolean
        +--ro indexed?            boolean
        +--ro cursor-supported?   boolean
+~~~~
 
    Comments:
 
@@ -586,14 +588,44 @@ informative:
    augmentations of the "system-capabilities" data tree.  This example
    assumes the "example-social" module defined in the Appendix A.1 is
    implemented.
-
+   
+~~~~
    =============== NOTE: '\' line wrapping per RFC 8792 ================
+   <system-capabilities
+     xmlns="urn:ietf:params:xml:ns:yang:ietf-system-capabilities"
+     xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores"
+     xmlns:es="https://example.com/ns/example-social"
+     xmlns:lpg="urn:ietf:params:xml:ns:yang:ietf-list-pagination">
+     <datastore-capabilities>
+       <datastore>ds:operational</datastore>
+       <per-node-capabilities>
+         <node-selector>/es:audit-logs/es:audit-log</node-selector>
+         <lpg:constrained>true</lpg:constrained>
+       </per-node-capabilities>
+       <per-node-capabilities>
+         <node-selector>/es:audit-logs/es:audit-log/es:timestamp</node-\
+   selector>
+         <lpg:indexed>true</lpg:indexed>
+       </per-node-capabilities>
+       <per-node-capabilities>
+         <node-selector>/es:audit-logs/es:audit-log/es:member-id</node-\
+   selector>
+         <lpg:indexed>true</lpg:indexed>
+       </per-node-capabilities>
+       <per-node-capabilities>
+         <node-selector>/es:audit-logs/es:audit-log/es:outcome</node-se\
+   lector>
+         <lpg:indexed>true</lpg:indexed>
+       </per-node-capabilities>
+     </datastore-capabilities>
+   </system-capabilities>
 
+~~~~
 
 ##  YANG Module
 
    This YANG module has normative references to {{!RFC7952}} and {{!RFC9196}}.
-
+~~~~
    <CODE BEGINS> file "ietf-list-pagination@2025-04-03.yang"
 
    module ietf-list-pagination {
@@ -999,6 +1031,7 @@ informative:
    }
 
    <CODE ENDS>
+~~~~
 
 #  IANA Considerations
 
@@ -1091,7 +1124,7 @@ informative:
 
    Following is the tree diagram {{!RFC8340}} for the "example-social"
    module:
-
+~~~~
    module: example-social
      +--rw members
      |  +--rw member* [member-id]
@@ -1127,9 +1160,9 @@ informative:
            +--ro source-ip    inet:ip-address
            +--ro request      string
            +--ro outcome      boolean
-
+~~~~
    Following is the YANG {{!RFC7950}} for the "example-social" module:
-
+~~~~
    module example-social {
      yang-version 1.1;
      namespace "https://example.com/ns/example-social";
@@ -1414,14 +1447,14 @@ informative:
        }
      }
    }
-
+~~~~
 ##  Example Data Set
 
    The examples assume the server's operational state as follows.
 
    The data is provided in JSON only for convenience and, in particular,
    has no bearing on the "generic" nature of the tests themselves.
-
+~~~~
    {
      "example-social:members": {
        "member": [
@@ -1628,6 +1661,7 @@ informative:
        ]
      }
    }
+~~~~
 
 ##  Example Queries
 
@@ -1662,7 +1696,7 @@ informative:
    '6', and '7'.
 
 ####  limit=1
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1683,9 +1717,9 @@ informative:
         }
       ]
    }
-
+~~~~
 ####  limit=2
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1706,9 +1740,11 @@ informative:
         }
       ]
    }
+~~~~
 
 ####  limit=5
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1729,6 +1765,7 @@ informative:
         }
       ]
    }
+~~~~
 
 ####  limit=6
 
@@ -1750,6 +1787,7 @@ informative:
 
 ####  limit=7
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1765,6 +1803,7 @@ informative:
    {
      "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
    }
+~~~~
 
 ###  The "offset" Parameter
 
@@ -1779,6 +1818,7 @@ informative:
 
 ####  offset=0
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1794,9 +1834,11 @@ informative:
    {
      "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
    }
+~~~~
 
 ####  offset=1
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1812,9 +1854,11 @@ informative:
    {
      "example-social:uint8-numbers": [13, 11, 7, 5, 3]
    }
+~~~~
 
 ####  offset=2
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1830,9 +1874,11 @@ informative:
    {
      "example-social:uint8-numbers": [11, 7, 5, 3]
    }
+~~~~
 
 ####  offset=5
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1848,9 +1894,11 @@ informative:
    {
      "example-social:uint8-numbers": [3]
    }
+~~~~
 
 ####  offset=6
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1866,9 +1914,11 @@ informative:
    {
      "example-social:uint8-numbers": []
    }
+~~~~
 
 ####  offset=7
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1884,6 +1934,7 @@ informative:
    error-type: application
    error-tag: invalid-value
    error-app-tag: ietf-list-pagination:offset-out-of-range
+~~~~
 
 ###  The "cursor" Parameter
 
@@ -1901,6 +1952,7 @@ informative:
 
 ####  cursor=&limit=2
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member
@@ -1982,9 +2034,11 @@ informative:
        }
      ]
    }
+~~~~
 
 ####  cursor="YWxpY2U="&limit=2
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member
@@ -2059,9 +2113,11 @@ informative:
        }
      ]
    }
+~~~~
 
 ####  cursor="am9l"&limit=2
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member
@@ -2110,9 +2166,11 @@ informative:
        }
      ]
    }
+~~~~
 
 ####  cursor="BASE64VALUE="
 
+~~~~
    REQUEST
 
    The cursor used does not exist in the datastore.
@@ -2131,6 +2189,7 @@ informative:
    error-type: application
    error-tag: invalid-value
    error-app-tag: ietf-list-pagination:cursor-not-found
+~~~~
 
 ###  The "direction" Parameter
 
@@ -2154,6 +2213,7 @@ informative:
 
 ####  direction=forwards
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -2169,9 +2229,11 @@ informative:
    {
      "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
    }
+~~~~
 
 ####  direction=backwards
 
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -2187,6 +2249,7 @@ informative:
    {
      "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
    }
+~~~~
 
 ###  The "sort-by" Parameter
 
@@ -2209,7 +2272,7 @@ informative:
    This test again uses the target "/example-
    social:members/member=alice/favorites/uint8-numbers", which is a
    leaf-list.
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -2225,6 +2288,7 @@ informative:
    {
      "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
    }
+~~~~
 
 #####  type is a "list" and sort-by node is a direct descendent
 
@@ -2234,7 +2298,7 @@ informative:
    This vector test uses the target "/example-social:members/member",
    which is a "list", and the sort-by descendent node "member-id", which
    is the "key" for the list.
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member
@@ -2274,6 +2338,7 @@ informative:
        }
      ]
    }
+~~~~
 
 #####  type is a "list" and sort-by node is an indirect descendent
 
@@ -2285,7 +2350,7 @@ informative:
    which is a "config false" descendent leaf.  Due to "joined" being a
    "config false" node, this request would have to target the "member"
    node in the <operational> datastore.
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member
@@ -2325,6 +2390,7 @@ informative:
        }
      ]
    }
+~~~~
 
 ###  The "where" Parameter
 
@@ -2336,7 +2402,7 @@ informative:
 
    This example selects the uint8-numbers greater than 7 in the member
    alice's favorites.
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member=alice/favorites
@@ -2352,12 +2418,13 @@ informative:
    {
      "example-social:uint8-numbers": [17, 13, 11],
    }
+~~~~
 
 ####  match on descendent string containing a substring
 
    This example selects members that have an email address containing
    "@example.com".
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member
@@ -2393,12 +2460,13 @@ informative:
        }
      ]
    }
+~~~~
 
 ####  match on decendent timestamp starting with a substring
 
    This example selects members that have a posting whose timestamp
    begins with the string "2020".
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member
@@ -2434,6 +2502,7 @@ informative:
        }
      ]
    }
+~~~~
 
 ###  The "locale" Parameter
 
@@ -2453,7 +2522,7 @@ informative:
 
    If an ordered-by system target is not ordered according to any
    locale, the server omits the locale from the response.
-
+~~~~
    REQUEST
 
    Target: /example-social:members/member
@@ -2600,6 +2669,7 @@ informative:
 
    error-type: application
    error-tag: invalid-value
+~~~~
 
 ###  The "sublist-limit" Parameter
 
@@ -2619,7 +2689,7 @@ informative:
    Note that, in the response, the "remaining" metadata value is set on
    the first element of each descendent list and leaf-list having more
    than one value.
-
+~~~~
    REQUEST
 
      Datastore: <intended>
@@ -2680,6 +2750,7 @@ informative:
        }
      ]
    }
+~~~~
 
 ####  target is a datastore
 
@@ -2691,7 +2762,7 @@ informative:
    Note that, in the response, the "remaining" metadata value is set on
    the first element of each descendent list and leaf-list having more
    than one value.
-
+~~~~
    REQUEST
 
      Datastore: <intended>
@@ -2740,11 +2811,12 @@ informative:
        ]
      }
    }
+~~~~
 
 ###  Combinations of Parameters
 
 ####  All six parameters at once
-
+~~~~
    REQUEST
 
      Datastore: <operational>
@@ -2827,6 +2899,7 @@ informative:
        }
      }
    }
+~~~~
 
 # Acknowledgements
 
