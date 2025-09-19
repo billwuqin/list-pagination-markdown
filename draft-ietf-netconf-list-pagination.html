@@ -1311,6 +1311,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3.2.3">
                     <p id="section-toc.1-1.8.2.3.2.3.1"><a href="#appendix-A.3.3" class="auto internal xref">A.3.3</a>.  <a href="#name-a33-the-cursor-parameter" class="internal xref">A.3.3. The "cursor" Parameter</a></p>
 </li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3.2.4">
+                    <p id="section-toc.1-1.8.2.3.2.4.1"><a href="#appendix-A.3.4" class="auto internal xref">A.3.4</a>.  <a href="#name-a34-the-direction-parameter" class="internal xref">A.3.4. The "direction" Parameter</a></p>
+</li>
                 </ul>
 </li>
             </ul>
@@ -3624,6 +3627,63 @@ error-type: application
 error-tag: invalid-value
 error-app-tag: ietf-list-pagination:cursor-not-found
 ~~~~<a href="#appendix-A.3.3.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="a34-the-direction-parameter">
+<section id="appendix-A.3.4">
+          <h4 id="name-a34-the-direction-parameter">
+<a href="#appendix-A.3.4" class="section-number selfRef">A.3.4. </a><a href="#name-a34-the-direction-parameter" class="section-name selfRef">A.3.4. The "direction" Parameter</a>
+          </h4>
+<p id="appendix-A.3.4-1">Noting that "direction" is an enumeration with two values, the edge condition values are each defined enumeration.<a href="#appendix-A.3.4-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.4-2">The value "forwards" is sometimes known as the "default" value, as it produces the same result set as when "direction" is unspecified.<a href="#appendix-A.3.4-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.4-3">These vector tests again assume the target "/example-social:members/member=alice/favorites/uint8-numbers". The number of elements is relevant to the edge condition values.<a href="#appendix-A.3.4-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.4-4">It is notable that "uint8-numbers" is an "ordered-by" user leaf-list. Traversals are over the user-specified order, not the numerically-sorted order, which is what the "sort-by" parameter addresses. If this were an "ordered-by system" leaf-list, then the traversals would be over the system-specified order, again not a numerically-sorted order.<a href="#appendix-A.3.4-4" class="pilcrow">¶</a></p>
+<div id="a341-directionforwards">
+<section id="appendix-A.3.4.1">
+            <h5 id="name-a341-directionforwards">
+<a href="#appendix-A.3.4.1" class="section-number selfRef">A.3.4.1. </a><a href="#name-a341-directionforwards" class="section-name selfRef">A.3.4.1. direction=forwards</a>
+            </h5>
+<p id="appendix-A.3.4.1-1">REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: forwards
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
+}
+~~~~<a href="#appendix-A.3.4.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="a342-directionbackwards">
+<section id="appendix-A.3.4.2">
+            <h5 id="name-a342-directionbackwards">
+<a href="#appendix-A.3.4.2" class="section-number selfRef">A.3.4.2. </a><a href="#name-a342-directionbackwards" class="section-name selfRef">A.3.4.2. direction=backwards</a>
+            </h5>
+<p id="appendix-A.3.4.2-1">REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: backwards
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
+}
+~~~~<a href="#appendix-A.3.4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

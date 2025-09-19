@@ -118,6 +118,7 @@ Table of Contents
        A.3.1.  A.3.1.  The "limit" Parameter
        A.3.2.  A.3.2.  The "offset" Parameter
        A.3.3.  A.3.3.  The "cursor" Parameter
+       A.3.4.  A.3.4.  The "direction" Parameter
    Acknowledgments
    Authors' Addresses
 
@@ -2040,6 +2041,39 @@ A.3.3.2.  A.3.3.2. cursor="YWxpY2U="&limit=2
    by: - Direction: - Offset: - Limit: - Cursor: BASE64VALUE= ~~~~
    RESPONSE ~~~~ error-type: application error-tag: invalid-value error-
    app-tag: ietf-list-pagination:cursor-not-found ~~~~
+
+A.3.4.  A.3.4.  The "direction" Parameter
+
+   Noting that "direction" is an enumeration with two values, the edge
+   condition values are each defined enumeration.
+
+   The value "forwards" is sometimes known as the "default" value, as it
+   produces the same result set as when "direction" is unspecified.
+
+   These vector tests again assume the target "/example-
+   social:members/member=alice/favorites/uint8-numbers".  The number of
+   elements is relevant to the edge condition values.
+
+   It is notable that "uint8-numbers" is an "ordered-by" user leaf-list.
+   Traversals are over the user-specified order, not the numerically-
+   sorted order, which is what the "sort-by" parameter addresses.  If
+   this were an "ordered-by system" leaf-list, then the traversals would
+   be over the system-specified order, again not a numerically-sorted
+   order.
+
+A.3.4.1.  A.3.4.1. direction=forwards
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction:
+   forwards Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
+   social:uint8-numbers": [17, 13, 11, 7, 5, 3] } ~~~~
+
+A.3.4.2.  A.3.4.2. direction=backwards
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction:
+   backwards Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
+   social:uint8-numbers": [3, 5, 7, 11, 13, 17] } ~~~~
 
 Acknowledgments
 
