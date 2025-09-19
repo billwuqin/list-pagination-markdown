@@ -558,7 +558,7 @@ informative:
 
    The following tree diagram {{!RFC8340}} illustrates the "ietf-list-
    pagination" module:
-   
+
 ~~~~
    module: ietf-list-pagination
 
@@ -588,7 +588,7 @@ informative:
    augmentations of the "system-capabilities" data tree.  This example
    assumes the "example-social" module defined in the Appendix A.1 is
    implemented.
-   
+
 ~~~~
    =============== NOTE: '\' line wrapping per RFC 8792 ================
    <system-capabilities
