@@ -549,7 +549,11 @@ informative:
    "constrained" leaf is present, then "where" and "sort-by" expressions
    are disabled for that list or leaf-list.
 
+# YANG Module
 
+~~~~
+{::include-fold ./yang/ietf-list-pagination.yang}
+~~~~
 
 #  IANA Considerations
 
