@@ -119,6 +119,7 @@ Table of Contents
        A.3.2.  A.3.2.  The "offset" Parameter
        A.3.3.  A.3.3.  The "cursor" Parameter
        A.3.4.  A.3.4.  The "direction" Parameter
+       A.3.5.  A.3.5.  The "sort-by" Parameter
    Acknowledgments
    Authors' Addresses
 
@@ -2074,6 +2075,28 @@ A.3.4.2.  A.3.4.2. direction=backwards
    uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction:
    backwards Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
    social:uint8-numbers": [3, 5, 7, 11, 13, 17] } ~~~~
+
+A.3.5.  A.3.5.  The "sort-by" Parameter
+
+   Noting that the "sort-by" parameter is a node identifier, there is
+   not so much "edge conditions" as there are "interesting conditions".
+   This section provides examples for some interesting conditions.
+
+A.3.5.1.  A.3.5.1. the target node's type
+
+   The section provides three examples, one for a "leaf-list" and two
+   for a "list", with one using a direct descendent and the other using
+   an indirect descendent.
+
+A.3.5.1.1.  A.3.5.1.1. type is a "leaf-list"
+
+   This example illustrates when the target node's type is a "leaf-
+   list".  Note that a single period (i.e., '.') is used to represent
+   the nodes to be sorted.
+
+   This test again uses the target "/example-
+   social:members/member=alice/favorites/uint8-numbers", which is a
+   leaf-list.
 
 Acknowledgments
 
