@@ -1195,6 +1195,250 @@ error-tag: invalid-value
 error-app-tag: ietf-list-pagination:offset-out-of-range
 ~~~~
 
+
+
+### A.3.3. The "cursor" Parameter
+
+Noting that "cursor" is an opaque encoded value represented by a string, which addresses an element in a list.
+
+The default value is empty, which is the same as supplying the cursor value for the first element in the list.
+
+These vector tests assume the target "/example-social:members/member" which has five members.
+
+Note that response has added attributes describing the result set and position in pagination.
+
+#### A.3.3.1. cursor=&limit=2
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     2
+    Cursor:    -
+~~~~
+
+RESPONSE
+
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "bob",
+      "email-address": "bob@example.com",
+      "password": "$0$1543",
+      "avatar": "BASE64VALUE=",
+      "tagline": "Here and now, like never before.",
+      "posts": {
+        "post": [
+          {
+            "timestamp": "2020-08-14T03:32:25Z",
+            "body": "Just got in."
+          },
+          {
+            "timestamp": "2020-08-14T03:33:55Z",
+            "body": "What's new?"
+          },
+          {
+            "timestamp": "2020-08-14T03:34:30Z",
+            "body": "I'm bored..."
+          }
+        ]
+      },
+      "favorites": {
+        "decimal64-numbers": ["3.14159", "2.71828"]
+      },
+      "stats": {
+        "joined": "2020-08-14T03:30:00Z",
+        "membership-level": "standard",
+        "last-activity": "2020-08-14T03:34:30Z"
+      }
+    },
+    {
+      "member-id": "eric",
+      "email-address": "eric@example.com",
+      "password": "$0$1543",
+      "avatar": "BASE64VALUE=",
+      "tagline": "Go to bed with dreams; wake up with a purpose.",
+      "following": ["alice"],
+      "posts": {
+        "post": [
+          {
+            "timestamp": "2020-09-17T18:02:04Z",
+            "title": "Son, brother, husband, father",
+            "body": "What's your story?"
+          }
+        ]
+      },
+      "favorites": {
+        "bits": ["two", "one", "zero"]
+      },
+      "stats": {
+        "joined": "2020-09-17T19:38:32Z",
+        "membership-level": "pro",
+        "last-activity": "2020-09-17T18:02:04Z"
+      }
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:remaining": 3,
+      "ietf-list-pagination:previous": "",
+      "ietf-list-pagination:next": "YWxpY2U=" // alice
+    }
+  ]
+}
+~~~~
+
+#### A.3.3.2. cursor="YWxpY2U="&limit=2
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     2
+    Cursor:    YWxpY2U=
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      "email-address": "alice@example.com",
+      "password": "$0$1543",
+      "avatar": "BASE64VALUE=",
+      "tagline": "Every day is a new day",
+      "privacy-settings": {
+        "hide-network": false,
+        "post-visibility": "public"
+      },
+      "following": ["bob", "eric", "lin"],
+      "posts": {
+        "post": [
+          {
+            "timestamp": "2020-07-08T13:12:45Z",
+            "title": "My first post",
+            "body": "Hiya all!"
+          },
+          {
+            "timestamp": "2020-07-09T01:32:23Z",
+            "title": "Sleepy...",
+            "body": "Catch y'all tomorrow."
+          }
+        ]
+      },
+      "favorites": {
+        "uint8-numbers": [17, 13, 11, 7, 5, 3],
+        "int8-numbers": [-5, -3, -1, 1, 3, 5]
+      },
+      "stats": {
+        "joined": "2020-07-08T12:38:32Z",
+        "membership-level": "admin",
+        "last-activity": "2021-04-01T02:51:11Z"
+      }
+    },
+    {
+      "member-id": "lin",
+      "email-address": "lin@example.com",
+      "password": "$0$1543",
+      "privacy-settings": {
+        "hide-network": true,
+        "post-visibility": "followers-only"
+      },
+      "following": ["joe", "eric", "alice"],
+      "stats": {
+        "joined": "2020-07-09T12:38:32Z",
+        "membership-level": "standard",
+        "last-activity": "2021-04-01T02:51:11Z"
+      }
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:remaining": 1,
+      "ietf-list-pagination:previous": "ZXJpYw==", // eric
+      "ietf-list-pagination:next": "am9l" // joe
+    }
+  ]
+}
+~~~~
+A.3.3.3. cursor="am9l"&limit=2
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     2
+    Cursor:    am9l
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "joe",
+      "email-address": "joe@example.com",
+      "password": "$0$1543",
+      "avatar": "BASE64VALUE=",
+      "tagline": "Greatness is measured by courage and heart.",
+      "privacy-settings": {
+        "post-visibility": "unlisted"
+      },
+      "following": ["bob"],
+      "posts": {
+        "post": [
+          {
+            "timestamp": "2020-10-17T18:02:04Z",
+            "body": "What's your status?"
+          }
+        ]
+      },
+      "stats": {
+        "joined": "2020-10-08T12:38:32Z",
+        "membership-level": "pro",
+        "last-activity": "2021-04-01T02:51:11Z"
+      }
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:remaining": 0,
+      "ietf-list-pagination:previous": "bGlu", // lin
+      "ietf-list-pagination:next": ""
+    }
+  ]
+}
+~~~~
+#### A.3.3.4. cursor="BASE64VALUE="
+REQUEST
+
+The cursor used does not exist in the datastore.
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Cursor:    BASE64VALUE=
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+error-app-tag: ietf-list-pagination:cursor-not-found
+~~~~
+
 # Acknowledgments
 {:numbered="false"}
 
