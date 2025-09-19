@@ -1110,3 +1110,5 @@ informative:
    following for lively discussions on list (ordered by first name):
    Andy Bierman, Martin Björklund, Robert Varga, Rob Wills, and Rob
    Wilton.
+
+----
