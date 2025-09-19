@@ -10,9 +10,18 @@
 <meta content="Per Andersson" name="author">
 <meta content="Olof Hagsand" name="author">
 <meta content="Hongwei Li" name="author">
-<meta content="
-       TODO Abstract 
-    " name="description">
+<meta content='
+       In some circumstances, instances of YANG modeled "list" and "leaf-
+   list" nodes may contain numerous entries.  Retrieval of all the
+   entries can lead to inefficiencies in the server, the client, and the
+   network in between. 
+       This document defines a model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF and
+   RESTCONF.  The model supports paging over optionally filtered and/or
+   sorted entries.  The solution additionally enables servers to
+   constrain query expressions on some "config false" lists or leaf-
+   lists. 
+    ' name="description">
 <meta content="xml2rfc 3.30.2" name="generator">
 <meta content="list pagination" name="keyword">
 <meta content="yang data model" name="keyword">
@@ -1100,7 +1109,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">List Pagination for YANG-driven Protocols</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">In some circumstances, instances of YANG modeled "list" and "leaf-
+   list" nodes may contain numerous entries.  Retrieval of all the
+   entries can lead to inefficiencies in the server, the client, and the
+   network in between.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This document defines a model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF and
+   RESTCONF.  The model supports paging over optionally filtered and/or
+   sorted entries.  The solution additionally enables servers to
+   constrain query expressions on some "config false" lists or leaf-
+   lists.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1257,6 +1275,14 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-netconf-restconf-collection">[I-D.ietf-netconf-restconf-collection]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Björklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Collection Resource"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netconf-restconf-collection-00</span>, <time datetime="2015-01-30" class="refDate">30 January 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netconf-restconf-collection-00">https://datatracker.ietf.org/doc/html/draft-ietf-netconf-restconf-collection-00</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.zheng-netconf-fragmentation">[I-D.zheng-netconf-fragmentation]</dt>
+        <dd>
+<span class="refAuthor">Zheng, G.</span> and <span class="refAuthor">Z. Wang</span>, <span class="refTitle">"A NETCONF Extension for Data Fragmentation"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-zheng-netconf-fragmentation-02</span>, <time datetime="2018-06-26" class="refDate">26 June 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-zheng-netconf-fragmentation-02">https://datatracker.ietf.org/doc/html/draft-zheng-netconf-fragmentation-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="REST-Dissertation">[REST-Dissertation]</dt>
       <dd>
 <span class="refTitle">"Architectural Styles and the Design of Network-based Software Architectures"</span>, <time datetime="2000" class="refDate">2000</time>, <span>&lt;<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm</a>&gt;</span>. </dd>
@@ -1271,7 +1297,15 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">This work has benefited from the discussions of RESTCONF resource
+   collection over the years, in particular,
+   <span>[<a href="#I-D.ietf-netconf-restconf-collection" class="cite xref">I-D.ietf-netconf-restconf-collection</a>]</span> which provides enhanced
+   filtering features for the retrieval of data nodes with the GET
+   method and <span>[<a href="#I-D.zheng-netconf-fragmentation" class="cite xref">I-D.zheng-netconf-fragmentation</a>]</span> which document large
+   size data handling challenge.  The authors would like to thank the
+   following for lively discussions on list (ordered by first name):
+   Andy Bierman, Martin Björklund, Robert Varga, Rob Wills, and Rob
+   Wilton.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">

@@ -20,7 +20,17 @@ Expires: 23 March 2026                                            Huawei
 
 Abstract
 
-   TODO Abstract
+   In some circumstances, instances of YANG modeled "list" and "leaf-
+   list" nodes may contain numerous entries.  Retrieval of all the
+   entries can lead to inefficiencies in the server, the client, and the
+   network in between.
+
+   This document defines a model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF and
+   RESTCONF.  The model supports paging over optionally filtered and/or
+   sorted entries.  The solution additionally enables servers to
+   constrain query expressions on some "config false" lists or leaf-
+   lists.
 
 Discussion Venues
 
@@ -111,6 +121,20 @@ Table of Contents
 
 5.2.  Informative References
 
+   [I-D.ietf-netconf-restconf-collection]
+              Bierman, A., Björklund, M., and K. Watsen, "RESTCONF
+              Collection Resource", Work in Progress, Internet-Draft,
+              draft-ietf-netconf-restconf-collection-00, 30 January
+              2015, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              netconf-restconf-collection-00>.
+
+   [I-D.zheng-netconf-fragmentation]
+              Zheng, G. and Z. Wang, "A NETCONF Extension for Data
+              Fragmentation", Work in Progress, Internet-Draft, draft-
+              zheng-netconf-fragmentation-02, 26 June 2018,
+              <https://datatracker.ietf.org/doc/html/draft-zheng-
+              netconf-fragmentation-02>.
+
    [REST-Dissertation]
               "Architectural Styles and the Design of Network-based
               Software Architectures", 2000,
@@ -119,7 +143,15 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   This work has benefited from the discussions of RESTCONF resource
+   collection over the years, in particular,
+   [I-D.ietf-netconf-restconf-collection] which provides enhanced
+   filtering features for the retrieval of data nodes with the GET
+   method and [I-D.zheng-netconf-fragmentation] which document large
+   size data handling challenge.  The authors would like to thank the
+   following for lively discussions on list (ordered by first name):
+   Andy Bierman, Martin Björklund, Robert Varga, Rob Wills, and Rob
+   Wilton.
 
 Authors' Addresses
 
