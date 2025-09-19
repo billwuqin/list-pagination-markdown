@@ -1183,30 +1183,24 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-security-considerations-for" class="internal xref">Security Considerations for the "ietf-list-pagination" YANG Module</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-references" class="internal xref">References</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-references" class="internal xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1217,64 +1211,127 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">YANG modeled "list" and "leaf-list" nodes may contain a large number
+   of entries.  For instance, there may be thousands of entries in the
+   configuration for network interfaces or access control lists.  And
+   time-driven logging mechanisms, such as an audit log or a traffic
+   log, can contain millions of entries.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Retrieval of all the entries can lead to inefficiencies in the
+   server, the client, and the network in between.  For instance,
+   consider the following:<a href="#section-1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-3.1">
+          <p id="section-1-3.1.1">A client may need to filter and/or sort list entries in order to,
+e.g., present the view requested by a user.<a href="#section-1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-3.2">
+          <p id="section-1-3.2.1">A server may need to iterate over many more list entries than
+needed by a client.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-3.3">
+          <p id="section-1-3.3.1">A network may need to convey more data than needed by a client.<a href="#section-1-3.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-1-4">Optimal global resource utilization is obtained when clients are able
+   to cherry-pick just that which is needed to support the application-
+   level business logic.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">This document defines a generic model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF
+   <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  How the NETCONF and RESTCONF
+   protocols support list pagination is described in
+   <span>[<a href="#I-D.ietf-netconf-list-pagination-nc" class="cite xref">I-D.ietf-netconf-list-pagination-nc</a>]</span> and
+   <span>[<a href="#I-D.ietf-netconf-list-pagination-rc" class="cite xref">I-D.ietf-netconf-list-pagination-rc</a>]</span>, respectively.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">The model presented in this document supports paging over optionally
+   filtered and/or sorted entries.  Server-side filtering and sorting is
+   ideal as servers can leverage indexes maintained by a backend storage
+   layer to accelerate queries.<a href="#section-1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="conventions-and-definitions">
+<div id="security-considerations-for-the-ietf-list-pagination-yang-module">
 <section id="section-2">
-      <h2 id="name-conventions-and-definitions">
-<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
+      <h2 id="name-security-considerations-for">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-security-considerations-for" class="section-name selfRef">Security Considerations for the "ietf-list-pagination" YANG Module</a>
       </h2>
-<p id="section-2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
-"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
-described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
-appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="security-considerations">
-<section id="section-3">
-      <h2 id="name-security-considerations">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
-      </h2>
-<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="iana-considerations">
-<section id="section-4">
-      <h2 id="name-iana-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
-      </h2>
-<p id="section-4-1">This document has no IANA actions.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">This section follows the template defined in Section 3.7.1 of
+   <span>[<a href="#RFC8407" class="cite xref">RFC8407</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">The YANG module specified in this document defines a schema for data
+   that is designed to be accessed via network management protocols such
+   as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  The lowest NETCONF layer
+   is the secure transport layer, and the mandatory-to-implement secure
+   transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>.  The lowest RESTCONF layer
+   is HTTPS, and the mandatory-to-implement secure transport is TLS
+   <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span>
+   provides the means to restrict access for particular NETCONF or
+   RESTCONF users to a preconfigured subset of all available NETCONF or
+   RESTCONF protocol operations and content.<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-4">All protocol-accessible data nodes in this module are read-only and
+   cannot be modified.  Access control may be configured to avoid
+   exposing any read-only data that is defined by the augmenting module
+   documentation as being security sensitive.<a href="#section-2-4" class="pilcrow">¶</a></p>
+<p id="section-2-5">Since this module also defines groupings, these considerations are
+   primarily for the designers of other modules that use these
+   groupings.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6">None of the readable data nodes defined in this YANG module are
+   considered sensitive or vulnerable in network environments.  The NACM
+   "default-deny-all" extension has not been set for any data nodes
+   defined in this module.<a href="#section-2-6" class="pilcrow">¶</a></p>
+<p id="section-2-7">This module does not define any RPCs or actions or notifications, and
+   thus the security consideration for such is not provided here.<a href="#section-2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
-<section id="section-5">
+<section id="section-3">
       <h2 id="name-references">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-5.1">
+<section id="section-3.1">
         <h3 id="name-normative-references">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="RFC2119">[RFC2119]</dt>
+<dt id="RFC6241">[RFC6241]</dt>
         <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6241">https://www.rfc-editor.org/rfc/rfc6241</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8174">[RFC8174]</dt>
+<dt id="RFC6242">[RFC6242]</dt>
+        <dd>
+<span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6242">https://www.rfc-editor.org/rfc/rfc6242</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8040">[RFC8040]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8040">https://www.rfc-editor.org/rfc/rfc8040</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8341">[RFC8341]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8341">https://www.rfc-editor.org/rfc/rfc8341</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8407">[RFC8407]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="seriesInfo">BCP 216</span>, <span class="seriesInfo">RFC 8407</span>, <span class="seriesInfo">DOI 10.17487/RFC8407</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8407">https://www.rfc-editor.org/rfc/rfc8407</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8446">[RFC8446]</dt>
       <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-5.2">
+<section id="section-3.2">
         <h3 id="name-informative-references">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-netconf-list-pagination-nc">[I-D.ietf-netconf-list-pagination-nc]</dt>
+        <dd>
+<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Andersson, P.</span>, <span class="refAuthor">Hagsand, O.</span>, and <span class="refAuthor">H. Li</span>, <span class="refTitle">"NETCONF Extensions to Support List Pagination"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netconf-list-pagination-nc-07</span>, <time datetime="2025-04-03" class="refDate">3 April 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netconf-list-pagination-nc-07">https://datatracker.ietf.org/doc/html/draft-ietf-netconf-list-pagination-nc-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-netconf-list-pagination-rc">[I-D.ietf-netconf-list-pagination-rc]</dt>
+        <dd>
+<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Andersson, P.</span>, <span class="refAuthor">Hagsand, O.</span>, and <span class="refAuthor">H. Li</span>, <span class="refTitle">"RESTCONF Extensions to Support List Pagination"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netconf-list-pagination-rc-08</span>, <time datetime="2025-04-03" class="refDate">3 April 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netconf-list-pagination-rc-08">https://datatracker.ietf.org/doc/html/draft-ietf-netconf-list-pagination-rc-08</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.ietf-netconf-restconf-collection">[I-D.ietf-netconf-restconf-collection]</dt>
         <dd>
 <span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Björklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Collection Resource"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netconf-restconf-collection-00</span>, <time datetime="2015-01-30" class="refDate">30 January 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netconf-restconf-collection-00">https://datatracker.ietf.org/doc/html/draft-ietf-netconf-restconf-collection-00</a>&gt;</span>. </dd>

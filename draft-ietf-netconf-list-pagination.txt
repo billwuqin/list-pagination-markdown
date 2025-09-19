@@ -77,49 +77,133 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-   2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  References
-     5.1.  Normative References
-     5.2.  Informative References
+   2.  Security Considerations for the "ietf-list-pagination" YANG
+           Module
+   3.  References
+     3.1.  Normative References
+     3.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
 1.  Introduction
 
-   TODO Introduction
+   YANG modeled "list" and "leaf-list" nodes may contain a large number
+   of entries.  For instance, there may be thousands of entries in the
+   configuration for network interfaces or access control lists.  And
+   time-driven logging mechanisms, such as an audit log or a traffic
+   log, can contain millions of entries.
 
-2.  Conventions and Definitions
+   Retrieval of all the entries can lead to inefficiencies in the
+   server, the client, and the network in between.  For instance,
+   consider the following:
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
+   *  A client may need to filter and/or sort list entries in order to,
+      e.g., present the view requested by a user.
 
-3.  Security Considerations
+   *  A server may need to iterate over many more list entries than
+      needed by a client.
 
-   TODO Security
+   *  A network may need to convey more data than needed by a client.
 
-4.  IANA Considerations
+   Optimal global resource utilization is obtained when clients are able
+   to cherry-pick just that which is needed to support the application-
+   level business logic.
 
-   This document has no IANA actions.
+   This document defines a generic model for list pagination that can be
+   implemented by YANG-driven management protocols such as NETCONF
+   [RFC6241] and RESTCONF [RFC8040].  How the NETCONF and RESTCONF
+   protocols support list pagination is described in
+   [I-D.ietf-netconf-list-pagination-nc] and
+   [I-D.ietf-netconf-list-pagination-rc], respectively.
 
-5.  References
+   The model presented in this document supports paging over optionally
+   filtered and/or sorted entries.  Server-side filtering and sorting is
+   ideal as servers can leverage indexes maintained by a backend storage
+   layer to accelerate queries.
 
-5.1.  Normative References
+2.  Security Considerations for the "ietf-list-pagination" YANG Module
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
+   This section follows the template defined in Section 3.7.1 of
+   [RFC8407].
 
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+   The YANG module specified in this document defines a schema for data
+   that is designed to be accessed via network management protocols such
+   as NETCONF [RFC6241] or RESTCONF [RFC8040].  The lowest NETCONF layer
+   is the secure transport layer, and the mandatory-to-implement secure
+   transport is Secure Shell (SSH) [RFC6242].  The lowest RESTCONF layer
+   is HTTPS, and the mandatory-to-implement secure transport is TLS
+   [RFC8446].
 
-5.2.  Informative References
+   The Network Configuration Access Control Model (NACM) [RFC8341]
+   provides the means to restrict access for particular NETCONF or
+   RESTCONF users to a preconfigured subset of all available NETCONF or
+   RESTCONF protocol operations and content.
+
+   All protocol-accessible data nodes in this module are read-only and
+   cannot be modified.  Access control may be configured to avoid
+   exposing any read-only data that is defined by the augmenting module
+   documentation as being security sensitive.
+
+   Since this module also defines groupings, these considerations are
+   primarily for the designers of other modules that use these
+   groupings.
+
+   None of the readable data nodes defined in this YANG module are
+   considered sensitive or vulnerable in network environments.  The NACM
+   "default-deny-all" extension has not been set for any data nodes
+   defined in this module.
+
+   This module does not define any RPCs or actions or notifications, and
+   thus the security consideration for such is not provided here.
+
+3.  References
+
+3.1.  Normative References
+
+   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
+              and A. Bierman, Ed., "Network Configuration Protocol
+              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6241>.
+
+   [RFC6242]  Wasserman, M., "Using the NETCONF Protocol over Secure
+              Shell (SSH)", RFC 6242, DOI 10.17487/RFC6242, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6242>.
+
+   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
+              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
+              <https://www.rfc-editor.org/rfc/rfc8040>.
+
+   [RFC8341]  Bierman, A. and M. Bjorklund, "Network Configuration
+              Access Control Model", STD 91, RFC 8341,
+              DOI 10.17487/RFC8341, March 2018,
+              <https://www.rfc-editor.org/rfc/rfc8341>.
+
+   [RFC8407]  Bierman, A., "Guidelines for Authors and Reviewers of
+              Documents Containing YANG Data Models", BCP 216, RFC 8407,
+              DOI 10.17487/RFC8407, October 2018,
+              <https://www.rfc-editor.org/rfc/rfc8407>.
+
+   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
+              <https://www.rfc-editor.org/rfc/rfc8446>.
+
+3.2.  Informative References
+
+   [I-D.ietf-netconf-list-pagination-nc]
+              Watsen, K., Wu, Q., Andersson, P., Hagsand, O., and H. Li,
+              "NETCONF Extensions to Support List Pagination", Work in
+              Progress, Internet-Draft, draft-ietf-netconf-list-
+              pagination-nc-07, 3 April 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-netconf-
+              list-pagination-nc-07>.
+
+   [I-D.ietf-netconf-list-pagination-rc]
+              Watsen, K., Wu, Q., Andersson, P., Hagsand, O., and H. Li,
+              "RESTCONF Extensions to Support List Pagination", Work in
+              Progress, Internet-Draft, draft-ietf-netconf-list-
+              pagination-rc-08, 3 April 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-netconf-
+              list-pagination-rc-08>.
 
    [I-D.ietf-netconf-restconf-collection]
               Bierman, A., Björklund, M., and K. Watsen, "RESTCONF
