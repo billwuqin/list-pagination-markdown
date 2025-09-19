@@ -549,9 +549,30 @@ informative:
    "constrained" leaf is present, then "where" and "sort-by" expressions
    are disabled for that list or leaf-list.
 
-# Example Usage
+# The "ietf-list-pagination" Module
+The "ietf-list-pagination" module is used by servers to indicate that they support pagination on YANG "list" and "leaf-list" nodes, and to provide an ability to indicate which "config false" list and/or "leaf-list" nodes are constrained and, if so, which nodes may be used in "where" and "sort-by" expressions.
 
-## Constraining a "config false" list
+## Data Model Overview
+The following tree diagram [RFC8340] illustrates the "ietf-list-pagination" module:
+
+module: ietf-list-pagination
+
+~~~~
+  augment /sysc:system-capabilities/sysc:datastore-capabilities
+            /sysc:per-node-capabilities:
+    +--ro constrained?        boolean
+    +--ro indexed?            boolean
+    +--ro cursor-supported?   boolean
+~~~~
+
+Comments:
+
+As shown, this module augments three optional leafs into the "per-node-capabilities" node of the "ietf-system-capabilities" module.
+Not shown is that the module also defines an "md:annotation" statement named "remaining". This annotation may be present in a server's response to a client request containing either the "limit" (Section 3.1.7) or "sublist-limit" parameters (Appendix A.3.8).
+
+## Example Usage
+
+### Constraining a "config false" list
 The following example illustrates the "ietf-list-pagination" module's augmentations of the "system-capabilities" data tree. This example assumes the "example-social" module defined in the Appendix A.1 is implemented.
 
 ~~~~
@@ -585,7 +606,7 @@ lector>
 </system-capabilities>
 ~~~~
 
-# YANG Module
+## YANG Module
 
 ~~~~
 {::include-fold ./yang/ietf-list-pagination.yang}
