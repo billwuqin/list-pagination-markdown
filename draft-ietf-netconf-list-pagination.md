@@ -592,35 +592,7 @@ informative:
    implemented.
 
 ~~~~
-   =============== NOTE: '\' line wrapping per RFC 8792 ================
-   <system-capabilities
-     xmlns="urn:ietf:params:xml:ns:yang:ietf-system-capabilities"
-     xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores"
-     xmlns:es="https://example.com/ns/example-social"
-     xmlns:lpg="urn:ietf:params:xml:ns:yang:ietf-list-pagination">
-     <datastore-capabilities>
-       <datastore>ds:operational</datastore>
-       <per-node-capabilities>
-         <node-selector>/es:audit-logs/es:audit-log</node-selector>
-         <lpg:constrained>true</lpg:constrained>
-       </per-node-capabilities>
-       <per-node-capabilities>
-         <node-selector>/es:audit-logs/es:audit-log/es:timestamp</node-\
-   selector>
-         <lpg:indexed>true</lpg:indexed>
-       </per-node-capabilities>
-       <per-node-capabilities>
-         <node-selector>/es:audit-logs/es:audit-log/es:member-id</node-\
-   selector>
-         <lpg:indexed>true</lpg:indexed>
-       </per-node-capabilities>
-       <per-node-capabilities>
-         <node-selector>/es:audit-logs/es:audit-log/es:outcome</node-se\
-   lector>
-         <lpg:indexed>true</lpg:indexed>
-       </per-node-capabilities>
-     </datastore-capabilities>
-   </system-capabilities>
+
 
 ~~~~
 
