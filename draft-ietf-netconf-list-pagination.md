@@ -549,6 +549,32 @@ informative:
    "constrained" leaf is present, then "where" and "sort-by" expressions
    are disabled for that list or leaf-list.
 
+#  IANA Considerations
+
+##  The "IETF XML" Registry
+
+   This document registers one URI in the "ns" subregistry of the IETF
+   XML Registry {{!RFC3688}} maintained at
+   https://www.iana.org/assignments/xml-registry/xml-registry.xhtml#ns.
+   Following the format in {{!RFC3688}}, the following registration is
+   requested:
+
+           URI: urn:ietf:params:xml:ns:yang:ietf-list-pagination
+           Registrant Contact: The IESG.
+           XML: N/A, the requested URI is an XML namespace.
+
+##  The "YANG Module Names" Registry
+
+   This document registers one YANG module in the YANG Module Names
+   registry {{!RFC6020}} maintained at https://www.iana.org/assignments/
+   yang-parameters/yang-parameters.xhtml.  Following the format defined
+   in {{!RFC6020}}, the below registration is requested:
+
+        name: ietf-list-pagination
+        namespace: urn:ietf:params:xml:ns:yang:ietf-list-pagination
+        prefix: lpg
+        RFC: XXXX
+
 #  Security Considerations for the "ietf-list-pagination" YANG Module
 
    This section follows the template defined in Section 3.7.1 of
