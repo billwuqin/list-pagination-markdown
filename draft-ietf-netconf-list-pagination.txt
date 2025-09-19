@@ -98,15 +98,17 @@ Table of Contents
                Leaf-Lists
        3.3.2.  Indicating the Constraints for "where" Filters and
                "sort-by"
-   4.  YANG Module
-   5.  IANA Considerations
-     5.1.  The "IETF XML" Registry
-     5.2.  The "YANG Module Names" Registry
-   6.  Security Considerations for the "ietf-list-pagination" YANG
+   4.  Example Usage
+     4.1.  Constraining a "config false" list
+   5.  YANG Module
+   6.  IANA Considerations
+     6.1.  The "IETF XML" Registry
+     6.2.  The "YANG Module Names" Registry
+   7.  Security Considerations for the "ietf-list-pagination" YANG
            Module
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -564,7 +566,45 @@ Table of Contents
    "constrained" leaf is present, then "where" and "sort-by" expressions
    are disabled for that list or leaf-list.
 
-4.  YANG Module
+4.  Example Usage
+
+4.1.  Constraining a "config false" list
+
+   The following example illustrates the "ietf-list-pagination" module's
+   augmentations of the "system-capabilities" data tree.  This example
+   assumes the "example-social" module defined in the Appendix A.1 is
+   implemented.
+
+   <system-capabilities
+     xmlns="urn:ietf:params:xml:ns:yang:ietf-system-capabilities"
+     xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores"
+     xmlns:es="https://example.com/ns/example-social"
+     xmlns:lpg="urn:ietf:params:xml:ns:yang:ietf-list-pagination">
+     <datastore-capabilities>
+       <datastore>ds:operational</datastore>
+       <per-node-capabilities>
+         <node-selector>/es:audit-logs/es:audit-log</node-selector>
+         <lpg:constrained>true</lpg:constrained>
+       </per-node-capabilities>
+       <per-node-capabilities>
+         <node-selector>/es:audit-logs/es:audit-log/es:timestamp</node-\
+   selector>
+         <lpg:indexed>true</lpg:indexed>
+       </per-node-capabilities>
+       <per-node-capabilities>
+         <node-selector>/es:audit-logs/es:audit-log/es:member-id</node-\
+   selector>
+         <lpg:indexed>true</lpg:indexed>
+       </per-node-capabilities>
+       <per-node-capabilities>
+         <node-selector>/es:audit-logs/es:audit-log/es:outcome</node-se\
+   lector>
+         <lpg:indexed>true</lpg:indexed>
+       </per-node-capabilities>
+     </datastore-capabilities>
+   </system-capabilities>
+
+5.  YANG Module
 
    module ietf-list-pagination {
      yang-version 1.1;
@@ -973,9 +1013,9 @@ Table of Contents
      }
    }
 
-5.  IANA Considerations
+6.  IANA Considerations
 
-5.1.  The "IETF XML" Registry
+6.1.  The "IETF XML" Registry
 
    This document registers one URI in the "ns" subregistry of the IETF
    XML Registry [RFC3688] maintained at
@@ -987,7 +1027,7 @@ Table of Contents
           Registrant Contact: The IESG.
           XML: N/A, the requested URI is an XML namespace.
 
-5.2.  The "YANG Module Names" Registry
+6.2.  The "YANG Module Names" Registry
 
    This document registers one YANG module in the YANG Module Names
    registry [RFC6020] maintained at https://www.iana.org/assignments/
@@ -999,7 +1039,7 @@ Table of Contents
        prefix: lpg
        RFC: XXXX
 
-6.  Security Considerations for the "ietf-list-pagination" YANG Module
+7.  Security Considerations for the "ietf-list-pagination" YANG Module
 
    This section follows the template defined in Section 3.7.1 of
    [RFC8407].
@@ -1034,9 +1074,9 @@ Table of Contents
    This module does not define any RPCs or actions or notifications, and
    thus the security consideration for such is not provided here.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1114,7 +1154,7 @@ Table of Contents
               Notifications", RFC 9196, DOI 10.17487/RFC9196, February
               2022, <https://www.rfc-editor.org/rfc/rfc9196>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [I-D.ietf-netconf-list-pagination-nc]
               Watsen, K., Wu, Q., Andersson, P., Hagsand, O., and H. Li,
