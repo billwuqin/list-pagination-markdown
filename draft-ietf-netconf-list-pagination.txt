@@ -97,7 +97,7 @@ Table of Contents
        3.3.1.  Identifying Constrained "config false" Lists and
                Leaf-Lists
        3.3.2.  Indicating the Constraints for "where" Filters and
-               "sort-by"
+               "sort-by" Expressions
    4.  The "ietf-list-pagination" Module
      4.1.  Data Model Overview
      4.2.  Example Usage
@@ -538,8 +538,7 @@ Table of Contents
       Section 3.3.2.
 
 3.3.2.  Indicating the Constraints for "where" Filters and "sort-by"
-
-       Expressions
+        Expressions
 
    This section identifies how constraints for "where" filters and
    "sort-by" expressions are specified.  These constraints are valid
