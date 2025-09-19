@@ -733,7 +733,7 @@ module: example-social
 Following is the YANG [RFC7950] for the "example-social" module:
 
 ~~~~
-{::include-fold ./examples/example-social.yang}
+
 ~~~~
 
 ## A.2. Example Data Set
