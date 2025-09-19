@@ -1180,16 +1180,27 @@ svg :is([fill="white"], [fill^="#fff"]) {
         </h2>
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
-            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+            <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+                <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-convention" class="internal xref">Convention</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+                <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-adherence-to-the-nmda" class="internal xref">Adherence to the NMDA</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-security-considerations-for" class="internal xref">Security Considerations for the "ietf-list-pagination" YANG Module</a></p>
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-security-considerations-for" class="internal xref">Security Considerations for the "ietf-list-pagination" YANG Module</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-references" class="internal xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
@@ -1245,6 +1256,44 @@ needed by a client.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
    filtered and/or sorted entries.  Server-side filtering and sorting is
    ideal as servers can leverage indexes maintained by a backend storage
    layer to accelerate queries.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<div id="terminology">
+<section id="section-1.1">
+        <h3 id="name-terminology">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+        </h3>
+<p id="section-1.1-1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14<span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all
+   capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<p id="section-1.1-2">The following terms are defined in <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> and are not redefined
+   here: client, data model, data tree, feature, extension, module,
+   leaf, leaf-list, and server.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="convention">
+<section id="section-1.2">
+        <h3 id="name-convention">
+<a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-convention" class="section-name selfRef">Convention</a>
+        </h3>
+<p id="section-1.2-1">Various examples in this document use "BASE64VALUE=" as a placeholder
+   value for binary data that has been base64 encoded (per Section 9.8
+   of<span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>).  This placeholder value is used because real base64
+   encoded structures are often many lines long and hence distracting to
+   the example being presented.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="adherence-to-the-nmda">
+<section id="section-1.3">
+        <h3 id="name-adherence-to-the-nmda">
+<a href="#section-1.3" class="section-number selfRef">1.3. </a><a href="#name-adherence-to-the-nmda" class="section-name selfRef">Adherence to the NMDA</a>
+        </h3>
+<p id="section-1.3-1">This document is compliant with the Network Management Datastore
+   Architecture (NMDA) <span>[<a href="#RFC8342" class="cite xref">RFC8342</a>]</span>.  The "ietf-list-pagination" module
+   only defines a YANG extension and augments a couple leafs into a
+   "config false" node defined by the "ietf-system-capabilities" module.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="security-considerations-for-the-ietf-list-pagination-yang-module">
@@ -1291,6 +1340,10 @@ needed by a client.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC6241">[RFC6241]</dt>
         <dd>
 <span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6241">https://www.rfc-editor.org/rfc/rfc6241</a>&gt;</span>. </dd>
@@ -1299,13 +1352,25 @@ needed by a client.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
         <dd>
 <span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6242">https://www.rfc-editor.org/rfc/rfc6242</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC7950">[RFC7950]</dt>
+        <dd>
+<span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"The YANG 1.1 Data Modeling Language"</span>, <span class="seriesInfo">RFC 7950</span>, <span class="seriesInfo">DOI 10.17487/RFC7950</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7950">https://www.rfc-editor.org/rfc/rfc7950</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8040">[RFC8040]</dt>
         <dd>
 <span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8040">https://www.rfc-editor.org/rfc/rfc8040</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+        <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8341">[RFC8341]</dt>
         <dd>
 <span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8341">https://www.rfc-editor.org/rfc/rfc8341</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8342">[RFC8342]</dt>
+        <dd>
+<span class="refAuthor">Bjorklund, M.</span>, <span class="refAuthor">Schoenwaelder, J.</span>, <span class="refAuthor">Shafer, P.</span>, <span class="refAuthor">Watsen, K.</span>, and <span class="refAuthor">R. Wilton</span>, <span class="refTitle">"Network Management Datastore Architecture (NMDA)"</span>, <span class="seriesInfo">RFC 8342</span>, <span class="seriesInfo">DOI 10.17487/RFC8342</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8342">https://www.rfc-editor.org/rfc/rfc8342</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8407">[RFC8407]</dt>
         <dd>
