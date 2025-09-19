@@ -480,11 +480,13 @@ informative:
    2.  Identify what node-identifiers and expressions are allowed for
        the constrained lists and leaf-lists.
 
+~~~~
       |  Note: The pagination performance for "config true" lists and
       |  leaf-lists is not considered as servers must already be able to
       |  process them as configuration.  Whilst some "config true' lists
       |  and leaf-lists may contain thousands of entries, they are well
       |  within the capability of server-side processing.
+~~~~
 
 ###  Identifying Constrained "config false" Lists and Leaf-Lists
 
@@ -1046,9 +1048,11 @@ informative:
    Following the format in {{!RFC3688}}, the following registration is
    requested:
 
+~~~~
            URI: urn:ietf:params:xml:ns:yang:ietf-list-pagination
            Registrant Contact: The IESG.
            XML: N/A, the requested URI is an XML namespace.
+~~~~
 
 ##  The "YANG Module Names" Registry
 
@@ -1056,11 +1060,13 @@ informative:
    registry {{!RFC6020}} maintained at https://www.iana.org/assignments/
    yang-parameters/yang-parameters.xhtml.  Following the format defined
    in {{!RFC6020}}, the below registration is requested:
-
+   
+~~~~
         name: ietf-list-pagination
         namespace: urn:ietf:params:xml:ns:yang:ietf-list-pagination
         prefix: lpg
         RFC: XXXX
+~~~~
 
 #  Security Considerations for the "ietf-list-pagination" YANG Module
 
