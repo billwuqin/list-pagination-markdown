@@ -1566,6 +1566,438 @@ This example illustrates when the target node's type is a "list" and an indirect
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the operational datastore.
 
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   stats/joined
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    }
+  ]
+}
+~~~~
+
+### A.3.6. The "where" Parameter
+The "where" is an XPath 1.0 expression, there are numerous edge conditions to consider, e.g., the types of the nodes that are targeted by the expression.
+
+#### A.3.6.1. match of leaf-list's values
+This example selects the uint8-numbers greater than 7 in the member alice's favorites.
+
+REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites
+  Pagination Parameters:
+    Where:     uint8-numbers[. gt&; 7]
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [17, 13, 11],
+}
+~~~~
+
+#### A.3.6.2. match on descendent string containing a substring
+This example selects members that have an email address containing "@example.com".
+
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     .[contains (email-address,'@example.com')]
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    }
+  ]
+}
+~~~~
+
+#### A.3.6.3. match on decendent timestamp starting with a substring
+This example selects members that have a posting whose timestamp begins with the string "2020".
+
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     posts/post[starts-with(timestamp,'2020')]
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    }
+  ]
+}
+~~~~
+
+### A.3.7. The "locale" Parameter
+The "locale" parameter may be used on any target node.
+
+If this parameter is omitted, there is no default value and it is up to the server to choose a locale. This locale is then reported in the result-set as the "locale" metadata value.
+
+Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by the user. For ordered-by system lists and leaf-lists, the server MAY report "locale" if the order that the server has chosen follows a valid locale,
+
+If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value" is returned.
+
+If an ordered-by system target is not ordered according to any locale, the server omits the locale from the response.
+
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    },
+    {
+      "member-id": "åsa",
+      ...
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:locale": "sv_SE"
+    }
+  ]
+}
+~~~~
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    en_US
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "åsa",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:locale": "en_US"
+    }
+  ]
+}
+~~~~
+REQUEST
+~~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    invalid
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+error-app-tag: ietf-list-pagination:locale-unavailable
+~~~~
+REQUEST
+
+This example targets an "ordered-by user" list.
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   .
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+REQUEST
+~~~~
+This example supplies "locale" but not "sort-by".
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+~~~~
+
+#### A.3.8. The "sublist-limit" Parameter
+The "sublist-limit" parameter may be used on any target node.
+
+#### A.3.8.1. target is a list entry
+This example uses the target node '/example-social:members/member=alice' in the intended datastore.
+
+The target node is a specific list entry/element node, not the YANG "list" node.
+
+This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
+
+Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
+
+REQUEST
+~~~~
+  Datastore: intended
+  Target: /example-social:members/member=alice
+  Sublist-limit: 1
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      "email-address": "alice@example.com",
+      "password": "$0$1543",
+      "avatar": "BASE64VALUE=",
+      "tagline": "Every day is a new day",
+      "privacy-settings": {
+        "hide-network": "false",
+        "post-visibility": "public"
+      },
+      "following": ["bob"],
+      "@following": [
+        {
+          "ietf-list-pagination:remaining": "2"
+        }
+      ],
+      "posts": {
+        "post": [
+          {
+            "@": {
+              "ietf-list-pagination:remaining": "1"
+            },
+            "timestamp": "2020-07-08T13:12:45Z",
+            "title": "My first post",
+            "body": "Hiya all!"
+          }
+        ]
+      },
+      "favorites": {
+        "uint8-numbers": [17],
+        "int8-numbers": [-5],
+        "@uint8-numbers": [
+          {
+            "ietf-list-pagination:remaining": "5"
+          }
+        ],
+        "@int8-numbers": [
+          {
+            "ietf-list-pagination:remaining": "5"
+          }
+        ]
+      }
+    }
+  ]
+}
+~~~~
+
+#### A.3.8.2. target is a datastore
+This example uses the target node intended datastore.
+
+This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
+
+Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
+
+REQUEST
+~~~~
+  Datastore: <intended>
+  Target: /
+  Sublist-limit: 1
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+~~~~
+{
+  "example-social:members": {
+    "member": [
+      {
+        "@": {
+          "ietf-list-pagination:remaining": "4"
+        },
+        "member-id": "bob",
+        "email-address": "bob@example.com",
+        "password": "$0$1543",
+        "avatar": "BASE64VALUE=",
+        "tagline": "Here and now, like never before.",
+        "posts": {
+          "post": [
+            {
+              "@": {
+                "ietf-list-pagination:remaining": "2"
+              },
+              "timestamp": "2020-08-14T03:32:25Z",
+              "body": "Just got in."
+            }
+          ]
+        },
+        "favorites": {
+          "decimal64-numbers": ["3.14159"],
+          "@decimal64-numbers": [
+            {
+              "ietf-list-pagination:remaining": "1"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+~~~~
+
 ### A.3.9. Combinations of Parameters
 #### A.3.9.1. All six parameters at once
 REQUEST
