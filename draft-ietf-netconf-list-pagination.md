@@ -1566,45 +1566,6 @@ This example illustrates when the target node's type is a "list" and an indirect
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the <operational> datastore.
 
-REQUEST
-~~~~
-Target: /example-social:members/member
-  Pagination Parameters:
-    Where:     -
-    Sort-by:   stats/joined
-    Direction: -
-    Offset:    -
-    Limit:     -
-~~~~
-RESPONSE
-
-To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
-~~~~
-{
-  "example-social:member": [
-    {
-      "member-id": "alice",
-      ...
-    },
-    {
-      "member-id": "lin",
-      ...
-    },
-    {
-      "member-id": "bob",
-      ...
-    },
-    {
-      "member-id": "eric",
-      ...
-    },
-    {
-      "member-id": "joe",
-      ...
-    }
-  ]
-}
-~~~~
 
 # Acknowledgments
 {:numbered="false"}
