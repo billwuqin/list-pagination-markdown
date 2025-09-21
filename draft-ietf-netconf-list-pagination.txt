@@ -2123,6 +2123,10 @@ A.3.5.1.2.  A.3.5.1.2. type is a "list" and sort-by node is a direct
    "bob", ...  }, { "member-id": "eric", ...  }, { "member-id": "joe",
    ...  }, { "member-id": "lin", ...  } ] } ~~~~
 
+   A.3.5.1.3. type is a "list" and sort-by node is an indirect
+   descendent This example illustrates when the target node's type is a
+   "list" and an indirect descendent is the "sort-by" node.
+
 Acknowledgments
 
    This work has benefited from the discussions of RESTCONF resource
