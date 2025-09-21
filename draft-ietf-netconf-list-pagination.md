@@ -1668,6 +1668,46 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 }
 ~~~~
 
+#### A.3.6.3. match on decendent timestamp starting with a substring
+This example selects members that have a posting whose timestamp begins with the string "2020".
+
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     posts/post[starts-with(timestamp,'2020')]
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    }
+  ]
+}
+~~~~
+
+
 ### A.3.9. Combinations of Parameters
 #### A.3.9.1. All six parameters at once
 REQUEST
