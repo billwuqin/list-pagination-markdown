@@ -5,14 +5,14 @@
 Network Configuration                                          K. Watsen
 Internet-Draft                                           Watsen Networks
 Intended status: Standards Track                                   Q. Wu
-Expires: 23 March 2026                                            Huawei
+Expires: 25 March 2026                                            Huawei
                                                             P. Andersson
                                                                    Cisco
                                                               O. Hagsand
                                                                    SUNET
                                                                    H. Li
                                                                       HP
-                                                       19 September 2025
+                                                       21 September 2025
 
 
                List Pagination for YANG-driven Protocols
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 March 2026.
+   This Internet-Draft will expire on 25 March 2026.
 
 Copyright Notice
 
@@ -2097,6 +2097,11 @@ A.3.5.1.1.  A.3.5.1.1. type is a "leaf-list"
    This test again uses the target "/example-
    social:members/member=alice/favorites/uint8-numbers", which is a
    leaf-list.
+
+   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
+   uint8-numbers Pagination Parameters: Where: - Sort-by: .  Direction:
+   - Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
+   social:uint8-numbers": [3, 5, 7, 11, 13, 17] } ~~~~
 
 Acknowledgments
 
