@@ -2130,7 +2130,8 @@ A.3.5.1.2.  A.3.5.1.2. type is a "list" and sort-by node is a direct
    This vector test uses the target "/example-social:members/member",
    which is a "list", and the sort-by descendent node "stats/joined",
    which is a "config false" descendent leaf.  Due to "joined" being a
-   "config
+   "config false" node, this request would have to target the "member"
+   node in the operational datastore.
 
 Acknowledgments
 
