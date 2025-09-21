@@ -1499,7 +1499,22 @@ This example illustrates when the target node's type is a "leaf-list". Note that
 
 This test again uses the target "/example-social:members/member=alice/favorites/uint8-numbers", which is a leaf-list.
 
-
+REQUEST
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   .
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
+}
+~~~~
 
 # Acknowledgments
 {:numbered="false"}
