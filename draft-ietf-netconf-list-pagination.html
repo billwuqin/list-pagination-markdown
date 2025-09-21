@@ -3862,6 +3862,48 @@ RESPONSE
 ~~~~<a href="#appendix-A.3.6.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="a362-match-on-descendent-string-containing-a-substring">
+<section id="appendix-A.3.6.2">
+            <h5 id="name-a362-match-on-descendent-st">
+<a href="#appendix-A.3.6.2" class="section-number selfRef">A.3.6.2. </a><a href="#name-a362-match-on-descendent-st" class="section-name selfRef">A.3.6.2. match on descendent string containing a substring</a>
+            </h5>
+<p id="appendix-A.3.6.2-1">This example selects members that have an email address containing "@example.com".<a href="#appendix-A.3.6.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.6.2-2">REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     .[contains (email-address,'@example.com')]
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE<a href="#appendix-A.3.6.2-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.6.2-3">To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    }
+  ]
+}
+~~~~<a href="#appendix-A.3.6.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="a39-combinations-of-parameters">
