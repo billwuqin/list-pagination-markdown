@@ -3728,6 +3728,53 @@ RESPONSE
 ~~~~<a href="#appendix-A.3.5.1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="a3512-type-is-a-list-and-sort-by-node-is-a-direct-descendent">
+<section id="appendix-A.3.5.1.2">
+              <h6 id="name-a3512-type-is-a-list-and-so">
+<a href="#appendix-A.3.5.1.2" class="section-number selfRef">A.3.5.1.2. </a><a href="#name-a3512-type-is-a-list-and-so" class="section-name selfRef">A.3.5.1.2. type is a "list" and sort-by node is a direct descendent</a>
+              </h6>
+<p id="appendix-A.3.5.1.2-1">This example illustrates when the target node's type is a "list" and a direct descendent is the "sort-by" node.<a href="#appendix-A.3.5.1.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.2-2">This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "member-id", which is the "key" for the list.<a href="#appendix-A.3.5.1.2-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.2-3">REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE<a href="#appendix-A.3.5.1.2-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.2-4">To make the example more understandable, an ellipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    }
+  ]
+}
+~~~~<a href="#appendix-A.3.5.1.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 </section>
