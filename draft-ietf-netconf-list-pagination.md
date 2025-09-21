@@ -114,6 +114,7 @@ informative:
    leaf, leaf-list, and server.
 
 ## Convention
+{::boilerplate bcp14-tagged}
 
    Various examples in this document use "BASE64VALUE=" as a placeholder
    value for binary data that has been base64 encoded (per Section 9.8
