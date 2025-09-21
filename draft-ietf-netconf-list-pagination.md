@@ -1791,7 +1791,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 
 REQUEST
 ~~~~
-  Datastore: <intended>
+  Datastore: intended
   Target: /
   Sublist-limit: 1
   Pagination Parameters:
