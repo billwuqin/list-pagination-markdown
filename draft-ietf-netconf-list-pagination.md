@@ -1629,7 +1629,44 @@ RESPONSE
 }
 ~~~~
 
+#### A.3.6.2. match on descendent string containing a substring
+This example selects members that have an email address containing "@example.com".
 
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     .[contains (email-address,'@example.com')]
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    }
+  ]
+}
+~~~~
 
 ### A.3.9. Combinations of Parameters
 #### A.3.9.1. All six parameters at once
