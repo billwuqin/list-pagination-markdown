@@ -1707,6 +1707,165 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 }
 ~~~~
 
+### A.3.7. The "locale" Parameter
+The "locale" parameter may be used on any target node.
+
+If this parameter is omitted, there is no default value and it is up to the server to choose a locale. This locale is then reported in the result-set as the "locale" metadata value.
+
+Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by the user. For ordered-by system lists and leaf-lists, the server MAY report "locale" if the order that the server has chosen follows a valid locale,
+
+If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value" is returned.
+
+If an ordered-by system target is not ordered according to any locale, the server omits the locale from the response.
+
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    },
+    {
+      "member-id": "åsa",
+      ...
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:locale": "sv_SE"
+    }
+  ]
+}
+~~~~
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    en_US
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "åsa",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:locale": "en_US"
+    }
+  ]
+}
+~~~~
+REQUEST
+~~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    invalid
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+error-app-tag: ietf-list-pagination:locale-unavailable
+~~~~
+REQUEST
+
+This example targets an "ordered-by user" list.
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   .
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+~~~~
+
+REQUEST
+~~~~
+This example supplies "locale" but not "sort-by".
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+~~~~
+
 #### A.3.8. The "sublist-limit" Parameter
 The "sublist-limit" parameter may be used on any target node.
 
