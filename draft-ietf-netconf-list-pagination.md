@@ -1707,6 +1707,139 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 }
 ~~~~
 
+#### A.3.8. The "sublist-limit" Parameter
+The "sublist-limit" parameter may be used on any target node.
+
+#### A.3.8.1. target is a list entry
+This example uses the target node '/example-social:members/member=alice' in the intended datastore.
+
+The target node is a specific list entry/element node, not the YANG "list" node.
+
+This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
+
+Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
+
+REQUEST
+~~~~
+  Datastore: intended
+  Target: /example-social:members/member=alice
+  Sublist-limit: 1
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      "email-address": "alice@example.com",
+      "password": "$0$1543",
+      "avatar": "BASE64VALUE=",
+      "tagline": "Every day is a new day",
+      "privacy-settings": {
+        "hide-network": "false",
+        "post-visibility": "public"
+      },
+      "following": ["bob"],
+      "@following": [
+        {
+          "ietf-list-pagination:remaining": "2"
+        }
+      ],
+      "posts": {
+        "post": [
+          {
+            "@": {
+              "ietf-list-pagination:remaining": "1"
+            },
+            "timestamp": "2020-07-08T13:12:45Z",
+            "title": "My first post",
+            "body": "Hiya all!"
+          }
+        ]
+      },
+      "favorites": {
+        "uint8-numbers": [17],
+        "int8-numbers": [-5],
+        "@uint8-numbers": [
+          {
+            "ietf-list-pagination:remaining": "5"
+          }
+        ],
+        "@int8-numbers": [
+          {
+            "ietf-list-pagination:remaining": "5"
+          }
+        ]
+      }
+    }
+  ]
+}
+~~~~
+
+#### A.3.8.2. target is a datastore
+This example uses the target node intended datastore.
+
+This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
+
+Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
+
+REQUEST
+~~~~
+  Datastore: <intended>
+  Target: /
+  Sublist-limit: 1
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+~~~~
+{
+  "example-social:members": {
+    "member": [
+      {
+        "@": {
+          "ietf-list-pagination:remaining": "4"
+        },
+        "member-id": "bob",
+        "email-address": "bob@example.com",
+        "password": "$0$1543",
+        "avatar": "BASE64VALUE=",
+        "tagline": "Here and now, like never before.",
+        "posts": {
+          "post": [
+            {
+              "@": {
+                "ietf-list-pagination:remaining": "2"
+              },
+              "timestamp": "2020-08-14T03:32:25Z",
+              "body": "Just got in."
+            }
+          ]
+        },
+        "favorites": {
+          "decimal64-numbers": ["3.14159"],
+          "@decimal64-numbers": [
+            {
+              "ietf-list-pagination:remaining": "1"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+~~~~
 
 ### A.3.9. Combinations of Parameters
 #### A.3.9.1. All six parameters at once
