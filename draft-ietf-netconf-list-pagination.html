@@ -1384,9 +1384,9 @@ needed by a client.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
         <h3 id="name-terminology">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
         </h3>
-<p id="section-1.1-1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in BCP
+<p id="section-1.1-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>",
+   "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>", "<span class="bcp14">MAY</span>", and
+   "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as described in BCP
    14<span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all
    capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <p id="section-1.1-2">The following terms are defined in <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> and are not redefined
@@ -1399,11 +1399,15 @@ needed by a client.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
         <h3 id="name-convention">
 <a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-convention" class="section-name selfRef">Convention</a>
         </h3>
-<p id="section-1.2-1">Various examples in this document use "BASE64VALUE=" as a placeholder
+<p id="section-1.2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
+described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
+appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
+<p id="section-1.2-2">Various examples in this document use "BASE64VALUE=" as a placeholder
    value for binary data that has been base64 encoded (per Section 9.8
    of<span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>).  This placeholder value is used because real base64
    encoded structures are often many lines long and hence distracting to
-   the example being presented.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
+   the example being presented.<a href="#section-1.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="adherence-to-the-nmda">
@@ -1512,10 +1516,10 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
       if the node identifier does not point to a node having the
       "indexed" extension statement applied to it (see Section 3.3.2).<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-4">Conformance
-      The "where" query parameter MUST be supported for all "config
-      true" lists and leaf-lists and SHOULD be supported for "config
+      The "where" query parameter <span class="bcp14">MUST</span> be supported for all "config
+      true" lists and leaf-lists and <span class="bcp14">SHOULD</span> be supported for "config
       false" lists and leaf-lists.  The supplied expression is allowed
-      to be of arbitrary complexity.  Servers MAY disable the support
+      to be of arbitrary complexity.  Servers <span class="bcp14">MAY</span> disable the support
       for some or all "config false" lists and leaf-lists as described
       in Section 3.3.2.<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
 </section>
@@ -1545,9 +1549,9 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
       if the node identifier does not point to a node having the
       "indexed" extension statement applied to it (see Section 3.3.2).<a href="#section-3.1.2-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.2-4">Conformance
-      The "sort-by" query parameter MUST be supported for all "config
-      true" lists and leaf-lists and SHOULD be supported for "config
-      false" lists and leaf-lists.  Servers MAY disable the support for
+      The "sort-by" query parameter <span class="bcp14">MUST</span> be supported for all "config
+      true" lists and leaf-lists and <span class="bcp14">SHOULD</span> be supported for "config
+      false" lists and leaf-lists.  Servers <span class="bcp14">MAY</span> disable the support for
       some or all "config false" lists and leaf-lists as described in
       Section 3.3.2.<a href="#section-3.1.2-4" class="pilcrow">¶</a></p>
 </section>
@@ -1570,22 +1574,22 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
       locale used by the server for sorts with a metadata value
       <span>[<a href="#RFC7952" class="cite xref">RFC7952</a>]</span> called "locale".<a href="#section-3.1.3-2" class="pilcrow">¶</a></p>
 <p id="section-3.1.3-3">Allowed Values
-      The format is a free form string but SHOULD follow the language
+      The format is a free form string but <span class="bcp14">SHOULD</span> follow the language
       sub-tag format defined in <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>.  An example is 'sv_SE'.  If a
       supplied locale is unknown to the server, the "locale-unavailable"
-      SHOULD be produced in the error-app-tag in the error output.  Note
+      <span class="bcp14">SHOULD</span> be produced in the error-app-tag in the error output.  Note
       that all locales are assumed to be UTF-8, since character encoding
       for YANG strings and all known YANG modelled encodings and
       protocols are required to be UTF-8<span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span>
-            <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  A server MUST accept a known encoding with or without
-      trailing ".UTF-8" and MAY emit an encoding with or without
+            <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  A server <span class="bcp14">MUST</span> accept a known encoding with or without
+      trailing ".UTF-8" and <span class="bcp14">MAY</span> emit an encoding with or without
       trailing ".UTF-8".  This means a server must handle both e.g.
       "sv_SE" and "sv_SE.UTF-8" equally as input, and chooses how to
       emit used locale as output.<a href="#section-3.1.3-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.3-4">Conformance
-      The "locale" query parameter MUST be supported for all "config
-      true" lists and leaf-lists and SHOULD be supported for "config
-      false" lists and leaf-lists.  Servers MAY disable the support for
+      The "locale" query parameter <span class="bcp14">MUST</span> be supported for all "config
+      true" lists and leaf-lists and <span class="bcp14">SHOULD</span> be supported for "config
+      false" lists and leaf-lists.  Servers <span class="bcp14">MAY</span> disable the support for
       some or all "config false" lists and leaf-lists as described in
       Section 3.3.2.<a href="#section-3.1.3-4" class="pilcrow">¶</a></p>
 </section>
@@ -1616,7 +1620,7 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
 </pre><a href="#section-3.1.4-4" class="pilcrow">¶</a>
 </div>
 <p id="section-3.1.4-5">Conformance
-      The "direction" query parameter MUST be supported for all lists
+      The "direction" query parameter <span class="bcp14">MUST</span> be supported for all lists
       and leaf-lists.<a href="#section-3.1.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1637,11 +1641,11 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
 <p id="section-3.1.5-3">Allowed Values
       The allowed values are unsigned integers.  It is an error for the
       offset value to exceed the number of entries in the working
-      result-set, and the "offset-out-of-range" identity SHOULD be
+      result-set, and the "offset-out-of-range" identity <span class="bcp14">SHOULD</span> be
       produced in the error-app-tag in the error output when this
       occurs.<a href="#section-3.1.5-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.5-4">Conformance
-      The "offset" query parameter MUST be supported for all lists and
+      The "offset" query parameter <span class="bcp14">MUST</span> be supported for all lists and
       leaf-lists.<a href="#section-3.1.5-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1674,11 +1678,11 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
       server to index an element in the list, e.g. a list key or other
       information to efficiently access the selected result-set.  It is
       an error to supply an unknown cursor value for the working result-
-      set, and the "cursor-not-found" identity SHOULD be produced in the
+      set, and the "cursor-not-found" identity <span class="bcp14">SHOULD</span> be produced in the
       error-app-tag in the error output when this occurs.<a href="#section-3.1.6-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.6-4">Conformance
-      The "cursor" query parameter MUST be supported for all "config
-      true" lists and SHOULD be supported for all "config false" lists.
+      The "cursor" query parameter <span class="bcp14">MUST</span> be supported for all "config
+      true" lists and <span class="bcp14">SHOULD</span> be supported for all "config false" lists.
       It is however optional to support the "cursor" query parameter for
       "config false" lists and the support must be signaled by the
       server per list.<a href="#section-3.1.6-4" class="pilcrow">¶</a></p>
@@ -1722,7 +1726,7 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
       The allowed values are unsigned 32 bit integers greater than or
       equal to 1, or the string "unbounded".<a href="#section-3.1.7-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.7-4">Conformance
-      The "limit" query parameter MUST be supported for all lists and
+      The "limit" query parameter <span class="bcp14">MUST</span> be supported for all lists and
       leaf-lists.<a href="#section-3.1.7-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1766,7 +1770,7 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-4">Allowed Values
       The allowed values are positive integers.<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-5">Conformance
-      The "sublist-limit" query parameter MUST be supported for all
+      The "sublist-limit" query parameter <span class="bcp14">MUST</span> be supported for all
       conventional nodes, including a datastore's top-level node (i.e.,
       '/').<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
 </section>
@@ -1827,7 +1831,7 @@ the constrained lists and leaf-lists.<a href="#section-3.3-6.2.1" class="pilcrow
 <p id="section-3.3.1-3">Specifically, the "ietf-list-pagination" module (see Section 4)
    augments a boolean leaf node called "constrained" into the "per-node-
    capabilities" node defined in the "ietf-system-capabilities" module.<a href="#section-3.3.1-3" class="pilcrow">¶</a></p>
-<p id="section-3.3.1-4">The "constrained" leaf MAY be specified for any "config false" list
+<p id="section-3.3.1-4">The "constrained" leaf <span class="bcp14">MAY</span> be specified for any "config false" list
    or leaf-list.<a href="#section-3.3.1-4" class="pilcrow">¶</a></p>
 <p id="section-3.3.1-5">When a list or leaf-list is constrained:<a href="#section-3.3.1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1837,13 +1841,13 @@ enabled by Section 3.3.2.<a href="#section-3.3.1-6.1.1" class="pilcrow">¶</a></
 </li>
             <li class="normal" id="section-3.3.1-6.2">
               <p id="section-3.3.1-6.2.1">Node-identifiers used in "where" expressions and "sort-by" filters
-MUST have the "indexed" leaf applied to it (see Section 3.3.2).<a href="#section-3.3.1-6.2.1" class="pilcrow">¶</a></p>
+<span class="bcp14">MUST</span> have the "indexed" leaf applied to it (see Section 3.3.2).<a href="#section-3.3.1-6.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.3.1-6.3">
               <p id="section-3.3.1-6.3.1">For lists only, node-identifiers used in "where" expressions and
-"sort-by" filters MUST NOT descend past any descendent lists.
+"sort-by" filters <span class="bcp14">MUST NOT</span> descend past any descendent lists.
 This ensures that only indexes relative to the targeted list are
-used.  Further constraints on node identifiers MAY be applied in
+used.  Further constraints on node identifiers <span class="bcp14">MAY</span> be applied in
 Section 3.3.2.<a href="#section-3.3.1-6.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
@@ -2579,7 +2583,7 @@ module ietf-list-pagination {
 <p id="appendix-A-1">This normative appendix section illustrates every notable edge condition conceived during this document's production.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">Test inputs and outputs are provided in a manner that is both generic and concise.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <p id="appendix-A-3">Management protocol specific documents need only reproduce as many of these tests as necessary to convey peculiarities presented by the protocol.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">Implementations are RECOMMENDED to implement the tests presented in this document, in addition to any tests that may be presented in protocol specific documents.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">Implementations are <span class="bcp14">RECOMMENDED</span> to implement the tests presented in this document, in addition to any tests that may be presented in protocol specific documents.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <div id="a1-example-yang-module">
 <section id="appendix-A.1">
         <h3 id="name-a1-example-yang-module">
@@ -3958,7 +3962,7 @@ RESPONSE<a href="#appendix-A.3.6.3-2" class="pilcrow">¶</a></p>
           </h4>
 <p id="appendix-A.3.7-1">The "locale" parameter may be used on any target node.<a href="#appendix-A.3.7-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7-2">If this parameter is omitted, there is no default value and it is up to the server to choose a locale. This locale is then reported in the result-set as the "locale" metadata value.<a href="#appendix-A.3.7-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7-3">Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by the user. For ordered-by system lists and leaf-lists, the server MAY report "locale" if the order that the server has chosen follows a valid locale,<a href="#appendix-A.3.7-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-3">Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by the user. For ordered-by system lists and leaf-lists, the server <span class="bcp14">MAY</span> report "locale" if the order that the server has chosen follows a valid locale,<a href="#appendix-A.3.7-3" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7-4">If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value" is returned.<a href="#appendix-A.3.7-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7-5">If an ordered-by system target is not ordered according to any locale, the server omits the locale from the response.<a href="#appendix-A.3.7-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7-6">REQUEST
