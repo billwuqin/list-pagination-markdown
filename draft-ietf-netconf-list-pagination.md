@@ -1570,7 +1570,7 @@ This vector test uses the target "/example-social:members/member", which is a "l
 #### A.3.9.1. All six parameters at once
 REQUEST
 ~~~~
-  Datastore: <operational>
+  Datastore: operational
   Target: /example-social:members/member
   Sublist-limit: 1
   Pagination Parameters:
