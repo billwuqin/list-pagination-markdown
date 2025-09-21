@@ -1516,6 +1516,51 @@ RESPONSE
 }
 ~~~~
 
+##### A.3.5.1.2. type is a "list" and sort-by node is a direct descendent
+This example illustrates when the target node's type is a "list" and a direct descendent is the "sort-by" node.
+
+This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "member-id", which is the "key" for the list.
+
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+~~~~
+RESPONSE
+
+To make the example more understandable, an ellipse (i.e., "...") is used to represent a missing subtree of data.
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    }
+  ]
+}
+~~~~
+
 # Acknowledgments
 {:numbered="false"}
 
