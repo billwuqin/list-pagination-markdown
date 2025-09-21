@@ -1561,10 +1561,96 @@ To make the example more understandable, an ellipse (i.e., "...") is used to rep
 }
 ~~~~
 
-A.3.5.1.3. type is a "list" and sort-by node is an indirect descendent
+##### A.3.5.1.3. type is a "list" and sort-by node is an indirect descendent
 This example illustrates when the target node's type is a "list" and an indirect descendent is the "sort-by" node.
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the operational datastore.
+
+### A.3.9. Combinations of Parameters
+#### A.3.9.1. All six parameters at once
+REQUEST
+~~~~
+  Datastore: <operational>
+  Target: /example-social:members/member
+  Sublist-limit: 1
+  Pagination Parameters:
+    Where:     stats/joined[starts-with(timestamp,'2020')]
+    Sort-by:   member-id
+    Direction: backwards
+    Offset:    2
+    Limit:     2
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "@": {
+        "ietf-list-pagination:remaining": "1"
+      },
+      "member-id": "eric",
+      "email-address": "eric@example.com",
+      "password": "$0$1543",
+      "avatar": "BASE64VALUE=",
+      "tagline": "Go to bed with dreams; wake up with a purpose.",
+      "following": ["alice"],
+      "posts": {
+        "post": [
+          {
+            "timestamp": "2020-09-17T18:02:04Z",
+            "title": "Son, brother, husband, father",
+            "body": "What's your story?"
+          }
+        ]
+      },
+      "favorites": {
+        "bits": ["two"],
+        "@bits": [
+          {
+            "ietf-list-pagination:remaining": "2"
+          }
+        ]
+      },
+      "stats": {
+        "joined": "2020-09-17T19:38:32Z",
+        "membership-level": "pro",
+        "last-activity": "2020-09-17T18:02:04Z"
+      }
+    },
+    {
+      "member-id": "bob",
+      "email-address": "bob@example.com",
+      "password": "$0$1543",
+      "avatar": "BASE64VALUE=",
+      "tagline": "Here and now, like never before.",
+      "posts": {
+        "post": [
+          {
+            "@": {
+              "ietf-list-pagination:remaining": "2"
+            },
+            "timestamp": "2020-08-14T03:32:25Z",
+            "body": "Just got in."
+          }
+        ]
+      },
+      "favorites": {
+        "decimal64-numbers": ["3.14159"],
+        "@decimal64-numbers": [
+          {
+            "ietf-list-pagination:remaining": "1"
+          }
+        ]
+      },
+      "stats": {
+        "joined": "2020-08-14T03:30:00Z",
+        "membership-level": "standard",
+        "last-activity": "2020-08-14T03:34:30Z"
+      }
+    }
+  }
+}
+~~~~
 
 # Acknowledgments
 {:numbered="false"}
