@@ -1561,6 +1561,8 @@ To make the example more understandable, an ellipse (i.e., "...") is used to rep
 }
 ~~~~
 
+A.3.5.1.3. type is a "list" and sort-by node is an indirect descendent
+This example illustrates when the target node's type is a "list" and an indirect descendent is the "sort-by" node.
 
 # Acknowledgments
 {:numbered="false"}
