@@ -121,7 +121,8 @@ Table of Contents
        A.3.4.  A.3.4.  The "direction" Parameter
        A.3.5.  A.3.5.  The "sort-by" Parameter
        A.3.6.  A.3.6.  The "where" Parameter
-       A.3.7.  A.3.9.  Combinations of Parameters
+       A.3.7.  A.3.7.  The "locale" Parameter
+       A.3.8.  A.3.9.  Combinations of Parameters
    Acknowledgments
    Authors' Addresses
 
@@ -2194,11 +2195,60 @@ A.3.6.3.  A.3.6.3. match on decendent timestamp starting with a
    "eric", ...  }, { "member-id": "alice", ...  }, { "member-id": "joe",
    ...  } ] } ~~~~
 
-A.3.6.4.  A.3.8.  The "sublist-limit" Parameter
+A.3.7.  A.3.7.  The "locale" Parameter
+
+   The "locale" parameter may be used on any target node.
+
+   If this parameter is omitted, there is no default value and it is up
+   to the server to choose a locale.  This locale is then reported in
+   the result-set as the "locale" metadata value.
+
+   Note that for ordered-by user lists and leaf-lists "locale" is not
+   relevant, since the order is set by the user.  For ordered-by system
+   lists and leaf-lists, the server MAY report "locale" if the order
+   that the server has chosen follows a valid locale,
+
+   If "locale" is used on an ordered-by user list, error-type
+   "application" and error-tag "invalid-value" is returned.
+
+   If an ordered-by system target is not ordered according to any
+   locale, the server omits the locale from the response.
+
+   REQUEST ~~~~ Target: /example-social:members/member Pagination
+   Parameters: Where: - Sort-by: member-id Direction: - Offset: - Limit:
+   - Locale: sv_SE ~~~~ RESPONSE ~~~~ { "example-social:member": [ {
+   "member-id": "alice", ...  }, { "member-id": "bob", ...  }, {
+   "member-id": "eric", ...  }, { "member-id": "joe", ...  }, { "member-
+   id": "lin", ...  }, { "member-id": "åsa", ...  } ], "@example-
+   social:member": [ { "ietf-list-pagination:locale": "sv_SE" } ] } ~~~~
+   REQUEST ~~~~ Target: /example-social:members/member Pagination
+   Parameters: Where: - Sort-by: member-id Direction: - Offset: - Limit:
+   - Locale: en_US RESPONSE ~~~~ { "example-social:member": [ { "member-
+   id": "alice", ...  }, { "member-id": "åsa", ...  }, { "member-id":
+   "bob", ...  }, { "member-id": "eric", ...  }, { "member-id": "joe",
+   ...  }, { "member-id": "lin", ...  } ], "@example-social:member": [ {
+   "ietf-list-pagination:locale": "en_US" } ] } ~~~~ REQUEST ~~~~~
+   Target: /example-social:members/member Pagination Parameters: Where:
+   - Sort-by: member-id Direction: - Offset: - Limit: - Locale: invalid
+   ~~~~ RESPONSE ~~~~ error-type: application error-tag: invalid-value
+   error-app-tag: ietf-list-pagination:locale-unavailable ~~~~ REQUEST
+
+   This example targets an "ordered-by user" list. ~~~~ Target:
+   /example-social:members/member=alice/favorites/uint8-numbers
+   Pagination Parameters: Where: - Sort-by: .  Direction: - Offset: -
+   Limit: - Locale: sv_SE ~~~~ RESPONSE ~~~~ error-type: application
+   error-tag: invalid-value ~~~~
+
+   REQUEST ~~~~ This example supplies "locale" but not "sort-by". ~~~~
+   Target: /example-social:members/member Pagination Parameters: Where:
+   - Sort-by: - Direction: - Offset: - Limit: - Locale: sv_SE ~~~~
+   RESPONSE ~~~~ error-type: application error-tag: invalid-value ~~~~
+
+A.3.7.1.  A.3.8.  The "sublist-limit" Parameter
 
    The "sublist-limit" parameter may be used on any target node.
 
-A.3.6.5.  A.3.8.1. target is a list entry
+A.3.7.2.  A.3.8.1. target is a list entry
 
    This example uses the target node '/example-social:members/
    member=alice' in the intended datastore.
@@ -2228,7 +2278,7 @@ A.3.6.5.  A.3.8.1. target is a list entry
    pagination:remaining": "5" } ], "@int8-numbers": [ { "ietf-list-
    pagination:remaining": "5" } ] } } ] } ~~~~
 
-A.3.6.6.  A.3.8.2. target is a datastore
+A.3.7.3.  A.3.8.2. target is a datastore
 
    This example uses the target node intended datastore.
 
@@ -2279,7 +2329,7 @@ A.3.6.6.  A.3.8.2. target is a datastore
      }
    }
 
-A.3.7.  A.3.9.  Combinations of Parameters
+A.3.8.  A.3.9.  Combinations of Parameters
 
    #### A.3.9.1.  All six parameters at once REQUEST ~~~~ Datastore:
    operational Target: /example-social:members/member Sublist-limit: 1

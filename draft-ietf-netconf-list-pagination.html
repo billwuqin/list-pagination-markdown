@@ -1321,7 +1321,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
                     <p id="section-toc.1-1.8.2.3.2.6.1"><a href="#appendix-A.3.6" class="auto internal xref">A.3.6</a>.  <a href="#name-a36-the-where-parameter" class="internal xref">A.3.6. The "where" Parameter</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3.2.7">
-                    <p id="section-toc.1-1.8.2.3.2.7.1"><a href="#appendix-A.3.7" class="auto internal xref">A.3.7</a>.  <a href="#name-a39-combinations-of-paramet" class="internal xref">A.3.9. Combinations of Parameters</a></p>
+                    <p id="section-toc.1-1.8.2.3.2.7.1"><a href="#appendix-A.3.7" class="auto internal xref">A.3.7</a>.  <a href="#name-a37-the-locale-parameter" class="internal xref">A.3.7. The "locale" Parameter</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3.2.8">
+                    <p id="section-toc.1-1.8.2.3.2.8.1"><a href="#appendix-A.3.8" class="auto internal xref">A.3.8</a>.  <a href="#name-a39-combinations-of-paramet" class="internal xref">A.3.9. Combinations of Parameters</a></p>
 </li>
                 </ul>
 </li>
@@ -3946,24 +3949,181 @@ RESPONSE<a href="#appendix-A.3.6.3-2" class="pilcrow">¶</a></p>
 ~~~~<a href="#appendix-A.3.6.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
+</section>
+</div>
+<div id="a37-the-locale-parameter">
+<section id="appendix-A.3.7">
+          <h4 id="name-a37-the-locale-parameter">
+<a href="#appendix-A.3.7" class="section-number selfRef">A.3.7. </a><a href="#name-a37-the-locale-parameter" class="section-name selfRef">A.3.7. The "locale" Parameter</a>
+          </h4>
+<p id="appendix-A.3.7-1">The "locale" parameter may be used on any target node.<a href="#appendix-A.3.7-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-2">If this parameter is omitted, there is no default value and it is up to the server to choose a locale. This locale is then reported in the result-set as the "locale" metadata value.<a href="#appendix-A.3.7-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-3">Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by the user. For ordered-by system lists and leaf-lists, the server MAY report "locale" if the order that the server has chosen follows a valid locale,<a href="#appendix-A.3.7-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-4">If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value" is returned.<a href="#appendix-A.3.7-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-5">If an ordered-by system target is not ordered according to any locale, the server omits the locale from the response.<a href="#appendix-A.3.7-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-6">REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    },
+    {
+      "member-id": "åsa",
+      ...
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:locale": "sv_SE"
+    }
+  ]
+}
+~~~~
+REQUEST
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    en_US
+RESPONSE
+~~~~
+{
+  "example-social:member": [
+    {
+      "member-id": "alice",
+      ...
+    },
+    {
+      "member-id": "åsa",
+      ...
+    },
+    {
+      "member-id": "bob",
+      ...
+    },
+    {
+      "member-id": "eric",
+      ...
+    },
+    {
+      "member-id": "joe",
+      ...
+    },
+    {
+      "member-id": "lin",
+      ...
+    }
+  ],
+  "@example-social:member": [
+    {
+      "ietf-list-pagination:locale": "en_US"
+    }
+  ]
+}
+~~~~
+REQUEST
+~~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   member-id
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    invalid
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+error-app-tag: ietf-list-pagination:locale-unavailable
+~~~~
+REQUEST<a href="#appendix-A.3.7-6" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-7">This example targets an "ordered-by user" list.
+~~~~
+Target: /example-social:members/member=alice/favorites/uint8-numbers
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   .
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+~~~~<a href="#appendix-A.3.7-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-8">REQUEST
+~~~~
+This example supplies "locale" but not "sort-by".
+~~~~
+Target: /example-social:members/member
+  Pagination Parameters:
+    Where:     -
+    Sort-by:   -
+    Direction: -
+    Offset:    -
+    Limit:     -
+    Locale:    sv_SE
+~~~~
+RESPONSE
+~~~~
+error-type: application
+error-tag: invalid-value
+~~~~<a href="#appendix-A.3.7-8" class="pilcrow">¶</a></p>
 <div id="a38-the-sublist-limit-parameter">
-<section id="appendix-A.3.6.4">
+<section id="appendix-A.3.7.1">
             <h5 id="name-a38-the-sublist-limit-param">
-<a href="#appendix-A.3.6.4" class="section-number selfRef">A.3.6.4. </a><a href="#name-a38-the-sublist-limit-param" class="section-name selfRef">A.3.8. The "sublist-limit" Parameter</a>
+<a href="#appendix-A.3.7.1" class="section-number selfRef">A.3.7.1. </a><a href="#name-a38-the-sublist-limit-param" class="section-name selfRef">A.3.8. The "sublist-limit" Parameter</a>
             </h5>
-<p id="appendix-A.3.6.4-1">The "sublist-limit" parameter may be used on any target node.<a href="#appendix-A.3.6.4-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.1-1">The "sublist-limit" parameter may be used on any target node.<a href="#appendix-A.3.7.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="a381-target-is-a-list-entry">
-<section id="appendix-A.3.6.5">
+<section id="appendix-A.3.7.2">
             <h5 id="name-a381-target-is-a-list-entry">
-<a href="#appendix-A.3.6.5" class="section-number selfRef">A.3.6.5. </a><a href="#name-a381-target-is-a-list-entry" class="section-name selfRef">A.3.8.1. target is a list entry</a>
+<a href="#appendix-A.3.7.2" class="section-number selfRef">A.3.7.2. </a><a href="#name-a381-target-is-a-list-entry" class="section-name selfRef">A.3.8.1. target is a list entry</a>
             </h5>
-<p id="appendix-A.3.6.5-1">This example uses the target node '/example-social:members/member=alice' in the intended datastore.<a href="#appendix-A.3.6.5-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.5-2">The target node is a specific list entry/element node, not the YANG "list" node.<a href="#appendix-A.3.6.5-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.5-3">This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.<a href="#appendix-A.3.6.5-3" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.5-4">Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.<a href="#appendix-A.3.6.5-4" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.5-5">REQUEST
+<p id="appendix-A.3.7.2-1">This example uses the target node '/example-social:members/member=alice' in the intended datastore.<a href="#appendix-A.3.7.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.2-2">The target node is a specific list entry/element node, not the YANG "list" node.<a href="#appendix-A.3.7.2-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.2-3">This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.<a href="#appendix-A.3.7.2-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.2-4">Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.<a href="#appendix-A.3.7.2-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.2-5">REQUEST
 ~~~~
   Datastore: intended
   Target: /example-social:members/member=alice
@@ -4024,18 +4184,18 @@ RESPONSE
     }
   ]
 }
-~~~~<a href="#appendix-A.3.6.5-5" class="pilcrow">¶</a></p>
+~~~~<a href="#appendix-A.3.7.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="a382-target-is-a-datastore">
-<section id="appendix-A.3.6.6">
+<section id="appendix-A.3.7.3">
             <h5 id="name-a382-target-is-a-datastore">
-<a href="#appendix-A.3.6.6" class="section-number selfRef">A.3.6.6. </a><a href="#name-a382-target-is-a-datastore" class="section-name selfRef">A.3.8.2. target is a datastore</a>
+<a href="#appendix-A.3.7.3" class="section-number selfRef">A.3.7.3. </a><a href="#name-a382-target-is-a-datastore" class="section-name selfRef">A.3.8.2. target is a datastore</a>
             </h5>
-<p id="appendix-A.3.6.6-1">This example uses the target node intended datastore.<a href="#appendix-A.3.6.6-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.6-2">This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.<a href="#appendix-A.3.6.6-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.6-3">Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.<a href="#appendix-A.3.6.6-3" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.6-4">REQUEST
+<p id="appendix-A.3.7.3-1">This example uses the target node intended datastore.<a href="#appendix-A.3.7.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.3-2">This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.<a href="#appendix-A.3.7.3-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.3-3">Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.<a href="#appendix-A.3.7.3-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.3-4">REQUEST
 ~~~~
   Datastore: intended
   Target: /
@@ -4047,8 +4207,8 @@ RESPONSE
     Offset:    -
     Limit:     -
 ~~~~
-RESPONSE<a href="#appendix-A.3.6.6-4" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="appendix-A.3.6.6-5">
+RESPONSE<a href="#appendix-A.3.7.3-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7.3-5">
 <pre>
 {
   "example-social:members": {
@@ -4085,18 +4245,18 @@ RESPONSE<a href="#appendix-A.3.6.6-4" class="pilcrow">¶</a></p>
     ]
   }
 }
-</pre><a href="#appendix-A.3.6.6-5" class="pilcrow">¶</a>
+</pre><a href="#appendix-A.3.7.3-5" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 </section>
 </div>
 <div id="a39-combinations-of-parameters">
-<section id="appendix-A.3.7">
+<section id="appendix-A.3.8">
           <h4 id="name-a39-combinations-of-paramet">
-<a href="#appendix-A.3.7" class="section-number selfRef">A.3.7. </a><a href="#name-a39-combinations-of-paramet" class="section-name selfRef">A.3.9. Combinations of Parameters</a>
+<a href="#appendix-A.3.8" class="section-number selfRef">A.3.8. </a><a href="#name-a39-combinations-of-paramet" class="section-name selfRef">A.3.9. Combinations of Parameters</a>
           </h4>
-<p id="appendix-A.3.7-1">#### A.3.9.1. All six parameters at once
+<p id="appendix-A.3.8-1">#### A.3.9.1. All six parameters at once
 REQUEST
 ~~~~
   Datastore: operational
@@ -4179,7 +4339,7 @@ RESPONSE
     }
   }
 }
-~~~~<a href="#appendix-A.3.7-1" class="pilcrow">¶</a></p>
+~~~~<a href="#appendix-A.3.8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
