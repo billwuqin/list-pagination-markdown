@@ -2145,7 +2145,7 @@ A.3.5.1.3.  A.3.5.1.3. type is a "list" and sort-by node is an indirect
    which is a "list", and the sort-by descendent node "stats/joined",
    which is a "config false" descendent leaf.  Due to "joined" being a
    "config false" node, this request would have to target the "member"
-   node in the operational datastore.
+   node in the <operational> datastore.
 
    REQUEST ~~~~ Target: /example-social:members/member Pagination
    Parameters: Where: - Sort-by: stats/joined Direction: - Offset: -
@@ -2341,7 +2341,7 @@ A.3.7.3.  A.3.8.2. target is a datastore
 A.3.8.  A.3.9.  Combinations of Parameters
 
    #### A.3.9.1.  All six parameters at once REQUEST ~~~~ Datastore:
-   operational Target: /example-social:members/member Sublist-limit: 1
+   <operational> Target: /example-social:members/member Sublist-limit: 1
    Pagination Parameters: Where: stats/joined[starts-
    with(timestamp,'2020')] Sort-by: member-id Direction: backwards
    Offset: 2 Limit: 2 ~~~~ RESPONSE ~~~~ { "example-social:member": [ {
