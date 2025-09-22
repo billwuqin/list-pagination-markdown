@@ -1784,6 +1784,7 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 ~~~~
 
 ### A.3.7. The "locale" Parameter
+
 The "locale" parameter may be used on any target node.
 
 If this parameter is omitted, there is no default value and it is up to the server to choose a locale. This locale is then reported in the result-set as the "locale" metadata value.
