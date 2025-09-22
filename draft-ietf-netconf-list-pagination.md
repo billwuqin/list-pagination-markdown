@@ -428,12 +428,10 @@ informative:
 
    Description
       The "sublist-limit" parameter limits the number of entries returned for descendent lists and leaf-lists.
-
       Any descendent list or leaf-list limited by the "sublist-limit" parameter includes, somewhere in its
       encoding, a metadata value {{!RFC7952}} called "remaining", a positive integer indicating the number
       of elements that were not included by the "sublist-limit" parameter, or the value "unknown" in case,
       e.g., the server determines that counting would be prohibitively expensive.
-
       When used on a list node, it only affects the list's descendant nodes, not the list itself, which is
       only affected by the parameters presented in Section 3.1.
 
@@ -565,9 +563,10 @@ module: ietf-list-pagination
 
 Comments:
 
-As shown, this module augments three optional leafs into the "per-node-capabilities" node
+* As shown, this module augments three optional leafs into the "per-node-capabilities" node
 of the "ietf-system-capabilities" module.
-Not shown is that the module also defines an "md:annotation" statement named "remaining".
+
+* Not shown is that the module also defines an "md:annotation" statement named "remaining".
 This annotation may be present in a server's response to a client request containing either
 the "limit" (Section 3.1.7) or "sublist-limit" parameters (Appendix A.3.8).
 
@@ -685,6 +684,7 @@ This YANG module has normative references to {{!RFC7952}} and {{!RFC9196}}.
 --- back
 
 # Vector Tests
+
 This normative appendix section illustrates every notable edge condition conceived during this document's production.
 
 Test inputs and outputs are provided in a manner that is both generic and concise.
@@ -739,7 +739,7 @@ module: example-social
         +--ro outcome      boolean
 ~~~~
 
-Following is the YANG [RFC7950] for the "example-social" module:
+Following is the YANG {{!RFC7950}} for the "example-social" module:
 
 ~~~~
 {::include-fold ./examples/example-social.yang}
