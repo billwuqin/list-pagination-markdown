@@ -680,7 +680,7 @@ lector>
 
 --- back
 
-# Appendix A. Vector Tests
+# Vector Tests
 This normative appendix section illustrates every notable edge condition conceived during this document's production.
 
 Test inputs and outputs are provided in a manner that is both generic and concise.
@@ -689,7 +689,7 @@ Management protocol specific documents need only reproduce as many of these test
 
 Implementations are RECOMMENDED to implement the tests presented in this document, in addition to any tests that may be presented in protocol specific documents.
 
-## A.1. Example YANG Module
+## Example YANG Module
 
 The vector tests assume the "example-social" YANG module defined in this section.
 
@@ -741,7 +741,7 @@ Following is the YANG [RFC7950] for the "example-social" module:
 {::include-fold ./examples/example-social.yang}
 ~~~~
 
-## A.2. Example Data Set
+## Example Data Set
 
 The examples assume the server's operational state as follows.
 
@@ -956,7 +956,7 @@ The data is provided in JSON only for convenience and, in particular, has no bea
 
 
 
-## A.3. Example Queries
+## Example Queries
 
 The following sections are presented in reverse query-parameters processing order. Starting with the simplest (limit) and ending with the most complex (where).
 
@@ -966,7 +966,7 @@ The "members" list in the example data set is "ordered-by system" and the querie
 
 Note that the user "åsa" is only included in Appendix A.3.7. This to isolate the parameter in the example query and its behavior.
 
-### A.3.1. The "limit" Parameter
+### The "limit" Parameter
 
 Noting that "limit" must be a positive number, the edge condition values are '1', '2', num-elements-1, num-elements, and num-elements+1.
 
@@ -974,7 +974,7 @@ Any value greater than or equal to num-elements results the entire result set, s
 
 These vector tests assume the target "/example-social:members/member=alice/favorites/uint8-numbers", which has six values, thus the edge condition "limit" values are: '1', '2', '5', '6', and '7'.
 
-#### A.3.1.1. limit=1
+#### limit=1
 
 REQUEST
 
@@ -1001,7 +1001,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.1.2. limit=2
+#### limit=2
 
 REQUEST
 
@@ -1028,7 +1028,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.1.3. limit=5
+#### limit=5
 
 REQUEST
 
@@ -1055,7 +1055,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.1.4. limit=6
+#### limit=6
 
 REQUEST
 
@@ -1077,7 +1077,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.1.5. limit=7
+#### limit=7
 
 REQUEST
 
@@ -1099,13 +1099,13 @@ RESPONSE
 }
 ~~~~
 
-### A.3.2. The "offset" Parameter
+### The "offset" Parameter
 
 Noting that "offset" must be an unsigned number less than or equal to the num-elements, the edge condition values are '0', '1', '2', num-elements-1, num-elements, and num-elements+1.
 
 These vector tests again assume the target "/example-social:members/member=alice/favorites/uint8-numbers", which has six values, thus the edge condition "limit" values are: '0', '1', '2', '5', '6', and '7'.
 
-#### A.3.2.1. offset=0
+#### offset=0
 
 REQUEST
 
@@ -1127,7 +1127,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.2.2. offset=1
+#### offset=1
 
 REQUEST
 
@@ -1149,7 +1149,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.2.3. offset=2
+#### offset=2
 
 REQUEST
 
@@ -1171,7 +1171,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.2.4. offset=5
+#### offset=5
 
 REQUEST
 
@@ -1193,7 +1193,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.2.5. offset=6
+#### offset=6
 
 REQUEST
 
@@ -1215,7 +1215,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.2.6. offset=7
+#### offset=7
 
 REQUEST
 
@@ -1237,7 +1237,7 @@ error-tag: invalid-value
 error-app-tag: ietf-list-pagination:offset-out-of-range
 ~~~~
 
-### A.3.3. The "cursor" Parameter
+### The "cursor" Parameter
 
 Noting that "cursor" is an opaque encoded value represented by a string, which addresses an element in a list.
 
@@ -1247,7 +1247,7 @@ These vector tests assume the target "/example-social:members/member" which has 
 
 Note that response has added attributes describing the result set and position in pagination.
 
-#### A.3.3.1. cursor=&limit=2
+#### cursor=&limit=2
 REQUEST
 
 ~~~~
@@ -1333,7 +1333,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.3.2. cursor="YWxpY2U="&limit=2
+#### cursor="YWxpY2U="&limit=2
 
 REQUEST
 
@@ -1414,7 +1414,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.3.3. cursor="am9l"&limit=2
+#### cursor="am9l"&limit=2
 
 REQUEST
 
@@ -1469,7 +1469,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.3.4. cursor="BASE64VALUE="
+#### cursor="BASE64VALUE="
 
 REQUEST
 The cursor used does not exist in the datastore.
@@ -1493,7 +1493,7 @@ error-tag: invalid-value
 error-app-tag: ietf-list-pagination:cursor-not-found
 ~~~~
 
-### A.3.4. The "direction" Parameter
+### The "direction" Parameter
 Noting that "direction" is an enumeration with two values, the edge condition values are each defined enumeration.
 
 The value "forwards" is sometimes known as the "default" value, as it produces the same result set as when "direction" is unspecified.
@@ -1502,7 +1502,7 @@ These vector tests again assume the target "/example-social:members/member=alice
 
 It is notable that "uint8-numbers" is an "ordered-by" user leaf-list. Traversals are over the user-specified order, not the numerically-sorted order, which is what the "sort-by" parameter addresses. If this were an "ordered-by system" leaf-list, then the traversals would be over the system-specified order, again not a numerically-sorted order.
 
-#### A.3.4.1. direction=forwards
+#### direction=forwards
 
 REQUEST
 
@@ -1524,7 +1524,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.4.2. direction=backwards
+#### direction=backwards
 
 REQUEST
 
@@ -1546,13 +1546,13 @@ RESPONSE
 }
 ~~~~
 
-### A.3.5. The "sort-by" Parameter
+### The "sort-by" Parameter
 Noting that the "sort-by" parameter is a node identifier, there is not so much "edge conditions" as there are "interesting conditions". This section provides examples for some interesting conditions.
 
-#### A.3.5.1. the target node's type
+#### the target node's type
 The section provides three examples, one for a "leaf-list" and two for a "list", with one using a direct descendant and the other using an indirect descendant.
 
-##### A.3.5.1.1. type is a "leaf-list"
+##### type is a "leaf-list"
 This example illustrates when the target node's type is a "leaf-list". Note that a single period (i.e., '.') is used to represent the nodes to be sorted.
 
 This test again uses the target "/example-social:members/member=alice/favorites/uint8-numbers", which is a leaf-list.
@@ -1577,7 +1577,7 @@ RESPONSE
 }
 ~~~~
 
-##### A.3.5.1.2. type is a "list" and sort-by node is a direct descendant
+##### type is a "list" and sort-by node is a direct descendant
 This example illustrates when the target node's type is a "list" and a direct descendant is the "sort-by" node.
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "member-id", which is the "key" for the list.
@@ -1625,7 +1625,7 @@ To make the example more understandable, an ellipse (i.e., "...") is used to rep
 }
 ~~~~
 
-##### A.3.5.1.3. type is a "list" and sort-by node is an indirect descendant
+##### type is a "list" and sort-by node is an indirect descendant
 This example illustrates when the target node's type is a "list" and an indirect descendant is the "sort-by" node.
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "stats/joined", which is a "config false" descendant leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.
@@ -1673,10 +1673,10 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 }
 ~~~~
 
-### A.3.6. The "where" Parameter
+### The "where" Parameter
 The "where" is an XPath 1.0 expression, there are numerous edge conditions to consider, e.g., the types of the nodes that are targeted by the expression.
 
-#### A.3.6.1. match of leaf-list's values
+#### match of leaf-list's values
 This example selects the uint8-numbers greater than 7 in the member alice's favorites.
 
 REQUEST
@@ -1699,7 +1699,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.6.2. match on descendant string containing a substring
+#### match on descendant string containing a substring
 This example selects members that have an email address containing "@example.com".
 
 REQUEST
@@ -1740,7 +1740,7 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 }
 ~~~~
 
-#### A.3.6.3. match on descendant timestamp starting with a substring
+#### match on descendant timestamp starting with a substring
 This example selects members that have a posting whose timestamp begins with the string "2020".
 
 REQUEST
@@ -1782,7 +1782,7 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 }
 ~~~~
 
-### A.3.7. The "locale" Parameter
+### The "locale" Parameter
 
 The "locale" parameter may be used on any target node.
 
@@ -1967,11 +1967,11 @@ error-type: application
 error-tag: invalid-value
 ~~~~
 
-#### A.3.8. The "sublist-limit" Parameter
+#### The "sublist-limit" Parameter
 
 The "sublist-limit" parameter may be used on any target node.
 
-#### A.3.8.1. target is a list entry
+#### target is a list entry
 
 This example uses the target node '/example-social:members/member=alice' in the intended datastore.
 
@@ -2047,7 +2047,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.8.2. target is a datastore
+#### target is a datastore
 This example uses the target node intended datastore.
 
 This example sets the sublist-limit value '1', which returns just the first entry for all descendant lists and leaf-lists.
@@ -2108,9 +2108,9 @@ RESPONSE
 }
 ~~~~
 
-### A.3.9. Combinations of Parameters
+### Combinations of Parameters
 
-#### A.3.9.1. All six parameters at once
+#### All six parameters at once
 
 REQUEST
 
