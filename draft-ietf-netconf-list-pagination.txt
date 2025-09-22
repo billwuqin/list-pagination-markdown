@@ -1839,37 +1839,110 @@ A.3.1.  A.3.1.  The "limit" Parameter
    values, thus the edge condition "limit" values are: '1', '2', '5',
    '6', and '7'.
 
-   A.3.1.1. limit=1 REQUEST ~~~~ Target: /example-
-   social:members/member=alice/favorites/uint8-numbers Pagination
-   Parameters: Where: - Sort-by: - Direction: - Offset: - Limit: 1 ~~~~
-   RESPONSE ~~~~ { "example-social:uint8-numbers": [17], "@example-
-   social:uint8-numbers": [ { "ietf-list-pagination:remaining": 5 } ] }
-   ~~~~ A.3.1.2. limit=2 REQUEST ~~~~ Target: /example-
-   social:members/member=alice/favorites/uint8-numbers Pagination
-   Parameters: Where: - Sort-by: - Direction: - Offset: - Limit: 2 ~~~~
-   RESPONSE ~~~~ { "example-social:uint8-numbers": [17, 13], "@example-
-   social:uint8-numbers": [ { "ietf-list-pagination:remaining": 4 } ] }
-   ~~~~
+A.3.1.1.  A.3.1.1. limit=1
 
-A.3.1.1.  A.3.1.3. limit=5
+   REQUEST
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: - Limit: 5 ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [17, 13, 11, 7, 5], "@example-
-   social:uint8-numbers": [ { "ietf-list-pagination:remaining": 1 } ] }
-   ~~~~ #### A.3.1.4. limit=6
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     1
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: - Limit: 6 ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [17, 13, 11, 7, 5, 3] } ~~~~ #### A.3.1.5.
-   limit=7
+   RESPONSE
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: - Limit: 7 ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [17, 13, 11, 7, 5, 3] } ~~~~
+   {
+     "example-social:uint8-numbers": [17],
+     "@example-social:uint8-numbers": [
+        {
+           "ietf-list-pagination:remaining": 5
+        }
+      ]
+   }
+
+A.3.1.2.  A.3.1.2. limit=2
+
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     2
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [17, 13],
+     "@example-social:uint8-numbers": [
+        {
+           "ietf-list-pagination:remaining": 4
+        }
+      ]
+   }
+
+A.3.1.3.  A.3.1.3. limit=5
+
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     5
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [17, 13, 11, 7, 5],
+     "@example-social:uint8-numbers": [
+        {
+           "ietf-list-pagination:remaining": 1
+        }
+      ]
+   }
+
+A.3.1.4.  A.3.1.4. limit=6
+
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     6
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
+   }
+
+A.3.1.5.  A.3.1.5. limit=7
+
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     7
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
+   }
 
 A.3.2.  A.3.2.  The "offset" Parameter
 
@@ -1884,41 +1957,111 @@ A.3.2.  A.3.2.  The "offset" Parameter
 
 A.3.2.1.  A.3.2.1. offset=0
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: 0 Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [17, 13, 11, 7, 5, 3] } ~~~~ #### A.3.2.2.
-   offset=1
+   REQUEST
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: 1 Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [13, 11, 7, 5, 3] } ~~~~
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    0
+       Limit:     -
 
-A.3.2.2.  A.3.2.3. offset=2
+   RESPONSE
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: 2 Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [11, 7, 5, 3] } ~~~~ #### A.3.2.4. offset=5
+   {
+     "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
+   }
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: 5 Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [3] } ~~~~
+A.3.2.2.  A.3.2.2. offset=1
 
-A.3.2.3.  A.3.2.5. offset=6
+   REQUEST
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: 6 Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [] } ~~~~ #### A.3.2.6. offset=7
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    1
+       Limit:     -
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: 7 Limit: - ~~~~ RESPONSE ~~~~ error-type: application error-
-   tag: invalid-value error-app-tag: ietf-list-pagination:offset-out-of-
-   range ~~~~
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [13, 11, 7, 5, 3]
+   }
+
+A.3.2.3.  A.3.2.3. offset=2
+
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    2
+       Limit:     -
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [11, 7, 5, 3]
+   }
+
+A.3.2.4.  A.3.2.4. offset=5
+
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    5
+       Limit:     -
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [3]
+   }
+
+A.3.2.5.  A.3.2.5. offset=6
+
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    6
+       Limit:     -
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": []
+   }
+
+A.3.2.6.  A.3.2.6. offset=7
+
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    7
+       Limit:     -
+
+   RESPONSE
+
+   error-type: application
+   error-tag: invalid-value
+   error-app-tag: ietf-list-pagination:offset-out-of-range
 
 A.3.3.  A.3.3.  The "cursor" Parameter
 
@@ -1936,9 +2079,16 @@ A.3.3.  A.3.3.  The "cursor" Parameter
 
 A.3.3.1.  A.3.3.1. cursor=&limit=2
 
-   REQUEST ~~~~ Target: /example-social:members/member Pagination
-   Parameters: Where: - Sort-by: - Direction: - Offset: - Limit: 2
-   Cursor: - ~~~~
+   REQUEST
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     2
+       Cursor:    -
 
    RESPONSE
 
@@ -2012,48 +2162,150 @@ A.3.3.1.  A.3.3.1. cursor=&limit=2
 
 A.3.3.2.  A.3.3.2. cursor="YWxpY2U="&limit=2
 
-   REQUEST ~~~~ Target: /example-social:members/member Pagination
-   Parameters: Where: - Sort-by: - Direction: - Offset: - Limit: 2
-   Cursor: YWxpY2U= ~~~~ RESPONSE ~~~~ { "example-social:member": [ {
-   "member-id": "alice", "email-address": "alice@example.com",
-   "password": "$0$1543", "avatar": "BASE64VALUE=", "tagline": "Every
-   day is a new day", "privacy-settings": { "hide-network": false,
-   "post-visibility": "public" }, "following": ["bob", "eric", "lin"],
-   "posts": { "post": [ { "timestamp": "2020-07-08T13:12:45Z", "title":
-   "My first post", "body": "Hiya all!" }, { "timestamp":
-   "2020-07-09T01:32:23Z", "title": "Sleepy...", "body": "Catch y'all
-   tomorrow." } ] }, "favorites": { "uint8-numbers": [17, 13, 11, 7, 5,
-   3], "int8-numbers": [-5, -3, -1, 1, 3, 5] }, "stats": { "joined":
-   "2020-07-08T12:38:32Z", "membership-level": "admin", "last-activity":
-   "2021-04-01T02:51:11Z" } }, { "member-id": "lin", "email-address":
-   "lin@example.com", "password": "$0$1543", "privacy-settings": {
-   "hide-network": true, "post-visibility": "followers-only" },
-   "following": ["joe", "eric", "alice"], "stats": { "joined":
-   "2020-07-09T12:38:32Z", "membership-level": "standard", "last-
-   activity": "2021-04-01T02:51:11Z" } } ], "@example-social:member": [
-   { "ietf-list-pagination:remaining": 1, "ietf-list-
-   pagination:previous": "ZXJpYw==", // eric "ietf-list-
-   pagination:next": "am9l" // joe } ] } ~~~~ A.3.3.3.
-   cursor="am9l"&limit=2 REQUEST ~~~~ Target: /example-social:members/
-   member Pagination Parameters: Where: - Sort-by: - Direction: -
-   Offset: - Limit: 2 Cursor: am9l ~~~~ RESPONSE ~~~~ { "example-
-   social:member": [ { "member-id": "joe", "email-address":
-   "joe@example.com", "password": "$0$1543", "avatar": "BASE64VALUE=",
-   "tagline": "Greatness is measured by courage and heart.", "privacy-
-   settings": { "post-visibility": "unlisted" }, "following": ["bob"],
-   "posts": { "post": [ { "timestamp": "2020-10-17T18:02:04Z", "body":
-   "What's your status?" } ] }, "stats": { "joined":
-   "2020-10-08T12:38:32Z", "membership-level": "pro", "last-activity":
-   "2021-04-01T02:51:11Z" } } ], "@example-social:member": [ { "ietf-
-   list-pagination:remaining": 0, "ietf-list-pagination:previous":
-   "bGlu", // lin "ietf-list-pagination:next": "" } ] } ~~~~ ####
-   A.3.3.4. cursor="BASE64VALUE=" REQUEST
+   REQUEST
 
-   The cursor used does not exist in the datastore. ~~~~ Target:
-   /example-social:members/member Pagination Parameters: Where: - Sort-
-   by: - Direction: - Offset: - Limit: - Cursor: BASE64VALUE= ~~~~
-   RESPONSE ~~~~ error-type: application error-tag: invalid-value error-
-   app-tag: ietf-list-pagination:cursor-not-found ~~~~
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     2
+       Cursor:    YWxpY2U=
+
+   RESPONSE
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "alice",
+         "email-address": "alice@example.com",
+         "password": "$0$1543",
+         "avatar": "BASE64VALUE=",
+         "tagline": "Every day is a new day",
+         "privacy-settings": {
+           "hide-network": false,
+           "post-visibility": "public"
+         },
+         "following": ["bob", "eric", "lin"],
+         "posts": {
+           "post": [
+             {
+               "timestamp": "2020-07-08T13:12:45Z",
+               "title": "My first post",
+               "body": "Hiya all!"
+             },
+             {
+               "timestamp": "2020-07-09T01:32:23Z",
+               "title": "Sleepy...",
+               "body": "Catch y'all tomorrow."
+             }
+           ]
+         },
+         "favorites": {
+           "uint8-numbers": [17, 13, 11, 7, 5, 3],
+           "int8-numbers": [-5, -3, -1, 1, 3, 5]
+         },
+         "stats": {
+           "joined": "2020-07-08T12:38:32Z",
+           "membership-level": "admin",
+           "last-activity": "2021-04-01T02:51:11Z"
+         }
+       },
+       {
+         "member-id": "lin",
+         "email-address": "lin@example.com",
+         "password": "$0$1543",
+         "privacy-settings": {
+           "hide-network": true,
+           "post-visibility": "followers-only"
+         },
+         "following": ["joe", "eric", "alice"],
+         "stats": {
+           "joined": "2020-07-09T12:38:32Z",
+           "membership-level": "standard",
+           "last-activity": "2021-04-01T02:51:11Z"
+         }
+       }
+     ],
+     "@example-social:member": [
+       {
+         "ietf-list-pagination:remaining": 1,
+         "ietf-list-pagination:previous": "ZXJpYw==", // eric
+         "ietf-list-pagination:next": "am9l" // joe
+       }
+     ]
+   }
+
+A.3.3.3.  A.3.3.3. cursor="am9l"&limit=2
+
+   REQUEST
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     2
+       Cursor:    am9l
+
+   RESPONSE
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "joe",
+         "email-address": "joe@example.com",
+         "password": "$0$1543",
+         "avatar": "BASE64VALUE=",
+         "tagline": "Greatness is measured by courage and heart.",
+         "privacy-settings": {
+           "post-visibility": "unlisted"
+         },
+         "following": ["bob"],
+         "posts": {
+           "post": [
+             {
+               "timestamp": "2020-10-17T18:02:04Z",
+               "body": "What's your status?"
+             }
+           ]
+         },
+         "stats": {
+           "joined": "2020-10-08T12:38:32Z",
+           "membership-level": "pro",
+           "last-activity": "2021-04-01T02:51:11Z"
+         }
+       }
+     ],
+     "@example-social:member": [
+       {
+         "ietf-list-pagination:remaining": 0,
+         "ietf-list-pagination:previous": "bGlu", // lin
+         "ietf-list-pagination:next": ""
+       }
+     ]
+   }
+
+A.3.3.4.  A.3.3.4. cursor="BASE64VALUE="
+
+   REQUEST The cursor used does not exist in the datastore.
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     -
+       Cursor:    BASE64VALUE=
+
+   RESPONSE
+
+   error-type: application
+   error-tag: invalid-value
+   error-app-tag: ietf-list-pagination:cursor-not-found
 
 A.3.4.  A.3.4.  The "direction" Parameter
 
@@ -2076,17 +2328,39 @@ A.3.4.  A.3.4.  The "direction" Parameter
 
 A.3.4.1.  A.3.4.1. direction=forwards
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction:
-   forwards Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [17, 13, 11, 7, 5, 3] } ~~~~
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: forwards
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
+   }
 
 A.3.4.2.  A.3.4.2. direction=backwards
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: - Direction:
-   backwards Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [3, 5, 7, 11, 13, 17] } ~~~~
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: backwards
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
+   }
 
 A.3.5.  A.3.5.  The "sort-by" Parameter
 
@@ -2110,10 +2384,21 @@ A.3.5.1.1.  A.3.5.1.1. type is a "leaf-list"
    social:members/member=alice/favorites/uint8-numbers", which is a
    leaf-list.
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites/
-   uint8-numbers Pagination Parameters: Where: - Sort-by: .  Direction:
-   - Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [3, 5, 7, 11, 13, 17] } ~~~~
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   .
+       Direction: -
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
+   }
 
 A.3.5.1.2.  A.3.5.1.2. type is a "list" and sort-by node is a direct
             descendent
@@ -2125,15 +2410,45 @@ A.3.5.1.2.  A.3.5.1.2. type is a "list" and sort-by node is a direct
    which is a "list", and the sort-by descendent node "member-id", which
    is the "key" for the list.
 
-   REQUEST ~~~~ Target: /example-social:members/member Pagination
-   Parameters: Where: - Sort-by: member-id Direction: - Offset: - Limit:
-   - ~~~~ RESPONSE
+   REQUEST
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   member-id
+       Direction: -
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
 
    To make the example more understandable, an ellipse (i.e., "...") is
-   used to represent a missing subtree of data. ~~~~ { "example-
-   social:member": [ { "member-id": "alice", ...  }, { "member-id":
-   "bob", ...  }, { "member-id": "eric", ...  }, { "member-id": "joe",
-   ...  }, { "member-id": "lin", ...  } ] } ~~~~
+   used to represent a missing subtree of data.
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "alice",
+         ...
+       },
+       {
+         "member-id": "bob",
+         ...
+       },
+       {
+         "member-id": "eric",
+         ...
+       },
+       {
+         "member-id": "joe",
+         ...
+       },
+       {
+         "member-id": "lin",
+         ...
+       }
+     ]
+   }
 
 A.3.5.1.3.  A.3.5.1.3. type is a "list" and sort-by node is an indirect
             descendent
@@ -2147,15 +2462,45 @@ A.3.5.1.3.  A.3.5.1.3. type is a "list" and sort-by node is an indirect
    "config false" node, this request would have to target the "member"
    node in the <operational> datastore.
 
-   REQUEST ~~~~ Target: /example-social:members/member Pagination
-   Parameters: Where: - Sort-by: stats/joined Direction: - Offset: -
-   Limit: - ~~~~ RESPONSE
+   REQUEST
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   stats/joined
+       Direction: -
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
 
    To make the example more understandable, an elipse (i.e., "...") is
-   used to represent a missing subtree of data. ~~~~ { "example-
-   social:member": [ { "member-id": "alice", ...  }, { "member-id":
-   "lin", ...  }, { "member-id": "bob", ...  }, { "member-id": "eric",
-   ...  }, { "member-id": "joe", ...  } ] } ~~~~
+   used to represent a missing subtree of data.
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "alice",
+         ...
+       },
+       {
+         "member-id": "lin",
+         ...
+       },
+       {
+         "member-id": "bob",
+         ...
+       },
+       {
+         "member-id": "eric",
+         ...
+       },
+       {
+         "member-id": "joe",
+         ...
+       }
+     ]
+   }
 
 A.3.6.  A.3.6.  The "where" Parameter
 
@@ -2168,25 +2513,60 @@ A.3.6.1.  A.3.6.1. match of leaf-list's values
    This example selects the uint8-numbers greater than 7 in the member
    alice's favorites.
 
-   REQUEST ~~~~ Target: /example-social:members/member=alice/favorites
-   Pagination Parameters: Where: uint8-numbers[. gt&; 7] Sort-by: -
-   Direction: - Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:uint8-numbers": [17, 13, 11], } ~~~~
+   REQUEST
+
+   Target: /example-social:members/member=alice/favorites
+     Pagination Parameters:
+       Where:     uint8-numbers[. gt&; 7]
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
+
+   {
+     "example-social:uint8-numbers": [17, 13, 11],
+   }
 
 A.3.6.2.  A.3.6.2. match on descendent string containing a substring
 
    This example selects members that have an email address containing
    "@example.com".
 
-   REQUEST ~~~~ Target: /example-social:members/member Pagination
-   Parameters: Where: .[contains (email-address,'@example.com')] Sort-
-   by: - Direction: - Offset: - Limit: - ~~~~ RESPONSE
+   REQUEST
 
-   To make the example more understandable, an elipse (i.e., "...") is
-   used to represent a missing subtree of data. ~~~~ { "example-
-   social:member": [ { "member-id": "bob", ...  }, { "member-id":
-   "eric", ...  }, { "member-id": "alice", ...  }, { "member-id": "joe",
-   ...  } ] } ~~~~
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     .[contains (email-address,'@example.com')]
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     -
+
+   RESPONSE To make the example more understandable, an elipse (i.e.,
+   "...") is used to represent a missing subtree of data.
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "bob",
+         ...
+       },
+       {
+         "member-id": "eric",
+         ...
+       },
+       {
+         "member-id": "alice",
+         ...
+       },
+       {
+         "member-id": "joe",
+         ...
+       }
+     ]
+   }
 
 A.3.6.3.  A.3.6.3. match on decendent timestamp starting with a
           substring
@@ -2194,15 +2574,41 @@ A.3.6.3.  A.3.6.3. match on decendent timestamp starting with a
    This example selects members that have a posting whose timestamp
    begins with the string "2020".
 
-   REQUEST ~~~~ Target: /example-social:members/member Pagination
-   Parameters: Where: posts/post[starts-with(timestamp,'2020')] Sort-by:
-   - Direction: - Offset: - Limit: - ~~~~ RESPONSE
+   REQUEST
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     posts/post[starts-with(timestamp,'2020')]
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
 
    To make the example more understandable, an elipse (i.e., "...") is
-   used to represent a missing subtree of data. ~~~~ { "example-
-   social:member": [ { "member-id": "bob", ...  }, { "member-id":
-   "eric", ...  }, { "member-id": "alice", ...  }, { "member-id": "joe",
-   ...  } ] } ~~~~
+   used to represent a missing subtree of data.
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "bob",
+         ...
+       },
+       {
+         "member-id": "eric",
+         ...
+       },
+       {
+         "member-id": "alice",
+         ...
+       },
+       {
+         "member-id": "joe",
+         ...
+       }
+     ]
+   }
 
 A.3.7.  A.3.7.  The "locale" Parameter
 
@@ -2223,35 +2629,152 @@ A.3.7.  A.3.7.  The "locale" Parameter
    If an ordered-by system target is not ordered according to any
    locale, the server omits the locale from the response.
 
-   REQUEST ~~~~ Target: /example-social:members/member Pagination
-   Parameters: Where: - Sort-by: member-id Direction: - Offset: - Limit:
-   - Locale: sv_SE ~~~~ RESPONSE ~~~~ { "example-social:member": [ {
-   "member-id": "alice", ...  }, { "member-id": "bob", ...  }, {
-   "member-id": "eric", ...  }, { "member-id": "joe", ...  }, { "member-
-   id": "lin", ...  }, { "member-id": "åsa", ...  } ], "@example-
-   social:member": [ { "ietf-list-pagination:locale": "sv_SE" } ] } ~~~~
-   REQUEST ~~~~ Target: /example-social:members/member Pagination
-   Parameters: Where: - Sort-by: member-id Direction: - Offset: - Limit:
-   - Locale: en_US RESPONSE ~~~~ { "example-social:member": [ { "member-
-   id": "alice", ...  }, { "member-id": "åsa", ...  }, { "member-id":
-   "bob", ...  }, { "member-id": "eric", ...  }, { "member-id": "joe",
-   ...  }, { "member-id": "lin", ...  } ], "@example-social:member": [ {
-   "ietf-list-pagination:locale": "en_US" } ] } ~~~~ REQUEST ~~~~~
-   Target: /example-social:members/member Pagination Parameters: Where:
-   - Sort-by: member-id Direction: - Offset: - Limit: - Locale: invalid
-   ~~~~ RESPONSE ~~~~ error-type: application error-tag: invalid-value
-   error-app-tag: ietf-list-pagination:locale-unavailable ~~~~ REQUEST
+   REQUEST
 
-   This example targets an "ordered-by user" list. ~~~~ Target:
-   /example-social:members/member=alice/favorites/uint8-numbers
-   Pagination Parameters: Where: - Sort-by: .  Direction: - Offset: -
-   Limit: - Locale: sv_SE ~~~~ RESPONSE ~~~~ error-type: application
-   error-tag: invalid-value ~~~~
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   member-id
+       Direction: -
+       Offset:    -
+       Limit:     -
+       Locale:    sv_SE
 
-   REQUEST ~~~~ This example supplies "locale" but not "sort-by". ~~~~
-   Target: /example-social:members/member Pagination Parameters: Where:
-   - Sort-by: - Direction: - Offset: - Limit: - Locale: sv_SE ~~~~
-   RESPONSE ~~~~ error-type: application error-tag: invalid-value ~~~~
+   RESPONSE
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "alice",
+         ...
+       },
+       {
+         "member-id": "bob",
+         ...
+       },
+       {
+         "member-id": "eric",
+         ...
+       },
+       {
+         "member-id": "joe",
+         ...
+       },
+       {
+         "member-id": "lin",
+         ...
+       },
+       {
+         "member-id": "åsa",
+         ...
+       }
+     ],
+     "@example-social:member": [
+       {
+         "ietf-list-pagination:locale": "sv_SE"
+       }
+     ]
+   }
+
+   REQUEST
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   member-id
+       Direction: -
+       Offset:    -
+       Limit:     -
+       Locale:    en_US
+
+   RESPONSE
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "alice",
+         ...
+       },
+       {
+         "member-id": "åsa",
+         ...
+       },
+       {
+         "member-id": "bob",
+         ...
+       },
+       {
+         "member-id": "eric",
+         ...
+       },
+       {
+         "member-id": "joe",
+         ...
+       },
+       {
+         "member-id": "lin",
+         ...
+       }
+     ],
+     "@example-social:member": [
+       {
+         "ietf-list-pagination:locale": "en_US"
+       }
+     ]
+   }
+
+   REQUEST
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   member-id
+       Direction: -
+       Offset:    -
+       Limit:     -
+       Locale:    invalid
+
+   RESPONSE
+
+   error-type: application
+   error-tag: invalid-value
+   error-app-tag: ietf-list-pagination:locale-unavailable
+
+   REQUEST
+
+   This example targets an "ordered-by user" list.
+
+   Target: /example-social:members/member=alice/favorites/uint8-numbers
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   .
+       Direction: -
+       Offset:    -
+       Limit:     -
+       Locale:    sv_SE
+
+   RESPONSE
+
+   error-type: application
+   error-tag: invalid-value
+
+   REQUEST
+
+   This example supplies "locale" but not "sort-by".
+
+   Target: /example-social:members/member
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     -
+       Locale:    sv_SE
+
+   RESPONSE
+
+   error-type: application
+   error-tag: invalid-value
 
 A.3.7.1.  A.3.8.  The "sublist-limit" Parameter
 
@@ -2272,20 +2795,67 @@ A.3.7.2.  A.3.8.1. target is a list entry
    the first element of each descendent list and leaf-list having more
    than one value.
 
-   REQUEST ~~~~ Datastore: intended Target: /example-social:members/
-   member=alice Sublist-limit: 1 Pagination Parameters: Where: - Sort-
-   by: - Direction: - Offset: - Limit: - ~~~~ RESPONSE ~~~~ { "example-
-   social:member": [ { "member-id": "alice", "email-address":
-   "alice@example.com", "password": "$0$1543", "avatar": "BASE64VALUE=",
-   "tagline": "Every day is a new day", "privacy-settings": { "hide-
-   network": "false", "post-visibility": "public" }, "following":
-   ["bob"], "@following": [ { "ietf-list-pagination:remaining": "2" } ],
-   "posts": { "post": [ { "@": { "ietf-list-pagination:remaining": "1"
-   }, "timestamp": "2020-07-08T13:12:45Z", "title": "My first post",
-   "body": "Hiya all!" } ] }, "favorites": { "uint8-numbers": [17],
-   "int8-numbers": [-5], "@uint8-numbers": [ { "ietf-list-
-   pagination:remaining": "5" } ], "@int8-numbers": [ { "ietf-list-
-   pagination:remaining": "5" } ] } } ] } ~~~~
+   REQUEST
+
+     Datastore: intended
+     Target: /example-social:members/member=alice
+     Sublist-limit: 1
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
+
+   {
+     "example-social:member": [
+       {
+         "member-id": "alice",
+         "email-address": "alice@example.com",
+         "password": "$0$1543",
+         "avatar": "BASE64VALUE=",
+         "tagline": "Every day is a new day",
+         "privacy-settings": {
+           "hide-network": "false",
+           "post-visibility": "public"
+         },
+         "following": ["bob"],
+         "@following": [
+           {
+             "ietf-list-pagination:remaining": "2"
+           }
+         ],
+         "posts": {
+           "post": [
+             {
+               "@": {
+                 "ietf-list-pagination:remaining": "1"
+               },
+               "timestamp": "2020-07-08T13:12:45Z",
+               "title": "My first post",
+               "body": "Hiya all!"
+             }
+           ]
+         },
+         "favorites": {
+           "uint8-numbers": [17],
+           "int8-numbers": [-5],
+           "@uint8-numbers": [
+             {
+               "ietf-list-pagination:remaining": "5"
+             }
+           ],
+           "@int8-numbers": [
+             {
+               "ietf-list-pagination:remaining": "5"
+             }
+           ]
+         }
+       }
+     ]
+   }
 
 A.3.7.3.  A.3.8.2. target is a datastore
 
@@ -2298,9 +2868,19 @@ A.3.7.3.  A.3.8.2. target is a datastore
    the first element of each descendent list and leaf-list having more
    than one value.
 
-   REQUEST ~~~~ Datastore: intended Target: / Sublist-limit: 1
-   Pagination Parameters: Where: - Sort-by: - Direction: - Offset: -
-   Limit: - ~~~~ RESPONSE
+   REQUEST
+
+     Datastore: intended
+     Target: /
+     Sublist-limit: 1
+     Pagination Parameters:
+       Where:     -
+       Sort-by:   -
+       Direction: -
+       Offset:    -
+       Limit:     -
+
+   RESPONSE
 
    {
      "example-social:members": {
@@ -2340,29 +2920,90 @@ A.3.7.3.  A.3.8.2. target is a datastore
 
 A.3.8.  A.3.9.  Combinations of Parameters
 
-   #### A.3.9.1.  All six parameters at once REQUEST ~~~~ Datastore:
-   <operational> Target: /example-social:members/member Sublist-limit: 1
-   Pagination Parameters: Where: stats/joined[starts-
-   with(timestamp,'2020')] Sort-by: member-id Direction: backwards
-   Offset: 2 Limit: 2 ~~~~ RESPONSE ~~~~ { "example-social:member": [ {
-   "@": { "ietf-list-pagination:remaining": "1" }, "member-id": "eric",
-   "email-address": "eric@example.com", "password": "$0$1543", "avatar":
-   "BASE64VALUE=", "tagline": "Go to bed with dreams; wake up with a
-   purpose.", "following": ["alice"], "posts": { "post": [ {
-   "timestamp": "2020-09-17T18:02:04Z", "title": "Son, brother, husband,
-   father", "body": "What's your story?" } ] }, "favorites": { "bits":
-   ["two"], "@bits": [ { "ietf-list-pagination:remaining": "2" } ] },
-   "stats": { "joined": "2020-09-17T19:38:32Z", "membership-level":
-   "pro", "last-activity": "2020-09-17T18:02:04Z" } }, { "member-id":
-   "bob", "email-address": "bob@example.com", "password": "$0$1543",
-   "avatar": "BASE64VALUE=", "tagline": "Here and now, like never
-   before.", "posts": { "post": [ { "@": { "ietf-list-
-   pagination:remaining": "2" }, "timestamp": "2020-08-14T03:32:25Z",
-   "body": "Just got in." } ] }, "favorites": { "decimal64-numbers":
-   ["3.14159"], "@decimal64-numbers": [ { "ietf-list-
-   pagination:remaining": "1" } ] }, "stats": { "joined":
-   "2020-08-14T03:30:00Z", "membership-level": "standard", "last-
-   activity": "2020-08-14T03:34:30Z" } } } } ~~~~
+A.3.8.1.  A.3.9.1.  All six parameters at once
+
+   REQUEST
+
+     Datastore: &lt;operational&gt;
+     Target: /example-social:members/member
+     Sublist-limit: 1
+     Pagination Parameters:
+       Where:     stats/joined[starts-with(timestamp,'2020')]
+       Sort-by:   member-id
+       Direction: backwards
+       Offset:    2
+       Limit:     2
+
+   RESPONSE
+
+   {
+     "example-social:member": [
+       {
+         "@": {
+           "ietf-list-pagination:remaining": "1"
+         },
+         "member-id": "eric",
+         "email-address": "eric@example.com",
+         "password": "$0$1543",
+         "avatar": "BASE64VALUE=",
+         "tagline": "Go to bed with dreams; wake up with a purpose.",
+         "following": ["alice"],
+         "posts": {
+           "post": [
+             {
+               "timestamp": "2020-09-17T18:02:04Z",
+               "title": "Son, brother, husband, father",
+               "body": "What's your story?"
+             }
+           ]
+         },
+         "favorites": {
+           "bits": ["two"],
+           "@bits": [
+             {
+               "ietf-list-pagination:remaining": "2"
+             }
+           ]
+         },
+         "stats": {
+           "joined": "2020-09-17T19:38:32Z",
+           "membership-level": "pro",
+           "last-activity": "2020-09-17T18:02:04Z"
+         }
+       },
+       {
+         "member-id": "bob",
+         "email-address": "bob@example.com",
+         "password": "$0$1543",
+         "avatar": "BASE64VALUE=",
+         "tagline": "Here and now, like never before.",
+         "posts": {
+           "post": [
+             {
+               "@": {
+                 "ietf-list-pagination:remaining": "2"
+               },
+               "timestamp": "2020-08-14T03:32:25Z",
+               "body": "Just got in."
+             }
+           ]
+         },
+         "favorites": {
+           "decimal64-numbers": ["3.14159"],
+           "@decimal64-numbers": [
+             {
+               "ietf-list-pagination:remaining": "1"
+             }
+           ]
+         },
+         "stats": {
+           "joined": "2020-08-14T03:30:00Z",
+           "membership-level": "standard",
+           "last-activity": "2020-08-14T03:34:30Z"
+         }
+       }
+     }
+   }
 
 Acknowledgments
 

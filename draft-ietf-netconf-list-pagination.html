@@ -3160,9 +3160,14 @@ module example-social {
 <p id="appendix-A.3.1-1">Noting that "limit" must be a positive number, the edge condition values are '1', '2', num-elements-1, num-elements, and num-elements+1.<a href="#appendix-A.3.1-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.1-2">Any value greater than or equal to num-elements results the entire result set, same as when "limit" is unspecified.<a href="#appendix-A.3.1-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.1-3">These vector tests assume the target "/example-social:members/member=alice/favorites/uint8-numbers", which has six values, thus the edge condition "limit" values are: '1', '2', '5', '6', and '7'.<a href="#appendix-A.3.1-3" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.1-4">A.3.1.1. limit=1
-REQUEST
-~~~~
+<div id="a311-limit1">
+<section id="appendix-A.3.1.1">
+            <h5 id="name-a311-limit1">
+<a href="#appendix-A.3.1.1" class="section-number selfRef">A.3.1.1. </a><a href="#name-a311-limit1" class="section-name selfRef">A.3.1.1. limit=1</a>
+            </h5>
+<p id="appendix-A.3.1.1-1">REQUEST<a href="#appendix-A.3.1.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.1-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3170,9 +3175,11 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    -
     Limit:     1
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.1.1-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.1.1-3">RESPONSE<a href="#appendix-A.3.1.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.1-4">
+<pre>
 {
   "example-social:uint8-numbers": [17],
   "@example-social:uint8-numbers": [
@@ -3181,10 +3188,18 @@ RESPONSE
      }
    ]
 }
-~~~~
-A.3.1.2. limit=2
-REQUEST
-~~~~
+</pre><a href="#appendix-A.3.1.1-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="a312-limit2">
+<section id="appendix-A.3.1.2">
+            <h5 id="name-a312-limit2">
+<a href="#appendix-A.3.1.2" class="section-number selfRef">A.3.1.2. </a><a href="#name-a312-limit2" class="section-name selfRef">A.3.1.2. limit=2</a>
+            </h5>
+<p id="appendix-A.3.1.2-1">REQUEST<a href="#appendix-A.3.1.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.2-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3192,9 +3207,11 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    -
     Limit:     2
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.1.2-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.1.2-3">RESPONSE<a href="#appendix-A.3.1.2-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.2-4">
+<pre>
 {
   "example-social:uint8-numbers": [17, 13],
   "@example-social:uint8-numbers": [
@@ -3203,14 +3220,18 @@ RESPONSE
      }
    ]
 }
-~~~~<a href="#appendix-A.3.1-4" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.1.2-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
 <div id="a313-limit5">
-<section id="appendix-A.3.1.1">
+<section id="appendix-A.3.1.3">
             <h5 id="name-a313-limit5">
-<a href="#appendix-A.3.1.1" class="section-number selfRef">A.3.1.1. </a><a href="#name-a313-limit5" class="section-name selfRef">A.3.1.3. limit=5</a>
+<a href="#appendix-A.3.1.3" class="section-number selfRef">A.3.1.3. </a><a href="#name-a313-limit5" class="section-name selfRef">A.3.1.3. limit=5</a>
             </h5>
-<p id="appendix-A.3.1.1-1">REQUEST
-~~~~
+<p id="appendix-A.3.1.3-1">REQUEST<a href="#appendix-A.3.1.3-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.3-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3218,9 +3239,11 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    -
     Limit:     5
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.1.3-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.1.3-3">RESPONSE<a href="#appendix-A.3.1.3-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.3-4">
+<pre>
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5],
   "@example-social:uint8-numbers": [
@@ -3229,10 +3252,18 @@ RESPONSE
      }
    ]
 }
-~~~~
-#### A.3.1.4. limit=6<a href="#appendix-A.3.1.1-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.1.1-2">REQUEST
-~~~~
+</pre><a href="#appendix-A.3.1.3-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="a314-limit6">
+<section id="appendix-A.3.1.4">
+            <h5 id="name-a314-limit6">
+<a href="#appendix-A.3.1.4" class="section-number selfRef">A.3.1.4. </a><a href="#name-a314-limit6" class="section-name selfRef">A.3.1.4. limit=6</a>
+            </h5>
+<p id="appendix-A.3.1.4-1">REQUEST<a href="#appendix-A.3.1.4-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.4-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3240,16 +3271,26 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    -
     Limit:     6
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.1.4-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.1.4-3">RESPONSE<a href="#appendix-A.3.1.4-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.4-4">
+<pre>
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
 }
-~~~~
-#### A.3.1.5. limit=7<a href="#appendix-A.3.1.1-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.1.1-3">REQUEST
-~~~~
+</pre><a href="#appendix-A.3.1.4-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="a315-limit7">
+<section id="appendix-A.3.1.5">
+            <h5 id="name-a315-limit7">
+<a href="#appendix-A.3.1.5" class="section-number selfRef">A.3.1.5. </a><a href="#name-a315-limit7" class="section-name selfRef">A.3.1.5. limit=7</a>
+            </h5>
+<p id="appendix-A.3.1.5-1">REQUEST<a href="#appendix-A.3.1.5-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.5-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3257,13 +3298,16 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    -
     Limit:     7
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.1.5-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.1.5-3">RESPONSE<a href="#appendix-A.3.1.5-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.1.5-4">
+<pre>
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
 }
-~~~~<a href="#appendix-A.3.1.1-3" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.1.5-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -3280,8 +3324,9 @@ RESPONSE
             <h5 id="name-a321-offset0">
 <a href="#appendix-A.3.2.1" class="section-number selfRef">A.3.2.1. </a><a href="#name-a321-offset0" class="section-name selfRef">A.3.2.1. offset=0</a>
             </h5>
-<p id="appendix-A.3.2.1-1">REQUEST
-~~~~
+<p id="appendix-A.3.2.1-1">REQUEST<a href="#appendix-A.3.2.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.1-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3289,16 +3334,26 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    0
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.2.1-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.2.1-3">RESPONSE<a href="#appendix-A.3.2.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.1-4">
+<pre>
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
 }
-~~~~
-#### A.3.2.2. offset=1<a href="#appendix-A.3.2.1-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.2.1-2">REQUEST
-~~~~
+</pre><a href="#appendix-A.3.2.1-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="a322-offset1">
+<section id="appendix-A.3.2.2">
+            <h5 id="name-a322-offset1">
+<a href="#appendix-A.3.2.2" class="section-number selfRef">A.3.2.2. </a><a href="#name-a322-offset1" class="section-name selfRef">A.3.2.2. offset=1</a>
+            </h5>
+<p id="appendix-A.3.2.2-1">REQUEST<a href="#appendix-A.3.2.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.2-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3306,22 +3361,26 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    1
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.2.2-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.2.2-3">RESPONSE<a href="#appendix-A.3.2.2-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.2-4">
+<pre>
 {
   "example-social:uint8-numbers": [13, 11, 7, 5, 3]
 }
-~~~~<a href="#appendix-A.3.2.1-2" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.2.2-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="a323-offset2">
-<section id="appendix-A.3.2.2">
+<section id="appendix-A.3.2.3">
             <h5 id="name-a323-offset2">
-<a href="#appendix-A.3.2.2" class="section-number selfRef">A.3.2.2. </a><a href="#name-a323-offset2" class="section-name selfRef">A.3.2.3. offset=2</a>
+<a href="#appendix-A.3.2.3" class="section-number selfRef">A.3.2.3. </a><a href="#name-a323-offset2" class="section-name selfRef">A.3.2.3. offset=2</a>
             </h5>
-<p id="appendix-A.3.2.2-1">REQUEST
-~~~~
+<p id="appendix-A.3.2.3-1">REQUEST<a href="#appendix-A.3.2.3-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.3-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3329,16 +3388,26 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    2
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.2.3-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.2.3-3">RESPONSE<a href="#appendix-A.3.2.3-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.3-4">
+<pre>
 {
   "example-social:uint8-numbers": [11, 7, 5, 3]
 }
-~~~~
-#### A.3.2.4. offset=5<a href="#appendix-A.3.2.2-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.2.2-2">REQUEST
-~~~~
+</pre><a href="#appendix-A.3.2.3-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="a324-offset5">
+<section id="appendix-A.3.2.4">
+            <h5 id="name-a324-offset5">
+<a href="#appendix-A.3.2.4" class="section-number selfRef">A.3.2.4. </a><a href="#name-a324-offset5" class="section-name selfRef">A.3.2.4. offset=5</a>
+            </h5>
+<p id="appendix-A.3.2.4-1">REQUEST<a href="#appendix-A.3.2.4-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.4-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3346,22 +3415,26 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    5
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.2.4-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.2.4-3">RESPONSE<a href="#appendix-A.3.2.4-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.4-4">
+<pre>
 {
   "example-social:uint8-numbers": [3]
 }
-~~~~<a href="#appendix-A.3.2.2-2" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.2.4-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="a325-offset6">
-<section id="appendix-A.3.2.3">
+<section id="appendix-A.3.2.5">
             <h5 id="name-a325-offset6">
-<a href="#appendix-A.3.2.3" class="section-number selfRef">A.3.2.3. </a><a href="#name-a325-offset6" class="section-name selfRef">A.3.2.5. offset=6</a>
+<a href="#appendix-A.3.2.5" class="section-number selfRef">A.3.2.5. </a><a href="#name-a325-offset6" class="section-name selfRef">A.3.2.5. offset=6</a>
             </h5>
-<p id="appendix-A.3.2.3-1">REQUEST
-~~~~
+<p id="appendix-A.3.2.5-1">REQUEST<a href="#appendix-A.3.2.5-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.5-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3369,16 +3442,26 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    6
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.2.5-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.2.5-3">RESPONSE<a href="#appendix-A.3.2.5-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.5-4">
+<pre>
 {
   "example-social:uint8-numbers": []
 }
-~~~~
-#### A.3.2.6. offset=7<a href="#appendix-A.3.2.3-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.2.3-2">REQUEST
-~~~~
+</pre><a href="#appendix-A.3.2.5-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="a326-offset7">
+<section id="appendix-A.3.2.6">
+            <h5 id="name-a326-offset7">
+<a href="#appendix-A.3.2.6" class="section-number selfRef">A.3.2.6. </a><a href="#name-a326-offset7" class="section-name selfRef">A.3.2.6. offset=7</a>
+            </h5>
+<p id="appendix-A.3.2.6-1">REQUEST<a href="#appendix-A.3.2.6-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.6-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3386,13 +3469,16 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    7
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.2.6-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.2.6-3">RESPONSE<a href="#appendix-A.3.2.6-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.2.6-4">
+<pre>
 error-type: application
 error-tag: invalid-value
 error-app-tag: ietf-list-pagination:offset-out-of-range
-~~~~<a href="#appendix-A.3.2.3-2" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.2.6-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -3411,8 +3497,9 @@ error-app-tag: ietf-list-pagination:offset-out-of-range
             <h5 id="name-a331-cursorlimit2">
 <a href="#appendix-A.3.3.1" class="section-number selfRef">A.3.3.1. </a><a href="#name-a331-cursorlimit2" class="section-name selfRef">A.3.3.1. cursor=&amp;limit=2</a>
             </h5>
-<p id="appendix-A.3.3.1-1">REQUEST
-~~~~
+<p id="appendix-A.3.3.1-1">REQUEST<a href="#appendix-A.3.3.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.3.1-2">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -3421,9 +3508,10 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     2
     Cursor:    -
-~~~~<a href="#appendix-A.3.3.1-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.3.1-2">RESPONSE<a href="#appendix-A.3.3.1-2" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="appendix-A.3.3.1-3">
+</pre><a href="#appendix-A.3.3.1-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.3.1-3">RESPONSE<a href="#appendix-A.3.3.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.3.1-4">
 <pre>
 {
   "example-social:member": [
@@ -3492,7 +3580,7 @@ Target: /example-social:members/member
     }
   ]
 }
-</pre><a href="#appendix-A.3.3.1-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-A.3.3.1-4" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -3501,8 +3589,9 @@ Target: /example-social:members/member
             <h5 id="name-a332-cursorywxpy2ulimit2">
 <a href="#appendix-A.3.3.2" class="section-number selfRef">A.3.3.2. </a><a href="#name-a332-cursorywxpy2ulimit2" class="section-name selfRef">A.3.3.2. cursor="YWxpY2U="&amp;limit=2</a>
             </h5>
-<p id="appendix-A.3.3.2-1">REQUEST
-~~~~
+<p id="appendix-A.3.3.2-1">REQUEST<a href="#appendix-A.3.3.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.3.2-2">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -3511,9 +3600,11 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     2
     Cursor:    YWxpY2U=
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.3.2-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.3.2-3">RESPONSE<a href="#appendix-A.3.3.2-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.3.2-4">
+<pre>
 {
   "example-social:member": [
     {
@@ -3575,10 +3666,18 @@ RESPONSE
     }
   ]
 }
-~~~~
-A.3.3.3. cursor="am9l"&amp;limit=2
-REQUEST
-~~~~
+</pre><a href="#appendix-A.3.3.2-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="a333-cursoram9llimit2">
+<section id="appendix-A.3.3.3">
+            <h5 id="name-a333-cursoram9llimit2">
+<a href="#appendix-A.3.3.3" class="section-number selfRef">A.3.3.3. </a><a href="#name-a333-cursoram9llimit2" class="section-name selfRef">A.3.3.3. cursor="am9l"&amp;limit=2</a>
+            </h5>
+<p id="appendix-A.3.3.3-1">REQUEST<a href="#appendix-A.3.3.3-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.3.3-2">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -3587,9 +3686,11 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     2
     Cursor:    am9l
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.3.3-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.3.3-3">RESPONSE<a href="#appendix-A.3.3.3-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.3.3-4">
+<pre>
 {
   "example-social:member": [
     {
@@ -3625,11 +3726,19 @@ RESPONSE
     }
   ]
 }
-~~~~
-#### A.3.3.4. cursor="BASE64VALUE="
-REQUEST<a href="#appendix-A.3.3.2-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.3.2-2">The cursor used does not exist in the datastore.
-~~~~
+</pre><a href="#appendix-A.3.3.3-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="a334-cursorbase64value">
+<section id="appendix-A.3.3.4">
+            <h5 id="name-a334-cursorbase64value">
+<a href="#appendix-A.3.3.4" class="section-number selfRef">A.3.3.4. </a><a href="#name-a334-cursorbase64value" class="section-name selfRef">A.3.3.4. cursor="BASE64VALUE="</a>
+            </h5>
+<p id="appendix-A.3.3.4-1">REQUEST
+The cursor used does not exist in the datastore.<a href="#appendix-A.3.3.4-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.3.4-2">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -3638,13 +3747,16 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
     Cursor:    BASE64VALUE=
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.3.4-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.3.4-3">RESPONSE<a href="#appendix-A.3.3.4-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.3.4-4">
+<pre>
 error-type: application
 error-tag: invalid-value
 error-app-tag: ietf-list-pagination:cursor-not-found
-~~~~<a href="#appendix-A.3.3.2-2" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.3.4-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -3663,8 +3775,9 @@ error-app-tag: ietf-list-pagination:cursor-not-found
             <h5 id="name-a341-directionforwards">
 <a href="#appendix-A.3.4.1" class="section-number selfRef">A.3.4.1. </a><a href="#name-a341-directionforwards" class="section-name selfRef">A.3.4.1. direction=forwards</a>
             </h5>
-<p id="appendix-A.3.4.1-1">REQUEST
-~~~~
+<p id="appendix-A.3.4.1-1">REQUEST<a href="#appendix-A.3.4.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.4.1-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3672,13 +3785,16 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: forwards
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.4.1-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.4.1-3">RESPONSE<a href="#appendix-A.3.4.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.4.1-4">
+<pre>
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
 }
-~~~~<a href="#appendix-A.3.4.1-1" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.4.1-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="a342-directionbackwards">
@@ -3686,8 +3802,9 @@ RESPONSE
             <h5 id="name-a342-directionbackwards">
 <a href="#appendix-A.3.4.2" class="section-number selfRef">A.3.4.2. </a><a href="#name-a342-directionbackwards" class="section-name selfRef">A.3.4.2. direction=backwards</a>
             </h5>
-<p id="appendix-A.3.4.2-1">REQUEST
-~~~~
+<p id="appendix-A.3.4.2-1">REQUEST<a href="#appendix-A.3.4.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.4.2-2">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3695,13 +3812,16 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: backwards
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.4.2-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.4.2-3">RESPONSE<a href="#appendix-A.3.4.2-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.4.2-4">
+<pre>
 {
   "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
 }
-~~~~<a href="#appendix-A.3.4.2-1" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.4.2-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -3725,8 +3845,9 @@ RESPONSE
               </h6>
 <p id="appendix-A.3.5.1.1-1">This example illustrates when the target node's type is a "leaf-list". Note that a single period (i.e., '.') is used to represent the nodes to be sorted.<a href="#appendix-A.3.5.1.1-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.5.1.1-2">This test again uses the target "/example-social:members/member=alice/favorites/uint8-numbers", which is a leaf-list.<a href="#appendix-A.3.5.1.1-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.5.1.1-3">REQUEST
-~~~~
+<p id="appendix-A.3.5.1.1-3">REQUEST<a href="#appendix-A.3.5.1.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.5.1.1-4">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -3734,13 +3855,16 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Direction: -
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.5.1.1-4" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.5.1.1-5">RESPONSE<a href="#appendix-A.3.5.1.1-5" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.5.1.1-6">
+<pre>
 {
   "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
 }
-~~~~<a href="#appendix-A.3.5.1.1-3" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.5.1.1-6" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="a3512-type-is-a-list-and-sort-by-node-is-a-direct-descendent">
@@ -3750,8 +3874,9 @@ RESPONSE
               </h6>
 <p id="appendix-A.3.5.1.2-1">This example illustrates when the target node's type is a "list" and a direct descendent is the "sort-by" node.<a href="#appendix-A.3.5.1.2-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.5.1.2-2">This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "member-id", which is the "key" for the list.<a href="#appendix-A.3.5.1.2-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.5.1.2-3">REQUEST
-~~~~
+<p id="appendix-A.3.5.1.2-3">REQUEST<a href="#appendix-A.3.5.1.2-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.5.1.2-4">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -3759,10 +3884,12 @@ Target: /example-social:members/member
     Direction: -
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE<a href="#appendix-A.3.5.1.2-3" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.5.1.2-4">To make the example more understandable, an ellipse (i.e., "...") is used to represent a missing subtree of data.
-~~~~
+</pre><a href="#appendix-A.3.5.1.2-4" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.5.1.2-5">RESPONSE<a href="#appendix-A.3.5.1.2-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.2-6">To make the example more understandable, an ellipse (i.e., "...") is used to represent a missing subtree of data.<a href="#appendix-A.3.5.1.2-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.5.1.2-7">
+<pre>
 {
   "example-social:member": [
     {
@@ -3787,7 +3914,8 @@ RESPONSE<a href="#appendix-A.3.5.1.2-3" class="pilcrow">¶</a></p>
     }
   ]
 }
-~~~~<a href="#appendix-A.3.5.1.2-4" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.5.1.2-7" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="a3513-type-is-a-list-and-sort-by-node-is-an-indirect-descendent">
@@ -3797,8 +3925,9 @@ RESPONSE<a href="#appendix-A.3.5.1.2-3" class="pilcrow">¶</a></p>
               </h6>
 <p id="appendix-A.3.5.1.3-1">This example illustrates when the target node's type is a "list" and an indirect descendent is the "sort-by" node.<a href="#appendix-A.3.5.1.3-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.5.1.3-2">This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.<a href="#appendix-A.3.5.1.3-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.5.1.3-3">REQUEST
-~~~~
+<p id="appendix-A.3.5.1.3-3">REQUEST<a href="#appendix-A.3.5.1.3-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.5.1.3-4">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -3806,10 +3935,12 @@ Target: /example-social:members/member
     Direction: -
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE<a href="#appendix-A.3.5.1.3-3" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.5.1.3-4">To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
-~~~~
+</pre><a href="#appendix-A.3.5.1.3-4" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.5.1.3-5">RESPONSE<a href="#appendix-A.3.5.1.3-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.3-6">To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.<a href="#appendix-A.3.5.1.3-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.5.1.3-7">
+<pre>
 {
   "example-social:member": [
     {
@@ -3834,7 +3965,8 @@ RESPONSE<a href="#appendix-A.3.5.1.3-3" class="pilcrow">¶</a></p>
     }
   ]
 }
-~~~~<a href="#appendix-A.3.5.1.3-4" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.5.1.3-7" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -3853,8 +3985,9 @@ RESPONSE<a href="#appendix-A.3.5.1.3-3" class="pilcrow">¶</a></p>
 <a href="#appendix-A.3.6.1" class="section-number selfRef">A.3.6.1. </a><a href="#name-a361-match-of-leaf-lists-va" class="section-name selfRef">A.3.6.1. match of leaf-list's values</a>
             </h5>
 <p id="appendix-A.3.6.1-1">This example selects the uint8-numbers greater than 7 in the member alice's favorites.<a href="#appendix-A.3.6.1-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.1-2">REQUEST
-~~~~
+<p id="appendix-A.3.6.1-2">REQUEST<a href="#appendix-A.3.6.1-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.6.1-3">
+<pre>
 Target: /example-social:members/member=alice/favorites
   Pagination Parameters:
     Where:     uint8-numbers[. gt&amp;; 7]
@@ -3862,13 +3995,16 @@ Target: /example-social:members/member=alice/favorites
     Direction: -
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.6.1-3" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.6.1-4">RESPONSE<a href="#appendix-A.3.6.1-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.6.1-5">
+<pre>
 {
   "example-social:uint8-numbers": [17, 13, 11],
 }
-~~~~<a href="#appendix-A.3.6.1-2" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.6.1-5" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="a362-match-on-descendent-string-containing-a-substring">
@@ -3877,8 +4013,9 @@ RESPONSE
 <a href="#appendix-A.3.6.2" class="section-number selfRef">A.3.6.2. </a><a href="#name-a362-match-on-descendent-st" class="section-name selfRef">A.3.6.2. match on descendent string containing a substring</a>
             </h5>
 <p id="appendix-A.3.6.2-1">This example selects members that have an email address containing "@example.com".<a href="#appendix-A.3.6.2-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.2-2">REQUEST
-~~~~
+<p id="appendix-A.3.6.2-2">REQUEST<a href="#appendix-A.3.6.2-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.6.2-3">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     .[contains (email-address,'@example.com')]
@@ -3886,10 +4023,12 @@ Target: /example-social:members/member
     Direction: -
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE<a href="#appendix-A.3.6.2-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.2-3">To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
-~~~~
+</pre><a href="#appendix-A.3.6.2-3" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.6.2-4">RESPONSE
+To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.<a href="#appendix-A.3.6.2-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.6.2-5">
+<pre>
 {
   "example-social:member": [
     {
@@ -3910,7 +4049,8 @@ RESPONSE<a href="#appendix-A.3.6.2-2" class="pilcrow">¶</a></p>
     }
   ]
 }
-~~~~<a href="#appendix-A.3.6.2-3" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.6.2-5" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="a363-match-on-decendent-timestamp-starting-with-a-substring">
@@ -3919,8 +4059,9 @@ RESPONSE<a href="#appendix-A.3.6.2-2" class="pilcrow">¶</a></p>
 <a href="#appendix-A.3.6.3" class="section-number selfRef">A.3.6.3. </a><a href="#name-a363-match-on-decendent-tim" class="section-name selfRef">A.3.6.3. match on decendent timestamp starting with a substring</a>
             </h5>
 <p id="appendix-A.3.6.3-1">This example selects members that have a posting whose timestamp begins with the string "2020".<a href="#appendix-A.3.6.3-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.3-2">REQUEST
-~~~~
+<p id="appendix-A.3.6.3-2">REQUEST<a href="#appendix-A.3.6.3-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.6.3-3">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     posts/post[starts-with(timestamp,'2020')]
@@ -3928,10 +4069,12 @@ Target: /example-social:members/member
     Direction: -
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE<a href="#appendix-A.3.6.3-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.6.3-3">To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
-~~~~
+</pre><a href="#appendix-A.3.6.3-3" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.6.3-4">RESPONSE<a href="#appendix-A.3.6.3-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.6.3-5">To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.<a href="#appendix-A.3.6.3-5" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.6.3-6">
+<pre>
 {
   "example-social:member": [
     {
@@ -3952,7 +4095,8 @@ RESPONSE<a href="#appendix-A.3.6.3-2" class="pilcrow">¶</a></p>
     }
   ]
 }
-~~~~<a href="#appendix-A.3.6.3-3" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.6.3-6" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -3967,8 +4111,9 @@ RESPONSE<a href="#appendix-A.3.6.3-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7-3">Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by the user. For ordered-by system lists and leaf-lists, the server <span class="bcp14">MAY</span> report "locale" if the order that the server has chosen follows a valid locale,<a href="#appendix-A.3.7-3" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7-4">If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value" is returned.<a href="#appendix-A.3.7-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7-5">If an ordered-by system target is not ordered according to any locale, the server omits the locale from the response.<a href="#appendix-A.3.7-5" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7-6">REQUEST
-~~~~
+<p id="appendix-A.3.7-6">REQUEST<a href="#appendix-A.3.7-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-7">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -3977,9 +4122,11 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
     Locale:    sv_SE
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.7-7" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-8">RESPONSE<a href="#appendix-A.3.7-8" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-9">
+<pre>
 {
   "example-social:member": [
     {
@@ -4013,9 +4160,11 @@ RESPONSE
     }
   ]
 }
-~~~~
-REQUEST
-~~~~
+</pre><a href="#appendix-A.3.7-9" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-10">REQUEST<a href="#appendix-A.3.7-10" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-11">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -4024,8 +4173,11 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
     Locale:    en_US
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.7-11" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-12">RESPONSE<a href="#appendix-A.3.7-12" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-13">
+<pre>
 {
   "example-social:member": [
     {
@@ -4059,9 +4211,11 @@ RESPONSE
     }
   ]
 }
-~~~~
-REQUEST
-~~~~~
+</pre><a href="#appendix-A.3.7-13" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-14">REQUEST<a href="#appendix-A.3.7-14" class="pilcrow">¶</a></p>
+<div class="lang-~ sourcecode" id="appendix-A.3.7-15">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -4070,16 +4224,20 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
     Locale:    invalid
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.7-15" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-16">RESPONSE<a href="#appendix-A.3.7-16" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-17">
+<pre>
 error-type: application
 error-tag: invalid-value
 error-app-tag: ietf-list-pagination:locale-unavailable
-~~~~
-REQUEST<a href="#appendix-A.3.7-6" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7-7">This example targets an "ordered-by user" list.
-~~~~
+</pre><a href="#appendix-A.3.7-17" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-18">REQUEST<a href="#appendix-A.3.7-18" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-19">This example targets an "ordered-by user" list.<a href="#appendix-A.3.7-19" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-20">
+<pre>
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
     Where:     -
@@ -4088,16 +4246,19 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     -
     Locale:    sv_SE
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.7-20" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-21">RESPONSE<a href="#appendix-A.3.7-21" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-22">
+<pre>
 error-type: application
 error-tag: invalid-value
-~~~~<a href="#appendix-A.3.7-7" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7-8">REQUEST
-~~~~
-This example supplies "locale" but not "sort-by".
-~~~~
+</pre><a href="#appendix-A.3.7-22" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-23">REQUEST<a href="#appendix-A.3.7-23" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-24">This example supplies "locale" but not "sort-by".<a href="#appendix-A.3.7-24" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-25">
+<pre>
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
@@ -4106,12 +4267,15 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
     Locale:    sv_SE
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.7-25" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7-26">RESPONSE<a href="#appendix-A.3.7-26" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-27">
+<pre>
 error-type: application
 error-tag: invalid-value
-~~~~<a href="#appendix-A.3.7-8" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.7-27" class="pilcrow">¶</a>
+</div>
 <div id="a38-the-sublist-limit-parameter">
 <section id="appendix-A.3.7.1">
             <h5 id="name-a38-the-sublist-limit-param">
@@ -4129,8 +4293,9 @@ error-tag: invalid-value
 <p id="appendix-A.3.7.2-2">The target node is a specific list entry/element node, not the YANG "list" node.<a href="#appendix-A.3.7.2-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7.2-3">This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.<a href="#appendix-A.3.7.2-3" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7.2-4">Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.<a href="#appendix-A.3.7.2-4" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7.2-5">REQUEST
-~~~~
+<p id="appendix-A.3.7.2-5">REQUEST<a href="#appendix-A.3.7.2-5" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7.2-6">
+<pre>
   Datastore: intended
   Target: /example-social:members/member=alice
   Sublist-limit: 1
@@ -4140,9 +4305,11 @@ error-tag: invalid-value
     Direction: -
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.7.2-6" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7.2-7">RESPONSE<a href="#appendix-A.3.7.2-7" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7.2-8">
+<pre>
 {
   "example-social:member": [
     {
@@ -4190,7 +4357,8 @@ RESPONSE
     }
   ]
 }
-~~~~<a href="#appendix-A.3.7.2-5" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.7.2-8" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="a382-target-is-a-datastore">
@@ -4201,8 +4369,9 @@ RESPONSE
 <p id="appendix-A.3.7.3-1">This example uses the target node intended datastore.<a href="#appendix-A.3.7.3-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7.3-2">This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.<a href="#appendix-A.3.7.3-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7.3-3">Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.<a href="#appendix-A.3.7.3-3" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7.3-4">REQUEST
-~~~~
+<p id="appendix-A.3.7.3-4">REQUEST<a href="#appendix-A.3.7.3-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7.3-5">
+<pre>
   Datastore: intended
   Target: /
   Sublist-limit: 1
@@ -4212,9 +4381,10 @@ RESPONSE
     Direction: -
     Offset:    -
     Limit:     -
-~~~~
-RESPONSE<a href="#appendix-A.3.7.3-4" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="appendix-A.3.7.3-5">
+</pre><a href="#appendix-A.3.7.3-5" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.7.3-6">RESPONSE<a href="#appendix-A.3.7.3-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.7.3-7">
 <pre>
 {
   "example-social:members": {
@@ -4251,7 +4421,7 @@ RESPONSE<a href="#appendix-A.3.7.3-4" class="pilcrow">¶</a></p>
     ]
   }
 }
-</pre><a href="#appendix-A.3.7.3-5" class="pilcrow">¶</a>
+</pre><a href="#appendix-A.3.7.3-7" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -4262,10 +4432,15 @@ RESPONSE<a href="#appendix-A.3.7.3-4" class="pilcrow">¶</a></p>
           <h4 id="name-a39-combinations-of-paramet">
 <a href="#appendix-A.3.8" class="section-number selfRef">A.3.8. </a><a href="#name-a39-combinations-of-paramet" class="section-name selfRef">A.3.9. Combinations of Parameters</a>
           </h4>
-<p id="appendix-A.3.8-1">#### A.3.9.1. All six parameters at once
-REQUEST
-~~~~
-  Datastore: &lt;operational&gt;
+<div id="a391-all-six-parameters-at-once">
+<section id="appendix-A.3.8.1">
+            <h5 id="name-a391-all-six-parameters-at-">
+<a href="#appendix-A.3.8.1" class="section-number selfRef">A.3.8.1. </a><a href="#name-a391-all-six-parameters-at-" class="section-name selfRef">A.3.9.1. All six parameters at once</a>
+            </h5>
+<p id="appendix-A.3.8.1-1">REQUEST<a href="#appendix-A.3.8.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.8.1-2">
+<pre>
+  Datastore: &amp;lt;operational&amp;gt;
   Target: /example-social:members/member
   Sublist-limit: 1
   Pagination Parameters:
@@ -4274,9 +4449,11 @@ REQUEST
     Direction: backwards
     Offset:    2
     Limit:     2
-~~~~
-RESPONSE
-~~~~
+</pre><a href="#appendix-A.3.8.1-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3.8.1-3">RESPONSE<a href="#appendix-A.3.8.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-A.3.8.1-4">
+<pre>
 {
   "example-social:member": [
     {
@@ -4345,7 +4522,10 @@ RESPONSE
     }
   }
 }
-~~~~<a href="#appendix-A.3.8-1" class="pilcrow">¶</a></p>
+</pre><a href="#appendix-A.3.8.1-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
 </section>
 </div>
 </section>
