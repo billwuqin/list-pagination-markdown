@@ -974,7 +974,7 @@ Any value greater than or equal to num-elements results the entire result set, s
 
 These vector tests assume the target "/example-social:members/member=alice/favorites/uint8-numbers", which has six values, thus the edge condition "limit" values are: '1', '2', '5', '6', and '7'.
 
-#### limit=1
+#### Limit=1
 
 REQUEST
 
@@ -1001,7 +1001,7 @@ RESPONSE
 }
 ~~~~
 
-#### limit=2
+#### Limit=2
 
 REQUEST
 
@@ -1028,7 +1028,7 @@ RESPONSE
 }
 ~~~~
 
-#### limit=5
+#### Limit=5
 
 REQUEST
 
@@ -1055,7 +1055,7 @@ RESPONSE
 }
 ~~~~
 
-#### limit=6
+#### Limit=6
 
 REQUEST
 
@@ -1077,7 +1077,7 @@ RESPONSE
 }
 ~~~~
 
-#### limit=7
+#### Limit=7
 
 REQUEST
 
@@ -1105,7 +1105,7 @@ Noting that "offset" must be an unsigned number less than or equal to the num-el
 
 These vector tests again assume the target "/example-social:members/member=alice/favorites/uint8-numbers", which has six values, thus the edge condition "limit" values are: '0', '1', '2', '5', '6', and '7'.
 
-#### offset=0
+#### Offset=0
 
 REQUEST
 
@@ -1127,7 +1127,7 @@ RESPONSE
 }
 ~~~~
 
-#### offset=1
+#### Offset=1
 
 REQUEST
 
@@ -1149,7 +1149,7 @@ RESPONSE
 }
 ~~~~
 
-#### offset=2
+#### Offset=2
 
 REQUEST
 
@@ -1171,7 +1171,7 @@ RESPONSE
 }
 ~~~~
 
-#### offset=5
+#### Offset=5
 
 REQUEST
 
@@ -1193,7 +1193,7 @@ RESPONSE
 }
 ~~~~
 
-#### offset=6
+#### Offset=6
 
 REQUEST
 
@@ -1215,7 +1215,7 @@ RESPONSE
 }
 ~~~~
 
-#### offset=7
+#### Offset=7
 
 REQUEST
 
@@ -1247,7 +1247,7 @@ These vector tests assume the target "/example-social:members/member" which has 
 
 Note that response has added attributes describing the result set and position in pagination.
 
-#### cursor=&limit=2
+#### Cursor=&Limit=2
 REQUEST
 
 ~~~~
@@ -1333,7 +1333,7 @@ RESPONSE
 }
 ~~~~
 
-#### cursor="YWxpY2U="&limit=2
+#### Cursor="YWxpY2U="&Limit=2
 
 REQUEST
 
@@ -1414,7 +1414,7 @@ RESPONSE
 }
 ~~~~
 
-#### cursor="am9l"&limit=2
+#### Cursor="am9l"&Limit=2
 
 REQUEST
 
@@ -1469,7 +1469,7 @@ RESPONSE
 }
 ~~~~
 
-#### cursor="BASE64VALUE="
+#### Cursor="BASE64VALUE="
 
 REQUEST
 The cursor used does not exist in the datastore.
@@ -1502,7 +1502,7 @@ These vector tests again assume the target "/example-social:members/member=alice
 
 It is notable that "uint8-numbers" is an "ordered-by" user leaf-list. Traversals are over the user-specified order, not the numerically-sorted order, which is what the "sort-by" parameter addresses. If this were an "ordered-by system" leaf-list, then the traversals would be over the system-specified order, again not a numerically-sorted order.
 
-#### direction=forwards
+#### Direction=forwards
 
 REQUEST
 
@@ -1524,7 +1524,7 @@ RESPONSE
 }
 ~~~~
 
-#### direction=backwards
+#### Direction=backwards
 
 REQUEST
 
@@ -1549,10 +1549,10 @@ RESPONSE
 ### The "sort-by" Parameter
 Noting that the "sort-by" parameter is a node identifier, there is not so much "edge conditions" as there are "interesting conditions". This section provides examples for some interesting conditions.
 
-#### the target node's type
+#### The target node's type
 The section provides three examples, one for a "leaf-list" and two for a "list", with one using a direct descendant and the other using an indirect descendant.
 
-##### type is a "leaf-list"
+##### The type is a "leaf-list"
 This example illustrates when the target node's type is a "leaf-list". Note that a single period (i.e., '.') is used to represent the nodes to be sorted.
 
 This test again uses the target "/example-social:members/member=alice/favorites/uint8-numbers", which is a leaf-list.
@@ -1577,7 +1577,7 @@ RESPONSE
 }
 ~~~~
 
-##### type is a "list" and sort-by node is a direct descendant
+##### The type is a "list" and sort-by node is a direct descendant
 This example illustrates when the target node's type is a "list" and a direct descendant is the "sort-by" node.
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "member-id", which is the "key" for the list.
@@ -1625,7 +1625,7 @@ To make the example more understandable, an ellipse (i.e., "...") is used to rep
 }
 ~~~~
 
-##### type is a "list" and sort-by node is an indirect descendant
+##### The type is a "list" and sort-by node is an indirect descendant
 This example illustrates when the target node's type is a "list" and an indirect descendant is the "sort-by" node.
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "stats/joined", which is a "config false" descendant leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.
@@ -1676,7 +1676,7 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 ### The "where" Parameter
 The "where" is an XPath 1.0 expression, there are numerous edge conditions to consider, e.g., the types of the nodes that are targeted by the expression.
 
-#### match of leaf-list's values
+#### Match of leaf-list's values
 This example selects the uint8-numbers greater than 7 in the member alice's favorites.
 
 REQUEST
@@ -1699,7 +1699,7 @@ RESPONSE
 }
 ~~~~
 
-#### match on descendant string containing a substring
+#### Match on descendant string containing a substring
 This example selects members that have an email address containing "@example.com".
 
 REQUEST
@@ -1740,7 +1740,7 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 }
 ~~~~
 
-#### match on descendant timestamp starting with a substring
+#### Match on descendant timestamp starting with a substring
 This example selects members that have a posting whose timestamp begins with the string "2020".
 
 REQUEST
@@ -1971,7 +1971,7 @@ error-tag: invalid-value
 
 The "sublist-limit" parameter may be used on any target node.
 
-#### target is a list entry
+#### The target is a list entry
 
 This example uses the target node '/example-social:members/member=alice' in the intended datastore.
 
@@ -2047,7 +2047,7 @@ RESPONSE
 }
 ~~~~
 
-#### target is a datastore
+#### The target is a datastore
 This example uses the target node intended datastore.
 
 This example sets the sublist-limit value '1', which returns just the first entry for all descendant lists and leaf-lists.
