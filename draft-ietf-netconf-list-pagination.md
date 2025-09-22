@@ -1984,7 +1984,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 REQUEST
 
 ~~~~
-  Datastore: &lt;intended&gt;
+  Datastore: <intended>
   Target: /example-social:members/member=alice
   Sublist-limit: 1
   Pagination Parameters:
@@ -2057,7 +2057,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 REQUEST
 
 ~~~~
-  Datastore: &lt;intended&gt;
+  Datastore: <intended>
   Target: /
   Sublist-limit: 1
   Pagination Parameters:
@@ -2123,7 +2123,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 REQUEST
 
 ~~~~
-  Datastore: &lt;intended&gt;
+  Datastore: <intended>
   Target: /example-social:members/member=alice
   Sublist-limit: 1
   Pagination Parameters:
@@ -2196,7 +2196,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 REQUEST
 
 ~~~~
-  Datastore: &lt;intended&gt;
+  Datastore: <intended>
   Target: /
   Sublist-limit: 1
   Pagination Parameters:
