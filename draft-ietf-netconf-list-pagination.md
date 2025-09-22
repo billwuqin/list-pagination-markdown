@@ -642,7 +642,9 @@ lector>
         prefix: lpg
         RFC: XXXX
 
-#  Security Considerations for the "ietf-list-pagination" YANG Module
+# Security Consideration
+
+##  Considerations for the "ietf-list-pagination" YANG Module
 
    This section follows the template defined in Section 3.7.1 of
    {{!RFC8407}}.
