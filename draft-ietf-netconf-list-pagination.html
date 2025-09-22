@@ -1350,7 +1350,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
    configuration for network interfaces or access control lists.  And
    time-driven logging mechanisms, such as an audit log or a traffic
    log, can contain millions of entries.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">Retrieval of all the entries can lead to inefficiencies in the
+<p id="section-1-2">Retrieval of all the entries can lead to inefficiencies (e.g., long
+   loading time, memory overutilization or crash) in the
    server, the client, and the network in between.  For instance,
    consider the following:<a href="#section-1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1443,7 +1444,7 @@ appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">�
    general solution, the possibility to configure and tune what
    components are available is presented.<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">A secondary aspect of this solution entails a client sending a query
-   parameter to a server guiding how descendent lists and leaf-lists
+   parameter to a server guiding how descendant lists and leaf-lists
    should be returned.  This parameter may be used on any target node,
    not just "list" and "leaf-list" nodes.<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4">Clients detect a server's support for list pagination via an entry
@@ -1505,16 +1506,17 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
       If this query parameter is unspecified, then no entries are
       filtered from the working result-set.<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-3">Allowed Values
-      The allowed values are XPath 1.0 expressions.  The XPath context
-      follows Section 6.4.1 of <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> and details (such as prefix
-      bindings) are further defined at the protocol level, see
+      The allowed values are XPath 1.0 expressions. The XPath context
+      follows Section 6.4.1 of <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>, e.g., the context node
+      is the target of the query, the accessible tree is "config true" lists
+      and leaf-lists or "config false" lists and leaf-lists. Details (such
+      as prefix bindings) are further defined at the protocol level, see
       <span>[<a href="#I-D.ietf-netconf-list-pagination-nc" class="cite xref">I-D.ietf-netconf-list-pagination-nc</a>]</span> and
       <span>[<a href="#I-D.ietf-netconf-list-pagination-rc" class="cite xref">I-D.ietf-netconf-list-pagination-rc</a>]</span>.  It is an error if the
       XPath expression references a node identifier that does not exist
-      in the schema, is optional or conditional in the schema or, for
-      constrained "config false" lists and leaf-lists (see Section 3.3),
-      if the node identifier does not point to a node having the
-      "indexed" extension statement applied to it (see Section 3.3.2).<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
+      in the schema, or for constrained "config false" lists and leaf-lists
+      (see Section 3.3), if the node identifier does not point to a node
+      having the "indexed" extension statement applied to it (see Section 3.3.2).<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-4">Conformance
       The "where" query parameter <span class="bcp14">MUST</span> be supported for all "config
       true" lists and leaf-lists and <span class="bcp14">SHOULD</span> be supported for "config
@@ -1577,13 +1579,13 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
       The format is a free form string but <span class="bcp14">SHOULD</span> follow the language
       sub-tag format defined in <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>.  An example is 'sv_SE'.  If a
       supplied locale is unknown to the server, the "locale-unavailable"
-      <span class="bcp14">SHOULD</span> be produced in the error-app-tag in the error output.  Note
-      that all locales are assumed to be UTF-8, since character encoding
-      for YANG strings and all known YANG modelled encodings and
-      protocols are required to be UTF-8<span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span>
-            <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  A server <span class="bcp14">MUST</span> accept a known encoding with or without
-      trailing ".UTF-8" and <span class="bcp14">MAY</span> emit an encoding with or without
-      trailing ".UTF-8".  This means a server must handle both e.g.
+      <span class="bcp14">SHOULD</span> be produced for debugging purpose in the error-app-tag in the
+      error output <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span>.  Note that all locales are assumed to be
+      UTF-8, since character encoding for YANG strings and all known YANG
+      modelled encodings and protocols are required to be UTF-8 <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span>
+            <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span> <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  A server <span class="bcp14">MUST</span> accept a known
+      encoding with or without trailing ".UTF-8" and <span class="bcp14">MAY</span> emit an encoding with
+      or without trailing ".UTF-8".  This means a server must handle both e.g.
       "sv_SE" and "sv_SE.UTF-8" equally as input, and chooses how to
       emit used locale as output.<a href="#section-3.1.3-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.3-4">Conformance
@@ -1646,7 +1648,7 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
       occurs.<a href="#section-3.1.5-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.5-4">Conformance
       The "offset" query parameter <span class="bcp14">MUST</span> be supported for all lists and
-      leaf-lists.<a href="#section-3.1.5-4" class="pilcrow">¶</a></p>
+      leaf-lists and <span class="bcp14">MUST</span> not used together with "cusor" query parameter.<a href="#section-3.1.5-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-cursor-query-parameter">
@@ -1683,9 +1685,8 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
 <p id="section-3.1.6-4">Conformance
       The "cursor" query parameter <span class="bcp14">MUST</span> be supported for all "config
       true" lists and <span class="bcp14">SHOULD</span> be supported for all "config false" lists.
-      It is however optional to support the "cursor" query parameter for
-      "config false" lists and the support must be signaled by the
-      server per list.<a href="#section-3.1.6-4" class="pilcrow">¶</a></p>
+      As the "cursor" query parameter for "config false" lists is
+      Optional, the support must be signaled by the server per list.<a href="#section-3.1.6-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.1.6-5">
 <pre>
   Servers indicate that they support the "cursor" query parameter
@@ -1750,9 +1751,9 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.2.1-2">
 <pre>
   The "sublist-limit" parameter limits the number of entries
-  returned for descendent lists and leaf-lists.
+  returned for descendant lists and leaf-lists.
 
-  Any descendent list or leaf-list limited by the "sublist-limit"
+  Any descendant list or leaf-list limited by the "sublist-limit"
   parameter includes, somewhere in its encoding, a metadata value
   {{RFC7952}} called "remaining", a positive integer indicating the
   number of elements that were not included by the "sublist-limit"
@@ -1766,7 +1767,7 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
 </div>
 <p id="section-3.2.1-3">Default Value
       If this query parameter is unspecified, the number of entries that
-      may be returned for descendent lists and leaf-lists is unbounded.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
+      may be returned for descendant lists and leaf-lists is unbounded.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-4">Allowed Values
       The allowed values are positive integers.<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-5">Conformance
@@ -1845,7 +1846,7 @@ enabled by Section 3.3.2.<a href="#section-3.3.1-6.1.1" class="pilcrow">¶</a></
 </li>
             <li class="normal" id="section-3.3.1-6.3">
               <p id="section-3.3.1-6.3.1">For lists only, node-identifiers used in "where" expressions and
-"sort-by" filters <span class="bcp14">MUST NOT</span> descend past any descendent lists.
+"sort-by" filters <span class="bcp14">MUST NOT</span> descend past any descendant lists.
 This ensures that only indexes relative to the targeted list are
 used.  Further constraints on node identifiers <span class="bcp14">MAY</span> be applied in
 Section 3.3.2.<a href="#section-3.3.1-6.3.1" class="pilcrow">¶</a></p>
@@ -3837,7 +3838,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
             <h5 id="name-a351-the-target-nodes-type">
 <a href="#appendix-A.3.5.1" class="section-number selfRef">A.3.5.1. </a><a href="#name-a351-the-target-nodes-type" class="section-name selfRef">A.3.5.1. the target node's type</a>
             </h5>
-<p id="appendix-A.3.5.1-1">The section provides three examples, one for a "leaf-list" and two for a "list", with one using a direct descendent and the other using an indirect descendent.<a href="#appendix-A.3.5.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1-1">The section provides three examples, one for a "leaf-list" and two for a "list", with one using a direct descendant and the other using an indirect descendant.<a href="#appendix-A.3.5.1-1" class="pilcrow">¶</a></p>
 <div id="a3511-type-is-a-leaf-list">
 <section id="appendix-A.3.5.1.1">
               <h6 id="name-a3511-type-is-a-leaf-list">
@@ -3867,13 +3868,13 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
 </div>
 </section>
 </div>
-<div id="a3512-type-is-a-list-and-sort-by-node-is-a-direct-descendent">
+<div id="a3512-type-is-a-list-and-sort-by-node-is-a-direct-descendant">
 <section id="appendix-A.3.5.1.2">
               <h6 id="name-a3512-type-is-a-list-and-so">
-<a href="#appendix-A.3.5.1.2" class="section-number selfRef">A.3.5.1.2. </a><a href="#name-a3512-type-is-a-list-and-so" class="section-name selfRef">A.3.5.1.2. type is a "list" and sort-by node is a direct descendent</a>
+<a href="#appendix-A.3.5.1.2" class="section-number selfRef">A.3.5.1.2. </a><a href="#name-a3512-type-is-a-list-and-so" class="section-name selfRef">A.3.5.1.2. type is a "list" and sort-by node is a direct descendant</a>
               </h6>
-<p id="appendix-A.3.5.1.2-1">This example illustrates when the target node's type is a "list" and a direct descendent is the "sort-by" node.<a href="#appendix-A.3.5.1.2-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.5.1.2-2">This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "member-id", which is the "key" for the list.<a href="#appendix-A.3.5.1.2-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.2-1">This example illustrates when the target node's type is a "list" and a direct descendant is the "sort-by" node.<a href="#appendix-A.3.5.1.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.2-2">This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "member-id", which is the "key" for the list.<a href="#appendix-A.3.5.1.2-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.5.1.2-3">REQUEST<a href="#appendix-A.3.5.1.2-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A.3.5.1.2-4">
 <pre>
@@ -3918,13 +3919,13 @@ Target: /example-social:members/member
 </div>
 </section>
 </div>
-<div id="a3513-type-is-a-list-and-sort-by-node-is-an-indirect-descendent">
+<div id="a3513-type-is-a-list-and-sort-by-node-is-an-indirect-descendant">
 <section id="appendix-A.3.5.1.3">
               <h6 id="name-a3513-type-is-a-list-and-so">
-<a href="#appendix-A.3.5.1.3" class="section-number selfRef">A.3.5.1.3. </a><a href="#name-a3513-type-is-a-list-and-so" class="section-name selfRef">A.3.5.1.3. type is a "list" and sort-by node is an indirect descendent</a>
+<a href="#appendix-A.3.5.1.3" class="section-number selfRef">A.3.5.1.3. </a><a href="#name-a3513-type-is-a-list-and-so" class="section-name selfRef">A.3.5.1.3. type is a "list" and sort-by node is an indirect descendant</a>
               </h6>
-<p id="appendix-A.3.5.1.3-1">This example illustrates when the target node's type is a "list" and an indirect descendent is the "sort-by" node.<a href="#appendix-A.3.5.1.3-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.5.1.3-2">This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.<a href="#appendix-A.3.5.1.3-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.3-1">This example illustrates when the target node's type is a "list" and an indirect descendant is the "sort-by" node.<a href="#appendix-A.3.5.1.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.5.1.3-2">This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "stats/joined", which is a "config false" descendant leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.<a href="#appendix-A.3.5.1.3-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.5.1.3-3">REQUEST<a href="#appendix-A.3.5.1.3-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A.3.5.1.3-4">
 <pre>
@@ -4007,10 +4008,10 @@ Target: /example-social:members/member=alice/favorites
 </div>
 </section>
 </div>
-<div id="a362-match-on-descendent-string-containing-a-substring">
+<div id="a362-match-on-descendant-string-containing-a-substring">
 <section id="appendix-A.3.6.2">
-            <h5 id="name-a362-match-on-descendent-st">
-<a href="#appendix-A.3.6.2" class="section-number selfRef">A.3.6.2. </a><a href="#name-a362-match-on-descendent-st" class="section-name selfRef">A.3.6.2. match on descendent string containing a substring</a>
+            <h5 id="name-a362-match-on-descendant-st">
+<a href="#appendix-A.3.6.2" class="section-number selfRef">A.3.6.2. </a><a href="#name-a362-match-on-descendant-st" class="section-name selfRef">A.3.6.2. match on descendant string containing a substring</a>
             </h5>
 <p id="appendix-A.3.6.2-1">This example selects members that have an email address containing "@example.com".<a href="#appendix-A.3.6.2-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.6.2-2">REQUEST<a href="#appendix-A.3.6.2-2" class="pilcrow">¶</a></p>
@@ -4053,10 +4054,10 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 </div>
 </section>
 </div>
-<div id="a363-match-on-decendent-timestamp-starting-with-a-substring">
+<div id="a363-match-on-descendant-timestamp-starting-with-a-substring">
 <section id="appendix-A.3.6.3">
-            <h5 id="name-a363-match-on-decendent-tim">
-<a href="#appendix-A.3.6.3" class="section-number selfRef">A.3.6.3. </a><a href="#name-a363-match-on-decendent-tim" class="section-name selfRef">A.3.6.3. match on decendent timestamp starting with a substring</a>
+            <h5 id="name-a363-match-on-descendant-ti">
+<a href="#appendix-A.3.6.3" class="section-number selfRef">A.3.6.3. </a><a href="#name-a363-match-on-descendant-ti" class="section-name selfRef">A.3.6.3. match on descendant timestamp starting with a substring</a>
             </h5>
 <p id="appendix-A.3.6.3-1">This example selects members that have a posting whose timestamp begins with the string "2020".<a href="#appendix-A.3.6.3-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.6.3-2">REQUEST<a href="#appendix-A.3.6.3-2" class="pilcrow">¶</a></p>
@@ -4291,8 +4292,8 @@ error-tag: invalid-value
             </h5>
 <p id="appendix-A.3.7.2-1">This example uses the target node '/example-social:members/member=alice' in the intended datastore.<a href="#appendix-A.3.7.2-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7.2-2">The target node is a specific list entry/element node, not the YANG "list" node.<a href="#appendix-A.3.7.2-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7.2-3">This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.<a href="#appendix-A.3.7.2-3" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7.2-4">Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.<a href="#appendix-A.3.7.2-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.2-3">This example sets the sublist-limit value '1', which returns just the first entry for all descendant lists and leaf-lists.<a href="#appendix-A.3.7.2-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.2-4">Note that, in the response, the "remaining" metadata value is set on the first element of each descendant list and leaf-list having more than one value.<a href="#appendix-A.3.7.2-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7.2-5">REQUEST<a href="#appendix-A.3.7.2-5" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A.3.7.2-6">
 <pre>
@@ -4367,8 +4368,8 @@ error-tag: invalid-value
 <a href="#appendix-A.3.7.3" class="section-number selfRef">A.3.7.3. </a><a href="#name-a382-target-is-a-datastore" class="section-name selfRef">A.3.8.2. target is a datastore</a>
             </h5>
 <p id="appendix-A.3.7.3-1">This example uses the target node intended datastore.<a href="#appendix-A.3.7.3-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7.3-2">This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.<a href="#appendix-A.3.7.3-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7.3-3">Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.<a href="#appendix-A.3.7.3-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.3-2">This example sets the sublist-limit value '1', which returns just the first entry for all descendant lists and leaf-lists.<a href="#appendix-A.3.7.3-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7.3-3">Note that, in the response, the "remaining" metadata value is set on the first element of each descendant list and leaf-list having more than one value.<a href="#appendix-A.3.7.3-3" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7.3-4">REQUEST<a href="#appendix-A.3.7.3-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A.3.7.3-5">
 <pre>
