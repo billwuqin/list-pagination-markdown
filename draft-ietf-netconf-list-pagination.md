@@ -46,7 +46,6 @@ informative:
    target: http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
    date: 2000
 
-...
 
 --- abstract
 
