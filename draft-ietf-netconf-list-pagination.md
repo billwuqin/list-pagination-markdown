@@ -341,7 +341,7 @@ informative:
 
    Conformance
       The "offset" query parameter MUST be supported for all lists and
-      leaf-lists and MUST not used together with "cusor" query parameter.
+      leaf-lists and MUST not be used together with "cusor" query parameter.
 
 ###  The "cursor" Query Parameter
 
