@@ -4120,10 +4120,15 @@ Target: /example-social:members/member
 <a href="#appendix-A.3.7" class="section-number selfRef">A.3.7. </a><a href="#name-a37-the-locale-parameter" class="section-name selfRef">A.3.7. The "locale" Parameter</a>
           </h4>
 <p id="appendix-A.3.7-1">The "locale" parameter may be used on any target node.<a href="#appendix-A.3.7-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7-2">If this parameter is omitted, there is no default value and it is up to the server to choose a locale. This locale is then reported in the result-set as the "locale" metadata value.<a href="#appendix-A.3.7-2" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7-3">Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by the user. For ordered-by system lists and leaf-lists, the server <span class="bcp14">MAY</span> report "locale" if the order that the server has chosen follows a valid locale,<a href="#appendix-A.3.7-3" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7-4">If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value" is returned.<a href="#appendix-A.3.7-4" class="pilcrow">¶</a></p>
-<p id="appendix-A.3.7-5">If an ordered-by system target is not ordered according to any locale, the server omits the locale from the response.<a href="#appendix-A.3.7-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-2">If this parameter is omitted, there is no default value and it is up to the server to choose a locale.
+This locale is then reported in the result-set as the "locale" metadata value.<a href="#appendix-A.3.7-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-3">Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by
+the user. For ordered-by system lists and leaf-lists, the server <span class="bcp14">MAY</span> report "locale" if the order that
+the server has chosen follows a valid locale,<a href="#appendix-A.3.7-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-4">If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value"
+is returned.<a href="#appendix-A.3.7-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.3.7-5">If an ordered-by system target is not ordered according to any locale, the server omits the locale from
+the response.<a href="#appendix-A.3.7-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.3.7-6">REQUEST<a href="#appendix-A.3.7-6" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A.3.7-7">
 <pre>
@@ -4227,7 +4232,7 @@ Target: /example-social:members/member
 </pre><a href="#appendix-A.3.7-13" class="pilcrow">¶</a>
 </div>
 <p id="appendix-A.3.7-14">REQUEST<a href="#appendix-A.3.7-14" class="pilcrow">¶</a></p>
-<div class="lang-~ sourcecode" id="appendix-A.3.7-15">
+<div class="alignLeft art-text artwork" id="appendix-A.3.7-15">
 <pre>
 Target: /example-social:members/member
   Pagination Parameters:
