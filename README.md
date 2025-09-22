@@ -4,10 +4,10 @@
 
 This is the working area for the IETF [NETCONF Working Group](https://datatracker.ietf.org/group/netconf/documents/) Internet-Draft, "List Pagination for YANG-driven Protocols".
 
-* [Editor's Copy](https://billwuqin.github.io/list-pagination-markdown/#go.draft-ietf-netconf-list-pagination.html)
+* [Editor's Copy](http://htmlpreview.github.io/?https://github.com/billwuqin/list-pagination-markdown/gh-pages/draft-ietf-netconf-list-pagination.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-netconf-list-pagination)
 * [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-netconf-list-pagination)
-* [Compare Editor's Copy to Working Group Draft](https://billwuqin.github.io/list-pagination-markdown/#go.draft-ietf-netconf-list-pagination.diff)
+* [Compare Editor's Copy to Working Group Draft](https://author-tools.ietf.org/diff?url_1=https://raw.githubusercontent.com/billwuqin/list-pagination-markdown/gh-pages/draft-ietf-netconf-list-pagination.txt)
 
 
 ## Contributing
