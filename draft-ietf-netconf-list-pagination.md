@@ -113,7 +113,7 @@ informative:
    here: client, data model, data tree, feature, extension, module,
    leaf, leaf-list, and server.
 
-## Convention
+## Conventions
 {::boilerplate bcp14-tagged}
 
    Various examples in this document use "BASE64VALUE=" as a placeholder
@@ -641,7 +641,7 @@ lector>
         prefix: lpg
         RFC: XXXX
 
-# Security Consideration
+# Security Considerations
 
 ##  Considerations for the "ietf-list-pagination" YANG Module
 
