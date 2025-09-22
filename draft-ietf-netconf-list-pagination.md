@@ -195,15 +195,15 @@ informative:
 
 ###  The "where" Query Parameter
 
-   Description
+   Description:
       The "where" query parameter specifies a filter expression that
       result-set entries must match.
 
-   Default Value
+   Default Value:
       If this query parameter is unspecified, then no entries are
       filtered from the working result-set.
 
-   Allowed Values
+   Allowed Values:
       The allowed values are XPath 1.0 expressions. The XPath context
       follows Section 6.4.1 of {{!RFC7950}}, e.g., the context node
       is the target of the query, the accessible tree is "config true" lists
@@ -216,7 +216,7 @@ informative:
       (see Section 3.3), if the node identifier does not point to a node
       having the "indexed" extension statement applied to it (see Section 3.3.2).
 
-   Conformance
+   Conformance:
       The "where" query parameter MUST be supported for all "config
       true" lists and leaf-lists and SHOULD be supported for "config
       false" lists and leaf-lists.  The supplied expression is allowed
@@ -226,7 +226,7 @@ informative:
 
 ###  The "sort-by" Query Parameter
 
-   Description
+   Description:
       The "sort-by" query parameter indicates the node in the working
       result-set (i.e., after the "where" parameter has been applied)
       that entries should be sorted by.  Sorts are in ascending order
@@ -234,12 +234,12 @@ informative:
       sorted to the end (e.g., after all nodes having values).  Sub-
       sorts are not supported.
 
-   Default Value
+   Default Value:
       If this query parameter is unspecified, then the list or leaf-
       list's default order is used, per the YANG "ordered-by" statement
       (see Section 7.7.7 of {{!RFC7950}}).
 
-   Allowed Values
+   Allowed Values:
       The allowed values are node identifiers.  Clients are allowed to
       request sorting by any data node within the result-set.  It is an
       error if the specified node identifier does not exist in the
@@ -248,7 +248,7 @@ informative:
       if the node identifier does not point to a node having the
       "indexed" extension statement applied to it (see Section 3.3.2).
 
-   Conformance
+   Conformance:
       The "sort-by" query parameter MUST be supported for all "config
       true" lists and leaf-lists and SHOULD be supported for "config
       false" lists and leaf-lists.  Servers MAY disable the support for
@@ -257,21 +257,21 @@ informative:
 
 ###  The "locale" Query Parameter
 
-   Description
+   Description:
       The "locale" query parameter indicates what locale is used when
       sorting the result-set.  Note that the "locale" query parameter is
       invalid to supply without also supplying the "sort-by" query
       parameter.  If a query supplies "locale" and not "sort-by", error-
       type application and error-tag "invalid-value" is returned.
 
-   Default Value
+   Default Value:
       If this query parameter is unspecified, it is up to the server to
       select a locale for sorts.  How the server chooses the locale used
       is out of scope for this document.  The result-set includes the
       locale used by the server for sorts with a metadata value
       {{!RFC7952}} called "locale".
 
-   Allowed Values
+   Allowed Values:
       The format is a free form string but SHOULD follow the language
       sub-tag format defined in {{!RFC5646}}.  An example is 'sv_SE'.  If a
       supplied locale is unknown to the server, the "locale-unavailable"
@@ -285,7 +285,7 @@ informative:
       "sv_SE" and "sv_SE.UTF-8" equally as input, and chooses how to
       emit used locale as output.
 
-   Conformance
+   Conformance:
       The "locale" query parameter MUST be supported for all "config
       true" lists and leaf-lists and SHOULD be supported for "config
       false" lists and leaf-lists.  Servers MAY disable the support for
@@ -294,16 +294,16 @@ informative:
 
 ###  The "direction" Query Parameter
 
-   Description
+   Description:
       The "direction" query parameter indicates how the entries in the
       working result-set (i.e., after the "sort-by" parameter has been
       applied) should be traversed.
 
-   Default Value
+   Default Value:
       If this query parameter is unspecified, the default value is
       "forwards".
 
-   Allowed Values
+   Allowed Values:
       The allowed values are:
 
       forwards
@@ -314,37 +314,37 @@ informative:
          Return entries in the backwards direction.  Also known as the
          "reverse" or "descending" direction
 
-   Conformance
+   Conformance:
       The "direction" query parameter MUST be supported for all lists
       and leaf-lists.
 
 ###  The "offset" Query Parameter
 
-   Description
+   Description:
       The "offset" query parameter indicates the number of entries in
       the working result-set (i.e., after the "direction" parameter has
       been applied) that should be skipped over when preparing the
       response.
 
-   Default Value
+   Default Value:
       If this query parameter is unspecified, then no entries in the
       result-set are skipped, the same as when the offset value '0' is
       specified.
 
-   Allowed Values
+   Allowed Values:
       The allowed values are unsigned integers.  It is an error for the
       offset value to exceed the number of entries in the working
       result-set, and the "offset-out-of-range" identity SHOULD be
       produced in the error-app-tag in the error output when this
       occurs.
 
-   Conformance
+   Conformance:
       The "offset" query parameter MUST be supported for all lists and
       leaf-lists and MUST not be used together with "cusor" query parameter.
 
 ###  The "cursor" Query Parameter
 
-   Description
+   Description:
       The "cursor" query parameter indicates where to start the working
       result-set (i.e., after the "direction" parameter has been
       applied), the elements before the cursor are skipped over when
@@ -361,11 +361,11 @@ informative:
       "next" and "previous" cursor or the current page.  Due to their
       ephemeral nature, cursor values are never cached.
 
-   Default Value
+   Default Value:
       If this query parameter is unspecified, then no entries in the
       result-set are skipped.
 
-   Allowed Values
+   Allowed Values:
       The allowed values are opaque encoded positions interpreted by the
       server to index an element in the list, e.g. a list key or other
       information to efficiently access the selected result-set.  It is
@@ -373,7 +373,7 @@ informative:
       set, and the "cursor-not-found" identity SHOULD be produced in the
       error-app-tag in the error output when this occurs.
 
-   Conformance
+   Conformance:
       The "cursor" query parameter MUST be supported for all "config
       true" lists and SHOULD be supported for all "config false" lists.
       As the "cursor" query parameter for "config false" lists is
@@ -393,7 +393,7 @@ informative:
 
 ###  The "limit" Query Parameter
 
-   Description
+   Description:
       The "limit" query parameter limits the number of entries returned
       from the working result-set (i.e., after the "offset" parameter
       has been applied).  Any list or leaf-list that is limited
@@ -405,15 +405,15 @@ informative:
       string "unbounded" is supplied, there is no limit imposed on the
       result-set.
 
-   Default Value
+   Default Value:
       If this query parameter is unspecified, the number of entries that
       may be returned is unbounded.
 
-   Allowed Values
+   Allowed Values:
       The allowed values are unsigned 32 bit integers greater than or
       equal to 1, or the string "unbounded".
 
-   Conformance
+   Conformance:
       The "limit" query parameter MUST be supported for all lists and
       leaf-lists.
 
@@ -426,7 +426,7 @@ informative:
 
 ### The "sublist-limit" Query Parameter
 
-   Description
+   Description:
       The "sublist-limit" parameter limits the number of entries returned for descendent lists and leaf-lists.
 
       Any descendent list or leaf-list limited by the "sublist-limit" parameter includes, somewhere in its
@@ -437,14 +437,14 @@ informative:
       When used on a list node, it only affects the list's descendant nodes, not the list itself, which is
       only affected by the parameters presented in Section 3.1.
 
-   Default Value
+   Default Value:
       If this query parameter is unspecified, the number of entries that may be returned for descendent lists
       and leaf-lists is unbounded.
 
-   Allowed Values
+   Allowed Values:
       The allowed values are positive integers.
 
-   Conformance
+   Conformance:
       The "sublist-limit" query parameter MUST be supported for all conventional nodes, including a datastore's
       top-level node (i.e., '/').
 
