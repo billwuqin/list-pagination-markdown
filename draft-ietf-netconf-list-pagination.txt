@@ -1843,7 +1843,7 @@ A.3.1.  The "limit" Parameter
    values, thus the edge condition "limit" values are: '1', '2', '5',
    '6', and '7'.
 
-A.3.1.1.  limit=1
+A.3.1.1.  Limit=1
 
    REQUEST
 
@@ -1866,7 +1866,7 @@ A.3.1.1.  limit=1
       ]
    }
 
-A.3.1.2.  limit=2
+A.3.1.2.  Limit=2
 
    REQUEST
 
@@ -1889,7 +1889,7 @@ A.3.1.2.  limit=2
       ]
    }
 
-A.3.1.3.  limit=5
+A.3.1.3.  Limit=5
 
    REQUEST
 
@@ -1912,7 +1912,7 @@ A.3.1.3.  limit=5
       ]
    }
 
-A.3.1.4.  limit=6
+A.3.1.4.  Limit=6
 
    REQUEST
 
@@ -1930,7 +1930,7 @@ A.3.1.4.  limit=6
      "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
    }
 
-A.3.1.5.  limit=7
+A.3.1.5.  Limit=7
 
    REQUEST
 
@@ -1959,7 +1959,7 @@ A.3.2.  The "offset" Parameter
    values, thus the edge condition "limit" values are: '0', '1', '2',
    '5', '6', and '7'.
 
-A.3.2.1.  offset=0
+A.3.2.1.  Offset=0
 
    REQUEST
 
@@ -1977,7 +1977,7 @@ A.3.2.1.  offset=0
      "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
    }
 
-A.3.2.2.  offset=1
+A.3.2.2.  Offset=1
 
    REQUEST
 
@@ -1995,7 +1995,7 @@ A.3.2.2.  offset=1
      "example-social:uint8-numbers": [13, 11, 7, 5, 3]
    }
 
-A.3.2.3.  offset=2
+A.3.2.3.  Offset=2
 
    REQUEST
 
@@ -2013,7 +2013,7 @@ A.3.2.3.  offset=2
      "example-social:uint8-numbers": [11, 7, 5, 3]
    }
 
-A.3.2.4.  offset=5
+A.3.2.4.  Offset=5
 
    REQUEST
 
@@ -2031,7 +2031,7 @@ A.3.2.4.  offset=5
      "example-social:uint8-numbers": [3]
    }
 
-A.3.2.5.  offset=6
+A.3.2.5.  Offset=6
 
    REQUEST
 
@@ -2049,7 +2049,7 @@ A.3.2.5.  offset=6
      "example-social:uint8-numbers": []
    }
 
-A.3.2.6.  offset=7
+A.3.2.6.  Offset=7
 
    REQUEST
 
@@ -2081,7 +2081,7 @@ A.3.3.  The "cursor" Parameter
    Note that response has added attributes describing the result set and
    position in pagination.
 
-A.3.3.1.  cursor=&limit=2
+A.3.3.1.  Cursor=&Limit=2
 
    REQUEST
 
@@ -2164,7 +2164,7 @@ A.3.3.1.  cursor=&limit=2
      ]
    }
 
-A.3.3.2.  cursor="YWxpY2U="&limit=2
+A.3.3.2.  Cursor="YWxpY2U="&Limit=2
 
    REQUEST
 
@@ -2241,7 +2241,7 @@ A.3.3.2.  cursor="YWxpY2U="&limit=2
      ]
    }
 
-A.3.3.3.  cursor="am9l"&limit=2
+A.3.3.3.  Cursor="am9l"&Limit=2
 
    REQUEST
 
@@ -2292,7 +2292,7 @@ A.3.3.3.  cursor="am9l"&limit=2
      ]
    }
 
-A.3.3.4.  cursor="BASE64VALUE="
+A.3.3.4.  Cursor="BASE64VALUE="
 
    REQUEST The cursor used does not exist in the datastore.
 
@@ -2330,7 +2330,7 @@ A.3.4.  The "direction" Parameter
    be over the system-specified order, again not a numerically-sorted
    order.
 
-A.3.4.1.  direction=forwards
+A.3.4.1.  Direction=forwards
 
    REQUEST
 
@@ -2348,7 +2348,7 @@ A.3.4.1.  direction=forwards
      "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
    }
 
-A.3.4.2.  direction=backwards
+A.3.4.2.  Direction=backwards
 
    REQUEST
 
@@ -2372,13 +2372,13 @@ A.3.5.  The "sort-by" Parameter
    not so much "edge conditions" as there are "interesting conditions".
    This section provides examples for some interesting conditions.
 
-A.3.5.1.  the target node's type
+A.3.5.1.  The target node's type
 
    The section provides three examples, one for a "leaf-list" and two
    for a "list", with one using a direct descendant and the other using
    an indirect descendant.
 
-A.3.5.1.1.  type is a "leaf-list"
+A.3.5.1.1.  The type is a "leaf-list"
 
    This example illustrates when the target node's type is a "leaf-
    list".  Note that a single period (i.e., '.') is used to represent
@@ -2404,7 +2404,7 @@ A.3.5.1.1.  type is a "leaf-list"
      "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
    }
 
-A.3.5.1.2.  type is a "list" and sort-by node is a direct descendant
+A.3.5.1.2.  The type is a "list" and sort-by node is a direct descendant
 
    This example illustrates when the target node's type is a "list" and
    a direct descendant is the "sort-by" node.
@@ -2453,7 +2453,8 @@ A.3.5.1.2.  type is a "list" and sort-by node is a direct descendant
      ]
    }
 
-A.3.5.1.3.  type is a "list" and sort-by node is an indirect descendant
+A.3.5.1.3.  The type is a "list" and sort-by node is an indirect
+            descendant
 
    This example illustrates when the target node's type is a "list" and
    an indirect descendant is the "sort-by" node.
@@ -2510,7 +2511,7 @@ A.3.6.  The "where" Parameter
    conditions to consider, e.g., the types of the nodes that are
    targeted by the expression.
 
-A.3.6.1.  match of leaf-list's values
+A.3.6.1.  Match of leaf-list's values
 
    This example selects the uint8-numbers greater than 7 in the member
    alice's favorites.
@@ -2531,7 +2532,7 @@ A.3.6.1.  match of leaf-list's values
      "example-social:uint8-numbers": [17, 13, 11],
    }
 
-A.3.6.2.  match on descendant string containing a substring
+A.3.6.2.  Match on descendant string containing a substring
 
    This example selects members that have an email address containing
    "@example.com".
@@ -2570,7 +2571,7 @@ A.3.6.2.  match on descendant string containing a substring
      ]
    }
 
-A.3.6.3.  match on descendant timestamp starting with a substring
+A.3.6.3.  Match on descendant timestamp starting with a substring
 
    This example selects members that have a posting whose timestamp
    begins with the string "2020".
@@ -2781,7 +2782,7 @@ A.3.7.1.  The "sublist-limit" Parameter
 
    The "sublist-limit" parameter may be used on any target node.
 
-A.3.7.2.  target is a list entry
+A.3.7.2.  The target is a list entry
 
    This example uses the target node '/example-social:members/
    member=alice' in the intended datastore.
@@ -2858,7 +2859,7 @@ A.3.7.2.  target is a list entry
      ]
    }
 
-A.3.7.3.  target is a datastore
+A.3.7.3.  The target is a datastore
 
    This example uses the target node intended datastore.
 
