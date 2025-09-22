@@ -982,7 +982,7 @@ These vector tests assume the target "/example-social:members/member=alice/favor
 
 #### Limit=1
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -994,7 +994,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     1
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1009,7 +1009,7 @@ RESPONSE
 
 #### Limit=2
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1021,7 +1021,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     2
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1036,7 +1036,7 @@ RESPONSE
 
 #### Limit=5
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1048,7 +1048,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     5
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1063,7 +1063,7 @@ RESPONSE
 
 #### Limit=6
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1075,7 +1075,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     6
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1085,7 +1085,7 @@ RESPONSE
 
 #### Limit=7
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1097,7 +1097,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     7
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1113,7 +1113,7 @@ These vector tests again assume the target "/example-social:members/member=alice
 
 #### Offset=0
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1125,7 +1125,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1135,7 +1135,7 @@ RESPONSE
 
 #### Offset=1
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1147,7 +1147,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1157,7 +1157,7 @@ RESPONSE
 
 #### Offset=2
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1169,7 +1169,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1179,7 +1179,7 @@ RESPONSE
 
 #### Offset=5
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1191,7 +1191,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1201,7 +1201,7 @@ RESPONSE
 
 #### Offset=6
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1213,7 +1213,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1223,7 +1223,7 @@ RESPONSE
 
 #### Offset=7
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1235,7 +1235,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 error-type: application
@@ -1254,7 +1254,8 @@ These vector tests assume the target "/example-social:members/member" which has 
 Note that response has added attributes describing the result set and position in pagination.
 
 #### Cursor=&Limit=2
-REQUEST
+
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1267,7 +1268,7 @@ Target: /example-social:members/member
     Cursor:    -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1341,7 +1342,7 @@ RESPONSE
 
 #### Cursor="YWxpY2U="&Limit=2
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1354,7 +1355,7 @@ Target: /example-social:members/member
     Cursor:    YWxpY2U=
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1422,7 +1423,7 @@ RESPONSE
 
 #### Cursor="am9l"&Limit=2
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1435,7 +1436,7 @@ Target: /example-social:members/member
     Cursor:    am9l
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1477,7 +1478,7 @@ RESPONSE
 
 #### Cursor="BASE64VALUE="
 
-REQUEST
+REQUEST:
 The cursor used does not exist in the datastore.
 
 ~~~~
@@ -1491,7 +1492,7 @@ Target: /example-social:members/member
     Cursor:    BASE64VALUE=
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 error-type: application
@@ -1510,7 +1511,7 @@ It is notable that "uint8-numbers" is an "ordered-by" user leaf-list. Traversals
 
 #### Direction=forwards
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1522,7 +1523,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1532,7 +1533,7 @@ RESPONSE
 
 #### Direction=backwards
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1544,7 +1545,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1563,7 +1564,7 @@ This example illustrates when the target node's type is a "leaf-list". Note that
 
 This test again uses the target "/example-social:members/member=alice/favorites/uint8-numbers", which is a leaf-list.
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
@@ -1575,7 +1576,7 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1588,7 +1589,7 @@ This example illustrates when the target node's type is a "list" and a direct de
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "member-id", which is the "key" for the list.
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1600,7 +1601,7 @@ Target: /example-social:members/member
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 To make the example more understandable, an ellipse (i.e., "...") is used to represent a missing subtree of data.
 
@@ -1636,7 +1637,7 @@ This example illustrates when the target node's type is a "list" and an indirect
 
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "stats/joined", which is a "config false" descendant leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1648,7 +1649,7 @@ Target: /example-social:members/member
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
 
@@ -1685,7 +1686,7 @@ The "where" is an XPath 1.0 expression, there are numerous edge conditions to co
 #### Match of leaf-list's values
 This example selects the uint8-numbers greater than 7 in the member alice's favorites.
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member=alice/favorites
@@ -1697,7 +1698,7 @@ Target: /example-social:members/member=alice/favorites
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1708,7 +1709,7 @@ RESPONSE
 #### Match on descendant string containing a substring
 This example selects members that have an email address containing "@example.com".
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1720,7 +1721,8 @@ Target: /example-social:members/member
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
+
 To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
 
 ~~~~
@@ -1749,7 +1751,7 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 #### Match on descendant timestamp starting with a substring
 This example selects members that have a posting whose timestamp begins with the string "2020".
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1761,7 +1763,7 @@ Target: /example-social:members/member
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
 
@@ -1805,7 +1807,7 @@ is returned.
 If an ordered-by system target is not ordered according to any locale, the server omits the locale from
 the response.
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1818,7 +1820,7 @@ Target: /example-social:members/member
     Locale:    sv_SE
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1857,7 +1859,7 @@ RESPONSE
 ~~~~
 
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1870,7 +1872,7 @@ Target: /example-social:members/member
     Locale:    en_US
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -1908,7 +1910,7 @@ RESPONSE
 }
 ~~~~
 
-REQUEST
+REQUEST:
 
 ~~~~
 Target: /example-social:members/member
@@ -1921,7 +1923,7 @@ Target: /example-social:members/member
     Locale:    invalid
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 error-type: application
@@ -1929,7 +1931,7 @@ error-tag: invalid-value
 error-app-tag: ietf-list-pagination:locale-unavailable
 ~~~~
 
-REQUEST
+REQUEST:
 
 This example targets an "ordered-by user" list.
 
@@ -1944,14 +1946,14 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Locale:    sv_SE
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 error-type: application
 error-tag: invalid-value
 ~~~~
 
-REQUEST
+REQUEST:
 
 This example supplies "locale" but not "sort-by".
 
@@ -1966,7 +1968,7 @@ Target: /example-social:members/member
     Locale:    sv_SE
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 error-type: application
@@ -1987,7 +1989,7 @@ This example sets the sublist-limit value '1', which returns just the first entr
 
 Note that, in the response, the "remaining" metadata value is set on the first element of each descendant list and leaf-list having more than one value.
 
-REQUEST
+REQUEST:
 
 ~~~~
   Datastore: <intended>
@@ -2001,7 +2003,7 @@ REQUEST
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -2060,7 +2062,7 @@ This example sets the sublist-limit value '1', which returns just the first entr
 
 Note that, in the response, the "remaining" metadata value is set on the first element of each descendant list and leaf-list having more than one value.
 
-REQUEST
+REQUEST:
 
 ~~~~
   Datastore: <intended>
@@ -2074,7 +2076,7 @@ REQUEST
     Limit:     -
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
@@ -2118,7 +2120,7 @@ RESPONSE
 
 #### All six parameters at once
 
-REQUEST
+REQUEST:
 
 ~~~~
   Datastore: &lt;operational&gt;
@@ -2132,7 +2134,7 @@ REQUEST
     Limit:     2
 ~~~~
 
-RESPONSE
+RESPONSE:
 
 ~~~~
 {
