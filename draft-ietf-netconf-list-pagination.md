@@ -427,26 +427,30 @@ informative:
 ### The "sublist-limit" Query Parameter
 
    Description:
-      The "sublist-limit" parameter limits the number of entries returned for descendent lists and leaf-lists.
+      The "sublist-limit" parameter limits the number of entries returned
+      for descendent lists and leaf-lists.
 
-      Any descendent list or leaf-list limited by the "sublist-limit" parameter includes, somewhere in its
-      encoding, a metadata value {{!RFC7952}} called "remaining", a positive integer indicating the number
-      of elements that were not included by the "sublist-limit" parameter, or the value "unknown" in case,
-      e.g., the server determines that counting would be prohibitively expensive.
+      Any descendent list or leaf-list limited by the "sublist-limit"
+      parameter includes, somewhere in its encoding, a metadata value
+      {{!RFC7952}} called "remaining", a positive integer indicating the
+      number of elements that were not included by the "sublist-limit"
+      parameter, or the value "unknown" in case, e.g., the server determines
+      that counting would be prohibitively expensive.
 
-      When used on a list node, it only affects the list's descendant nodes, not the list itself, which is
-      only affected by the parameters presented in Section 3.1.
+      When used on a list node, it only affects the list's descendant nodes,
+      not the list itself, which is only affected by the parameters presented
+      in Section 3.1.
 
    Default Value:
-      If this query parameter is unspecified, the number of entries that may be returned for descendent lists
-      and leaf-lists is unbounded.
+      If this query parameter is unspecified, the number of entries that may
+      be returned for descendent lists and leaf-lists is unbounded.
 
    Allowed Values:
       The allowed values are positive integers.
 
    Conformance:
-      The "sublist-limit" query parameter MUST be supported for all conventional nodes, including a datastore's
-      top-level node (i.e., '/').
+      The "sublist-limit" query parameter MUST be supported for all conventional
+      nodes, including a datastore's top-level node (i.e., '/').
 
 ##  Constraints on "where" and "sort-by" for "config false" Lists
 
@@ -2123,7 +2127,7 @@ RESPONSE:
 REQUEST:
 
 ~~~~
-  Datastore: &lt;operational&gt;
+  Datastore: <operational>
   Target: /example-social:members/member
   Sublist-limit: 1
   Pagination Parameters:
