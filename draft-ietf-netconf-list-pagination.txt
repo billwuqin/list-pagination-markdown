@@ -386,7 +386,7 @@ Table of Contents
    produced in the error-app-tag in the error output when this occurs.
 
    Conformance The "offset" query parameter MUST be supported for all
-   lists and leaf-lists and MUST not used together with "cusor" query
+   lists and leaf-lists and MUST not be used together with "cusor" query
    parameter.
 
 3.1.6.  The "cursor" Query Parameter
