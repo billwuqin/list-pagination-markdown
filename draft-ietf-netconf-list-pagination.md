@@ -427,7 +427,6 @@ informative:
 ###  The "sublist-limit" Query Parameter
 
    Description
-
       The "sublist-limit" parameter limits the number of entries
       returned for descendant lists and leaf-lists.
 
@@ -551,7 +550,10 @@ informative:
 
 # The "ietf-list-pagination" Module
 
-The "ietf-list-pagination" module is used by servers to indicate that they support pagination on YANG "list" and "leaf-list" nodes, and to provide an ability to indicate which "config false" list and/or "leaf-list" nodes are constrained and, if so, which nodes may be used in "where" and "sort-by" expressions.
+The "ietf-list-pagination" module is used by servers to indicate that they support
+pagination on YANG "list" and "leaf-list" nodes, and to provide an ability to indicate
+which "config false" list and/or "leaf-list" nodes are constrained and, if so, which
+nodes may be used in "where" and "sort-by" expressions.
 
 ## Data Model Overview
 The following tree diagram [RFC8340] illustrates the "ietf-list-pagination" module:
@@ -609,10 +611,11 @@ lector>
 
 ## YANG Module
 
+This YANG module has normative references to {{!RFC7952}} and {{!RFC9196}}.
 ~~~~
 <CODE BEGINS> file "ietf-list-pagination@2025-04-03.yang"
 {::include-fold ./yang/ietf-list-pagination.yang}
-<CODE END>
+<CODE ENDS>
 ~~~~
 
 #  IANA Considerations
