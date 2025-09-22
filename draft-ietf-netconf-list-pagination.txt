@@ -5,14 +5,14 @@
 Network Configuration                                          K. Watsen
 Internet-Draft                                           Watsen Networks
 Intended status: Standards Track                                   Q. Wu
-Expires: 25 March 2026                                            Huawei
+Expires: 26 March 2026                                            Huawei
                                                             P. Andersson
                                                                    Cisco
                                                               O. Hagsand
                                                                    SUNET
                                                                    H. Li
                                                                       HP
-                                                       21 September 2025
+                                                       22 September 2025
 
 
                List Pagination for YANG-driven Protocols
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 March 2026.
+   This Internet-Draft will expire on 26 March 2026.
 
 Copyright Notice
 
@@ -655,6 +655,7 @@ Table of Contents
 
 4.3.  YANG Module
 
+   <CODE BEGINS> file "ietf-list-pagination@2025-04-03.yang"
    module ietf-list-pagination {
      yang-version 1.1;
      namespace
@@ -1061,6 +1062,8 @@ Table of Contents
        }
      }
    }
+   <CODE END>
+   <CODE ENDS>
 
 5.  IANA Considerations
 
