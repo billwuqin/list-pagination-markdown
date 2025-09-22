@@ -106,8 +106,8 @@ Table of Contents
    5.  IANA Considerations
      5.1.  The "IETF XML" Registry
      5.2.  The "YANG Module Names" Registry
-   6.  Security Considerations for the "ietf-list-pagination" YANG
-           Module
+   6.  Security Consideration
+     6.1.  Considerations for the "ietf-list-pagination" YANG Module
    7.  References
      7.1.  Normative References
      7.2.  Informative References
@@ -1093,7 +1093,9 @@ Table of Contents
        prefix: lpg
        RFC: XXXX
 
-6.  Security Considerations for the "ietf-list-pagination" YANG Module
+6.  Security Consideration
+
+6.1.  Considerations for the "ietf-list-pagination" YANG Module
 
    This section follows the template defined in Section 3.7.1 of
    [RFC8407].
