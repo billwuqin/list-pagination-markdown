@@ -1756,21 +1756,26 @@ may be interacted with.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
 <a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-the-sublist-limit-query-par" class="section-name selfRef">The "sublist-limit" Query Parameter</a>
           </h4>
 <p id="section-3.2.1-1">Description
-   The "sublist-limit" parameter limits the number of entries returned for descendent lists and leaf-lists.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-2">Any descendent list or leaf-list limited by the "sublist-limit" parameter includes, somewhere in its
-   encoding, a metadata value <span>[<a href="#RFC7952" class="cite xref">RFC7952</a>]</span> called "remaining", a positive integer indicating the number
-   of elements that were not included by the "sublist-limit" parameter, or the value "unknown" in case,
-   e.g., the server determines that counting would be prohibitively expensive.<a href="#section-3.2.1-2" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-3">When used on a list node, it only affects the list's descendant nodes, not the list itself, which is
-   only affected by the parameters presented in Section 3.1.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-4">Default Value
-   If this query parameter is unspecified, the number of entries that may be returned for descendent lists
-   and leaf-lists is unbounded.<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-5">Allowed Values
-   The allowed values are positive integers.<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-6">Conformance
-   The "sublist-limit" query parameter <span class="bcp14">MUST</span> be supported for all conventional nodes, including a datastore's
-   top-level node (i.e., '/').<a href="#section-3.2.1-6" class="pilcrow">¶</a></p>
+      The "sublist-limit" parameter limits the number of entries returned for descendent lists and leaf-lists.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.2.1-2">
+<pre>
+  Any descendent list or leaf-list limited by the "sublist-limit" parameter includes, somewhere in its
+  encoding, a metadata value {{RFC7952}} called "remaining", a positive integer indicating the number
+  of elements that were not included by the "sublist-limit" parameter, or the value "unknown" in case,
+  e.g., the server determines that counting would be prohibitively expensive.
+
+  When used on a list node, it only affects the list's descendant nodes, not the list itself, which is
+  only affected by the parameters presented in Section 3.1.
+</pre><a href="#section-3.2.1-2" class="pilcrow">¶</a>
+</div>
+<p id="section-3.2.1-3">Default Value
+      If this query parameter is unspecified, the number of entries that may be returned for descendent lists
+      and leaf-lists is unbounded.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-4">Allowed Values
+      The allowed values are positive integers.<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-5">Conformance
+      The "sublist-limit" query parameter <span class="bcp14">MUST</span> be supported for all conventional nodes, including a datastore's
+      top-level node (i.e., '/').<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
