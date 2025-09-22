@@ -124,7 +124,7 @@ Table of Contents
        A.3.7.  The "locale" Parameter
        A.3.8.  The "sublist-limit" Parameter
        A.3.9.  Combinations of Parameters
-   Acknowledgments
+   Acknowledgements
    Authors' Addresses
 
 1.  Introduction
@@ -3150,7 +3150,7 @@ A.3.9.1.  All six parameters at once
      }
    }
 
-Acknowledgments
+Acknowledgements
 
    This work has benefited from the discussions of RESTCONF resource
    collection over the years, in particular,
