@@ -2800,7 +2800,7 @@ A.3.7.2.  The target is a list entry
 
    REQUEST
 
-     Datastore: &lt;intended&gt;
+     Datastore: <intended>
      Target: /example-social:members/member=alice
      Sublist-limit: 1
      Pagination Parameters:
@@ -2873,7 +2873,7 @@ A.3.7.3.  The target is a datastore
 
    REQUEST
 
-     Datastore: &lt;intended&gt;
+     Datastore: <intended>
      Target: /
      Sublist-limit: 1
      Pagination Parameters:
@@ -2942,7 +2942,7 @@ A.3.8.1.  The target is a list entry
 
    REQUEST
 
-     Datastore: &lt;intended&gt;
+     Datastore: <intended>
      Target: /example-social:members/member=alice
      Sublist-limit: 1
      Pagination Parameters:
@@ -3015,7 +3015,7 @@ A.3.8.2.  The target is a datastore
 
    REQUEST
 
-     Datastore: &lt;intended&gt;
+     Datastore: <intended>
      Target: /
      Sublist-limit: 1
      Pagination Parameters:
