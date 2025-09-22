@@ -1973,7 +1973,7 @@ The "sublist-limit" parameter may be used on any target node.
 
 #### The target is a list entry
 
-This example uses the target node '/example-social:members/member=alice' in the intended datastore.
+This example uses the target node '/example-social:members/member=alice' in the &lt;intended&gt; datastore.
 
 The target node is a specific list entry/element node, not the YANG "list" node.
 
@@ -1984,7 +1984,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 REQUEST
 
 ~~~~
-  Datastore: intended
+  Datastore: &lt;intended&gt;
   Target: /example-social:members/member=alice
   Sublist-limit: 1
   Pagination Parameters:
@@ -2048,7 +2048,7 @@ RESPONSE
 ~~~~
 
 #### The target is a datastore
-This example uses the target node intended datastore.
+This example uses the target node &lt;intended&gt; datastore.
 
 This example sets the sublist-limit value '1', which returns just the first entry for all descendant lists and leaf-lists.
 
@@ -2057,7 +2057,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 REQUEST
 
 ~~~~
-  Datastore: intended
+  Datastore: &lt;intended&gt;
   Target: /
   Sublist-limit: 1
   Pagination Parameters:
@@ -2112,7 +2112,7 @@ RESPONSE
 The "sublist-limit" parameter may be used on any target node.
 
 #### The target is a list entry
-This example uses the target node '/example-social:members/member=alice' in the <intended> datastore.
+This example uses the target node '/example-social:members/member=alice' in the &lt;intended&gt; datastore.
 
 The target node is a specific list entry/element node, not the YANG "list" node.
 
@@ -2123,7 +2123,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 REQUEST
 
 ~~~~
-  Datastore: <intended>
+  Datastore: &lt;intended&gt;
   Target: /example-social:members/member=alice
   Sublist-limit: 1
   Pagination Parameters:
@@ -2187,7 +2187,7 @@ RESPONSE
 ~~~~
 
 #### The target is a datastore
-This example uses the target node <intended>.
+This example uses the target node &lt;intended&gt;.
 
 This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
 
@@ -2196,7 +2196,7 @@ Note that, in the response, the "remaining" metadata value is set on the first e
 REQUEST
 
 ~~~~
-  Datastore: <intended>
+  Datastore: &lt;intended&gt;
   Target: /
   Sublist-limit: 1
   Pagination Parameters:
