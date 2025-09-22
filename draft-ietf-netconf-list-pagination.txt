@@ -78,7 +78,7 @@ Table of Contents
 
    1.  Introduction
      1.1.  Terminology
-     1.2.  Convention
+     1.2.  Conventions
      1.3.  Adherence to the NMDA
    2.  Solution Overview
    3.  Solution Details
@@ -106,7 +106,7 @@ Table of Contents
    5.  IANA Considerations
      5.1.  The "IETF XML" Registry
      5.2.  The "YANG Module Names" Registry
-   6.  Security Consideration
+   6.  Security Considerations
      6.1.  Considerations for the "ietf-list-pagination" YANG Module
    7.  References
      7.1.  Normative References
@@ -176,7 +176,7 @@ Table of Contents
    here: client, data model, data tree, feature, extension, module,
    leaf, leaf-list, and server.
 
-1.2.  Convention
+1.2.  Conventions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -1094,7 +1094,7 @@ Table of Contents
        prefix: lpg
        RFC: XXXX
 
-6.  Security Consideration
+6.  Security Considerations
 
 6.1.  Considerations for the "ietf-list-pagination" YANG Module
 
