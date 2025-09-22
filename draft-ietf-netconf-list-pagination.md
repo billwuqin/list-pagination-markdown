@@ -73,7 +73,8 @@ informative:
    time-driven logging mechanisms, such as an audit log or a traffic
    log, can contain millions of entries.
 
-   Retrieval of all the entries can lead to inefficiencies in the
+   Retrieval of all the entries can lead to inefficiencies (e.g., long
+   loading time, memory overutilization or crash) in the
    server, the client, and the network in between.  For instance,
    consider the following:
 
@@ -148,7 +149,7 @@ informative:
    components are available is presented.
 
    A secondary aspect of this solution entails a client sending a query
-   parameter to a server guiding how descendent lists and leaf-lists
+   parameter to a server guiding how descendant lists and leaf-lists
    should be returned.  This parameter may be used on any target node,
    not just "list" and "leaf-list" nodes.
 
@@ -204,16 +205,17 @@ informative:
       filtered from the working result-set.
 
    Allowed Values
-      The allowed values are XPath 1.0 expressions.  The XPath context
-      follows Section 6.4.1 of {{!RFC7950}} and details (such as prefix
-      bindings) are further defined at the protocol level, see
+      The allowed values are XPath 1.0 expressions. The XPath context
+      follows Section 6.4.1 of {{!RFC7950}}, e.g., the context node
+      is the target of the query, the accessible tree is "config true" lists
+      and leaf-lists or "config false" lists and leaf-lists. Details (such
+      as prefix bindings) are further defined at the protocol level, see
       {{?I-D.ietf-netconf-list-pagination-nc}} and
       {{?I-D.ietf-netconf-list-pagination-rc}}.  It is an error if the
       XPath expression references a node identifier that does not exist
-      in the schema, is optional or conditional in the schema or, for
-      constrained "config false" lists and leaf-lists (see Section 3.3),
-      if the node identifier does not point to a node having the
-      "indexed" extension statement applied to it (see Section 3.3.2).
+      in the schema, or for constrained "config false" lists and leaf-lists
+      (see Section 3.3), if the node identifier does not point to a node
+      having the "indexed" extension statement applied to it (see Section 3.3.2).
 
    Conformance
       The "where" query parameter MUST be supported for all "config
@@ -274,13 +276,13 @@ informative:
       The format is a free form string but SHOULD follow the language
       sub-tag format defined in {{!RFC5646}}.  An example is 'sv_SE'.  If a
       supplied locale is unknown to the server, the "locale-unavailable"
-      SHOULD be produced in the error-app-tag in the error output.  Note
-      that all locales are assumed to be UTF-8, since character encoding
-      for YANG strings and all known YANG modelled encodings and
-      protocols are required to be UTF-8{{!RFC6241}} {{!RFC7950}} {{!RFC7951}}
-      {{!RFC8040}}.  A server MUST accept a known encoding with or without
-      trailing ".UTF-8" and MAY emit an encoding with or without
-      trailing ".UTF-8".  This means a server must handle both e.g.
+      SHOULD be produced for debugging purpose in the error-app-tag in the
+      error output {{!RFC6241}}.  Note that all locales are assumed to be
+      UTF-8, since character encoding for YANG strings and all known YANG
+      modelled encodings and protocols are required to be UTF-8 {{!RFC6241}}
+      {{!RFC7950}} {{!RFC7951}} {{!RFC8040}}.  A server MUST accept a known
+      encoding with or without trailing ".UTF-8" and MAY emit an encoding with
+      or without trailing ".UTF-8".  This means a server must handle both e.g.
       "sv_SE" and "sv_SE.UTF-8" equally as input, and chooses how to
       emit used locale as output.
 
@@ -339,7 +341,7 @@ informative:
 
    Conformance
       The "offset" query parameter MUST be supported for all lists and
-      leaf-lists.
+      leaf-lists and MUST not used together with "cusor" query parameter.
 
 ###  The "cursor" Query Parameter
 
@@ -375,9 +377,8 @@ informative:
    Conformance
       The "cursor" query parameter MUST be supported for all "config
       true" lists and SHOULD be supported for all "config false" lists.
-      It is however optional to support the "cursor" query parameter for
-      "config false" lists and the support must be signaled by the
-      server per list.
+      As the "cursor" query parameter for "config false" lists is
+      Optional, the support must be signaled by the server per list.
 
       Servers indicate that they support the "cursor" query parameter
       for a "config false" list node by having the "cursor-supported"
@@ -429,9 +430,9 @@ informative:
    Description
 
       The "sublist-limit" parameter limits the number of entries
-      returned for descendent lists and leaf-lists.
+      returned for descendant lists and leaf-lists.
 
-      Any descendent list or leaf-list limited by the "sublist-limit"
+      Any descendant list or leaf-list limited by the "sublist-limit"
       parameter includes, somewhere in its encoding, a metadata value
       {{!RFC7952}} called "remaining", a positive integer indicating the
       number of elements that were not included by the "sublist-limit"
@@ -444,7 +445,7 @@ informative:
 
    Default Value
       If this query parameter is unspecified, the number of entries that
-      may be returned for descendent lists and leaf-lists is unbounded.
+      may be returned for descendant lists and leaf-lists is unbounded.
 
    Allowed Values
       The allowed values are positive integers.
@@ -515,7 +516,7 @@ informative:
       MUST have the "indexed" leaf applied to it (see Section 3.3.2).
 
    *  For lists only, node-identifiers used in "where" expressions and
-      "sort-by" filters MUST NOT descend past any descendent lists.
+      "sort-by" filters MUST NOT descend past any descendant lists.
       This ensures that only indexes relative to the targeted list are
       used.  Further constraints on node identifiers MAY be applied in
       Section 3.3.2.
@@ -1548,7 +1549,7 @@ RESPONSE
 Noting that the "sort-by" parameter is a node identifier, there is not so much "edge conditions" as there are "interesting conditions". This section provides examples for some interesting conditions.
 
 #### A.3.5.1. the target node's type
-The section provides three examples, one for a "leaf-list" and two for a "list", with one using a direct descendent and the other using an indirect descendent.
+The section provides three examples, one for a "leaf-list" and two for a "list", with one using a direct descendant and the other using an indirect descendant.
 
 ##### A.3.5.1.1. type is a "leaf-list"
 This example illustrates when the target node's type is a "leaf-list". Note that a single period (i.e., '.') is used to represent the nodes to be sorted.
@@ -1575,10 +1576,10 @@ RESPONSE
 }
 ~~~~
 
-##### A.3.5.1.2. type is a "list" and sort-by node is a direct descendent
-This example illustrates when the target node's type is a "list" and a direct descendent is the "sort-by" node.
+##### A.3.5.1.2. type is a "list" and sort-by node is a direct descendant
+This example illustrates when the target node's type is a "list" and a direct descendant is the "sort-by" node.
 
-This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "member-id", which is the "key" for the list.
+This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "member-id", which is the "key" for the list.
 
 REQUEST
 
@@ -1623,10 +1624,10 @@ To make the example more understandable, an ellipse (i.e., "...") is used to rep
 }
 ~~~~
 
-##### A.3.5.1.3. type is a "list" and sort-by node is an indirect descendent
-This example illustrates when the target node's type is a "list" and an indirect descendent is the "sort-by" node.
+##### A.3.5.1.3. type is a "list" and sort-by node is an indirect descendant
+This example illustrates when the target node's type is a "list" and an indirect descendant is the "sort-by" node.
 
-This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.
+This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendant node "stats/joined", which is a "config false" descendant leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.
 
 REQUEST
 
@@ -1697,7 +1698,7 @@ RESPONSE
 }
 ~~~~
 
-#### A.3.6.2. match on descendent string containing a substring
+#### A.3.6.2. match on descendant string containing a substring
 This example selects members that have an email address containing "@example.com".
 
 REQUEST
@@ -1738,7 +1739,7 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 }
 ~~~~
 
-#### A.3.6.3. match on decendent timestamp starting with a substring
+#### A.3.6.3. match on descendant timestamp starting with a substring
 This example selects members that have a posting whose timestamp begins with the string "2020".
 
 REQUEST
@@ -1968,9 +1969,9 @@ This example uses the target node '/example-social:members/member=alice' in the 
 
 The target node is a specific list entry/element node, not the YANG "list" node.
 
-This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
+This example sets the sublist-limit value '1', which returns just the first entry for all descendant lists and leaf-lists.
 
-Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
+Note that, in the response, the "remaining" metadata value is set on the first element of each descendant list and leaf-list having more than one value.
 
 REQUEST
 
@@ -2041,9 +2042,9 @@ RESPONSE
 #### A.3.8.2. target is a datastore
 This example uses the target node intended datastore.
 
-This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
+This example sets the sublist-limit value '1', which returns just the first entry for all descendant lists and leaf-lists.
 
-Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
+Note that, in the response, the "remaining" metadata value is set on the first element of each descendant list and leaf-list having more than one value.
 
 REQUEST
 
