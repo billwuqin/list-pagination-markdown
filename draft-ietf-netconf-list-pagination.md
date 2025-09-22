@@ -972,8 +972,10 @@ Any value greater than or equal to num-elements results the entire result set, s
 
 These vector tests assume the target "/example-social:members/member=alice/favorites/uint8-numbers", which has six values, thus the edge condition "limit" values are: '1', '2', '5', '6', and '7'.
 
-A.3.1.1. limit=1
+#### A.3.1.1. limit=1
+
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -983,7 +985,9 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     1
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [17],
@@ -994,8 +998,11 @@ RESPONSE
    ]
 }
 ~~~~
-A.3.1.2. limit=2
+
+#### A.3.1.2. limit=2
+
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1005,7 +1012,9 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     2
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [17, 13],
@@ -1020,6 +1029,7 @@ RESPONSE
 #### A.3.1.3. limit=5
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1029,7 +1039,9 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     5
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5],
@@ -1040,9 +1052,11 @@ RESPONSE
    ]
 }
 ~~~~
+
 #### A.3.1.4. limit=6
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1052,15 +1066,19 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     6
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
 }
 ~~~~
+
 #### A.3.1.5. limit=7
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1070,16 +1088,14 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     7
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
 }
 ~~~~
-
-
-
-
 
 ### A.3.2. The "offset" Parameter
 
@@ -1090,6 +1106,7 @@ These vector tests again assume the target "/example-social:members/member=alice
 #### A.3.2.1. offset=0
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1099,15 +1116,19 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    0
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
 }
 ~~~~
+
 #### A.3.2.2. offset=1
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1117,7 +1138,9 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    1
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [13, 11, 7, 5, 3]
@@ -1127,6 +1150,7 @@ RESPONSE
 #### A.3.2.3. offset=2
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1136,15 +1160,19 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    2
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [11, 7, 5, 3]
 }
 ~~~~
+
 #### A.3.2.4. offset=5
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1154,7 +1182,9 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    5
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [3]
@@ -1164,6 +1194,7 @@ RESPONSE
 #### A.3.2.5. offset=6
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1173,15 +1204,19 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    6
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": []
 }
 ~~~~
+
 #### A.3.2.6. offset=7
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1191,14 +1226,14 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    7
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 error-type: application
 error-tag: invalid-value
 error-app-tag: ietf-list-pagination:offset-out-of-range
 ~~~~
-
-
 
 ### A.3.3. The "cursor" Parameter
 
@@ -1212,6 +1247,7 @@ Note that response has added attributes describing the result set and position i
 
 #### A.3.3.1. cursor=&limit=2
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1296,7 +1332,9 @@ RESPONSE
 ~~~~
 
 #### A.3.3.2. cursor="YWxpY2U="&limit=2
+
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1307,7 +1345,9 @@ Target: /example-social:members/member
     Limit:     2
     Cursor:    YWxpY2U=
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:member": [
@@ -1371,8 +1411,11 @@ RESPONSE
   ]
 }
 ~~~~
-A.3.3.3. cursor="am9l"&limit=2
+
+#### A.3.3.3. cursor="am9l"&limit=2
+
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1383,7 +1426,9 @@ Target: /example-social:members/member
     Limit:     2
     Cursor:    am9l
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:member": [
@@ -1421,10 +1466,12 @@ RESPONSE
   ]
 }
 ~~~~
-#### A.3.3.4. cursor="BASE64VALUE="
-REQUEST
 
+#### A.3.3.4. cursor="BASE64VALUE="
+
+REQUEST
 The cursor used does not exist in the datastore.
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1435,14 +1482,14 @@ Target: /example-social:members/member
     Limit:     -
     Cursor:    BASE64VALUE=
 ~~~~
+
 RESPONSE
+
 ~~~~
 error-type: application
 error-tag: invalid-value
 error-app-tag: ietf-list-pagination:cursor-not-found
 ~~~~
-
-
 
 ### A.3.4. The "direction" Parameter
 Noting that "direction" is an enumeration with two values, the edge condition values are each defined enumeration.
@@ -1454,7 +1501,9 @@ These vector tests again assume the target "/example-social:members/member=alice
 It is notable that "uint8-numbers" is an "ordered-by" user leaf-list. Traversals are over the user-specified order, not the numerically-sorted order, which is what the "sort-by" parameter addresses. If this were an "ordered-by system" leaf-list, then the traversals would be over the system-specified order, again not a numerically-sorted order.
 
 #### A.3.4.1. direction=forwards
+
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1464,7 +1513,9 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [17, 13, 11, 7, 5, 3]
@@ -1472,7 +1523,9 @@ RESPONSE
 ~~~~
 
 #### A.3.4.2. direction=backwards
+
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1482,14 +1535,14 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
 }
 ~~~~
-
-
 
 ### A.3.5. The "sort-by" Parameter
 Noting that the "sort-by" parameter is a node identifier, there is not so much "edge conditions" as there are "interesting conditions". This section provides examples for some interesting conditions.
@@ -1503,6 +1556,7 @@ This example illustrates when the target node's type is a "leaf-list". Note that
 This test again uses the target "/example-social:members/member=alice/favorites/uint8-numbers", which is a leaf-list.
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1512,7 +1566,9 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [3, 5, 7, 11, 13, 17]
@@ -1525,6 +1581,7 @@ This example illustrates when the target node's type is a "list" and a direct de
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "member-id", which is the "key" for the list.
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1534,9 +1591,11 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
 
 To make the example more understandable, an ellipse (i.e., "...") is used to represent a missing subtree of data.
+
 ~~~~
 {
   "example-social:member": [
@@ -1570,6 +1629,7 @@ This example illustrates when the target node's type is a "list" and an indirect
 This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1579,9 +1639,11 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
 
 To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+
 ~~~~
 {
   "example-social:member": [
@@ -1616,6 +1678,7 @@ The "where" is an XPath 1.0 expression, there are numerous edge conditions to co
 This example selects the uint8-numbers greater than 7 in the member alice's favorites.
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member=alice/favorites
   Pagination Parameters:
@@ -1625,7 +1688,9 @@ Target: /example-social:members/member=alice/favorites
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:uint8-numbers": [17, 13, 11],
@@ -1636,6 +1701,7 @@ RESPONSE
 This example selects members that have an email address containing "@example.com".
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1645,9 +1711,10 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
 ~~~~
-RESPONSE
 
+RESPONSE
 To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+
 ~~~~
 {
   "example-social:member": [
@@ -1675,6 +1742,7 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 This example selects members that have a posting whose timestamp begins with the string "2020".
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1684,9 +1752,11 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
 
 To make the example more understandable, an elipse (i.e., "...") is used to represent a missing subtree of data.
+
 ~~~~
 {
   "example-social:member": [
@@ -1722,6 +1792,7 @@ If "locale" is used on an ordered-by user list, error-type "application" and err
 If an ordered-by system target is not ordered according to any locale, the server omits the locale from the response.
 
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1732,7 +1803,9 @@ Target: /example-social:members/member
     Limit:     -
     Locale:    sv_SE
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:member": [
@@ -1768,7 +1841,9 @@ RESPONSE
   ]
 }
 ~~~~
+
 REQUEST
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1778,7 +1853,10 @@ Target: /example-social:members/member
     Offset:    -
     Limit:     -
     Locale:    en_US
+~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:member": [
@@ -1814,7 +1892,9 @@ RESPONSE
   ]
 }
 ~~~~
+
 REQUEST
+
 ~~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1825,15 +1905,19 @@ Target: /example-social:members/member
     Limit:     -
     Locale:    invalid
 ~~~~
+
 RESPONSE
+
 ~~~~
 error-type: application
 error-tag: invalid-value
 error-app-tag: ietf-list-pagination:locale-unavailable
 ~~~~
+
 REQUEST
 
 This example targets an "ordered-by user" list.
+
 ~~~~
 Target: /example-social:members/member=alice/favorites/uint8-numbers
   Pagination Parameters:
@@ -1844,15 +1928,18 @@ Target: /example-social:members/member=alice/favorites/uint8-numbers
     Limit:     -
     Locale:    sv_SE
 ~~~~
+
 RESPONSE
+
 ~~~~
 error-type: application
 error-tag: invalid-value
 ~~~~
 
 REQUEST
-~~~~
+
 This example supplies "locale" but not "sort-by".
+
 ~~~~
 Target: /example-social:members/member
   Pagination Parameters:
@@ -1863,16 +1950,20 @@ Target: /example-social:members/member
     Limit:     -
     Locale:    sv_SE
 ~~~~
+
 RESPONSE
+
 ~~~~
 error-type: application
 error-tag: invalid-value
 ~~~~
 
 #### A.3.8. The "sublist-limit" Parameter
+
 The "sublist-limit" parameter may be used on any target node.
 
 #### A.3.8.1. target is a list entry
+
 This example uses the target node '/example-social:members/member=alice' in the intended datastore.
 
 The target node is a specific list entry/element node, not the YANG "list" node.
@@ -1882,6 +1973,7 @@ This example sets the sublist-limit value '1', which returns just the first entr
 Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
 
 REQUEST
+
 ~~~~
   Datastore: intended
   Target: /example-social:members/member=alice
@@ -1893,7 +1985,9 @@ REQUEST
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:member": [
@@ -1952,6 +2046,7 @@ This example sets the sublist-limit value '1', which returns just the first entr
 Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
 
 REQUEST
+
 ~~~~
   Datastore: intended
   Target: /
@@ -1963,6 +2058,7 @@ REQUEST
     Offset:    -
     Limit:     -
 ~~~~
+
 RESPONSE
 
 ~~~~
@@ -2004,8 +2100,11 @@ RESPONSE
 ~~~~
 
 ### A.3.9. Combinations of Parameters
+
 #### A.3.9.1. All six parameters at once
+
 REQUEST
+
 ~~~~
   Datastore: &lt;operational&gt;
   Target: /example-social:members/member
@@ -2017,7 +2116,9 @@ REQUEST
     Offset:    2
     Limit:     2
 ~~~~
+
 RESPONSE
+
 ~~~~
 {
   "example-social:member": [
