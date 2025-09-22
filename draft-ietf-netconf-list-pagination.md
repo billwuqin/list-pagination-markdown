@@ -2338,7 +2338,7 @@ RESPONSE
 }
 ~~~~
 
-# Acknowledgments
+# Acknowledgements
 {:numbered="false"}
 
    This work has benefited from the discussions of RESTCONF resource
