@@ -1567,7 +1567,7 @@ To make the example more understandable, an ellipse (i.e., "...") is used to rep
 ##### A.3.5.1.3. type is a "list" and sort-by node is an indirect descendent
 This example illustrates when the target node's type is a "list" and an indirect descendent is the "sort-by" node.
 
-This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the operational datastore.
+This vector test uses the target "/example-social:members/member", which is a "list", and the sort-by descendent node "stats/joined", which is a "config false" descendent leaf. Due to "joined" being a "config false" node, this request would have to target the "member" node in the &lt;operational&gt; datastore.
 
 REQUEST
 ~~~~
@@ -2007,7 +2007,7 @@ RESPONSE
 #### A.3.9.1. All six parameters at once
 REQUEST
 ~~~~
-  Datastore: operational
+  Datastore: &lt;operational&gt;
   Target: /example-social:members/member
   Sublist-limit: 1
   Pagination Parameters:
