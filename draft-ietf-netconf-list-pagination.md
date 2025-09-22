@@ -125,7 +125,7 @@ informative:
 ## Adherence to the NMDA
 
    This document is compliant with the Network Management Datastore
-   Architecture (NMDA) {{!RFC8342}}.  The "ietf-list-pagination" module
+   Architecture (NMDA) {{?RFC8342}}.  The "ietf-list-pagination" module
    only defines a YANG extension and augments a couple leafs into a
    "config false" node defined by the "ietf-system-capabilities" module.
 
@@ -154,7 +154,7 @@ informative:
 
    Clients detect a server's support for list pagination via an entry
    for the "ietf-list-pagination" module (defined in Section 4) in the
-   server's YANG Library {{!RFC8525}} response.
+   server's YANG Library {{?RFC8525}} response.
 
    Relying on client-provided query parameters ensures servers remain
    backward compatible with legacy clients.
@@ -556,7 +556,7 @@ which "config false" list and/or "leaf-list" nodes are constrained and, if so, w
 nodes may be used in "where" and "sort-by" expressions.
 
 ## Data Model Overview
-The following tree diagram [RFC8340] illustrates the "ietf-list-pagination" module:
+The following tree diagram {{?RFC8340}} illustrates the "ietf-list-pagination" module:
 
 module: ietf-list-pagination
 
@@ -635,9 +635,9 @@ This YANG module has normative references to {{!RFC7952}} and {{!RFC9196}}.
 ##  The "YANG Module Names" Registry
 
    This document registers one YANG module in the YANG Module Names
-   registry {{!RFC6020}} maintained at https://www.iana.org/assignments/
+   registry {{?RFC6020}} maintained at https://www.iana.org/assignments/
    yang-parameters/yang-parameters.xhtml.  Following the format defined
-   in {{!RFC6020}}, the below registration is requested:
+   in {{?RFC6020}}, the below registration is requested:
 
         name: ietf-list-pagination
         namespace: urn:ietf:params:xml:ns:yang:ietf-list-pagination
@@ -698,7 +698,7 @@ The vector tests assume the "example-social" YANG module defined in this section
 
 This module has been specially crafted to cover every notable edge condition, especially with regards to the types of the data nodes.
 
-Following is the tree diagram [RFC8340] for the "example-social" module:
+Following is the tree diagram {{?RFC8340}} for the "example-social" module:
 
 ~~~~
 module: example-social
@@ -1970,7 +1970,7 @@ error-type: application
 error-tag: invalid-value
 ~~~~
 
-#### The "sublist-limit" Parameter
+### The "sublist-limit" Parameter
 
 The "sublist-limit" parameter may be used on any target node.
 
@@ -2056,145 +2056,6 @@ This example uses the target node &lt;intended&gt; datastore.
 This example sets the sublist-limit value '1', which returns just the first entry for all descendant lists and leaf-lists.
 
 Note that, in the response, the "remaining" metadata value is set on the first element of each descendant list and leaf-list having more than one value.
-
-REQUEST
-
-~~~~
-  Datastore: <intended>
-  Target: /
-  Sublist-limit: 1
-  Pagination Parameters:
-    Where:     -
-    Sort-by:   -
-    Direction: -
-    Offset:    -
-    Limit:     -
-~~~~
-
-RESPONSE
-
-~~~~
-{
-  "example-social:members": {
-    "member": [
-      {
-        "@": {
-          "ietf-list-pagination:remaining": "4"
-        },
-        "member-id": "bob",
-        "email-address": "bob@example.com",
-        "password": "$0$1543",
-        "avatar": "BASE64VALUE=",
-        "tagline": "Here and now, like never before.",
-        "posts": {
-          "post": [
-            {
-              "@": {
-                "ietf-list-pagination:remaining": "2"
-              },
-              "timestamp": "2020-08-14T03:32:25Z",
-              "body": "Just got in."
-            }
-          ]
-        },
-        "favorites": {
-          "decimal64-numbers": ["3.14159"],
-          "@decimal64-numbers": [
-            {
-              "ietf-list-pagination:remaining": "1"
-            }
-          ]
-        }
-      }
-    ]
-  }
-}
-~~~~
-
-### The "sublist-limit" Parameter
-The "sublist-limit" parameter may be used on any target node.
-
-#### The target is a list entry
-This example uses the target node '/example-social:members/member=alice' in the &lt;intended&gt; datastore.
-
-The target node is a specific list entry/element node, not the YANG "list" node.
-
-This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
-
-Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
-
-REQUEST
-
-~~~~
-  Datastore: <intended>
-  Target: /example-social:members/member=alice
-  Sublist-limit: 1
-  Pagination Parameters:
-    Where:     -
-    Sort-by:   -
-    Direction: -
-    Offset:    -
-    Limit:     -
-~~~~
-
-RESPONSE
-
-~~~~
-{
-  "example-social:member": [
-    {
-      "member-id": "alice",
-      "email-address": "alice@example.com",
-      "password": "$0$1543",
-      "avatar": "BASE64VALUE=",
-      "tagline": "Every day is a new day",
-      "privacy-settings": {
-        "hide-network": "false",
-        "post-visibility": "public"
-      },
-      "following": ["bob"],
-      "@following": [
-        {
-          "ietf-list-pagination:remaining": "2"
-        }
-      ],
-      "posts": {
-        "post": [
-          {
-            "@": {
-              "ietf-list-pagination:remaining": "1"
-            },
-            "timestamp": "2020-07-08T13:12:45Z",
-            "title": "My first post",
-            "body": "Hiya all!"
-          }
-        ]
-      },
-      "favorites": {
-        "uint8-numbers": [17],
-        "int8-numbers": [-5],
-        "@uint8-numbers": [
-          {
-            "ietf-list-pagination:remaining": "5"
-          }
-        ],
-        "@int8-numbers": [
-          {
-            "ietf-list-pagination:remaining": "5"
-          }
-        ]
-      }
-    }
-  ]
-}
-~~~~
-
-#### The target is a datastore
-This example uses the target node &lt;intended&gt;.
-
-This example sets the sublist-limit value '1', which returns just the first entry for all descendent lists and leaf-lists.
-
-Note that, in the response, the "remaining" metadata value is set on the first element of each descendent list and leaf-list having more than one value.
 
 REQUEST
 
