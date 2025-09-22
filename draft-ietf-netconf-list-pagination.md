@@ -349,7 +349,8 @@ informative:
       result-set are skipped, the same as when the offset value '0' is
       specified.
 
-   Allowed Values 
+   Allowed Values
+
       The allowed values are unsigned integers.  It is an error for the
       offset value to exceed the number of entries in the working
       result-set, and the "offset-out-of-range" identity SHOULD be
@@ -456,12 +457,12 @@ informative:
    Description
 
       The "sublist-limit" parameter limits the number of entries returned for descendent lists and leaf-lists.
-      
+
       Any descendent list or leaf-list limited by the "sublist-limit" parameter includes, somewhere in its
       encoding, a metadata value {{!RFC7952}} called "remaining", a positive integer indicating the number
       of elements that were not included by the "sublist-limit" parameter, or the value "unknown" in case,
       e.g., the server determines that counting would be prohibitively expensive.
-      
+
       When used on a list node, it only affects the list's descendant nodes, not the list itself, which is
       only affected by the parameters presented in Section 3.1.
 
