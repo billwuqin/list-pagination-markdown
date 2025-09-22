@@ -431,8 +431,8 @@ informative:
       returned for descendant lists and leaf-lists.
 
       Any descendant list or leaf-list limited by the "sublist-limit"
-      parameter includes, somewhere in its encoding, a metadata value
-      {{!RFC7952}} called "remaining", a positive integer indicating the
+      parameter includes, somewhere in its encoding, a metadata value {{!RFC7952}} called
+      "remaining", a positive integer indicating the
       number of elements that were not included by the "sublist-limit"
       parameter, or the value "unknown" in case, e.g., the server
       determines that counting would be prohibitively expensive.
