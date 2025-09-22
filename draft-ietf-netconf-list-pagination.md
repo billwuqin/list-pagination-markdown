@@ -1787,13 +1787,18 @@ To make the example more understandable, an elipse (i.e., "...") is used to repr
 
 The "locale" parameter may be used on any target node.
 
-If this parameter is omitted, there is no default value and it is up to the server to choose a locale. This locale is then reported in the result-set as the "locale" metadata value.
+If this parameter is omitted, there is no default value and it is up to the server to choose a locale.
+This locale is then reported in the result-set as the "locale" metadata value.
 
-Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by the user. For ordered-by system lists and leaf-lists, the server MAY report "locale" if the order that the server has chosen follows a valid locale,
+Note that for ordered-by user lists and leaf-lists "locale" is not relevant, since the order is set by
+the user. For ordered-by system lists and leaf-lists, the server MAY report "locale" if the order that
+the server has chosen follows a valid locale,
 
-If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value" is returned.
+If "locale" is used on an ordered-by user list, error-type "application" and error-tag "invalid-value"
+is returned.
 
-If an ordered-by system target is not ordered according to any locale, the server omits the locale from the response.
+If an ordered-by system target is not ordered according to any locale, the server omits the locale from
+the response.
 
 REQUEST
 
@@ -1845,6 +1850,7 @@ RESPONSE
   ]
 }
 ~~~~
+
 
 REQUEST
 
@@ -1899,7 +1905,7 @@ RESPONSE
 
 REQUEST
 
-~~~~~
+~~~~
 Target: /example-social:members/member
   Pagination Parameters:
     Where:     -
