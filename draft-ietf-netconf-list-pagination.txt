@@ -466,10 +466,8 @@ Table of Contents
 
 3.2.1.  The "sublist-limit" Query Parameter
 
-   Description
-
-     The "sublist-limit" parameter limits the number of entries
-     returned for descendant lists and leaf-lists.
+   Description The "sublist-limit" parameter limits the number of
+   entries returned for descendant lists and leaf-lists.
 
      Any descendant list or leaf-list limited by the "sublist-limit"
      parameter includes, somewhere in its encoding, a metadata value
